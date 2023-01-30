@@ -1,0 +1,35 @@
+<div class="box">
+    <div class="reservation__title-box">
+        <h1 class="reservation__title">{{film.title}} | {{selectedDate | date:'d/YY'}} | {{show.hour}}</h1>
+
+    </div>
+    <div class="reservation__display">
+        <span class="reservation__ekran">Ekran {{screen.name}}</span>
+    </div>
+<div class="reservation__container">
+    <div class="reservation__net">
+        <div class="reservation__letters"  *ngFor="let letter of letters,let a = index">
+            {{ letter }}         
+            <span id="{{ a+i }}" class="reservation__number"   *ngFor="let number of numbers,let i = index" (click)="seatReturn(i,a)" (click)="ticket()">{{ number }}</span>
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div  class="ng">
+    <div *ngIf="reservationBuffer"> Wybrane miejsce {{ reservationBuffer.name }}
+        <select  (change)="priceTypeChange($event)">
+            <option *ngFor="let priceType of show.priceList">{{priceType.type}} {{priceType.price}}</option>
+        </select>&nbsp;&nbsp;
+        <button (click)="addToReservationBuffer()"> Dodaj </button>&nbsp;&nbsp;
+        <button (click)="clearReservationBuffer()">🗑</button>
+    </div>
+</div>
+<div class="ng" *ngIf="seatDisplay().length">Twoje Rezerwacje
+    <div *ngFor="let line of seatDisplay(),let i=index"  > Wybrane miejsce {{ line.seat.name }}
+        {{ line.seat.price.type}} {{ line.seat.price.price}}
+        <button (click)="cart.removeLine( line.seat.show_id, line.seat.name )">🗑</button>
+    </div>
+    <button *ngIf="cart.lines.length"  routerLink = "/order" >Złóż zamówienie</button>
+</div>

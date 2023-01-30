@@ -1,0 +1,24 @@
+.form__container{
+    display: flex;
+    justify-content: center;
+}
+.input{
+    margin-right: 2vw;
+    margin-top: 30px;
+    
+}
+.title{
+    display: block;
+
+}
+.order{
+    display: block;
+}
+.data-container{
+    display: flex;
+    justify-content: center;
+}
+.error{
+
+}
+

@@ -1,0 +1,48 @@
+ <div class="data-container" *ngFor="let line of uniqueFilms">
+  <div class="title">
+    <h1>{{filmRepository.getFilmByShow( line.seat.show_id ).title}}, {{line.seat.show_id}} godz. {{filmRepository.getShow( line.seat.show_id ).hour}}</h1><br>
+      <div class="order" *ngFor="let sLine of getSeats(line.seat.show_id ,line.seat.date )">
+
+        <p>Miejsce :  {{sLine.seat.name}} 
+        Cena : {{sLine.seat.price.type}} {{sLine.seat.price.price}}
+        <strong>Sala {{filmRepository.getShow( sLine.seat.show_id ).screen}} </strong>
+      </div>
+  </div>
+</div>
+<div class="data-container"  *ngIf="cart.itemCount">
+    <h4>
+        <p>Razem biletów : {{cart.itemCount}} o wartości : {{cart.cartPrice}}</p>
+    </h4>
+</div>
+            <!-- [ngClass]="{'is-invalid' : submitted && userForm.controls.name.errors }" -->
+ 
+ <div class="form__container">
+<form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label for="name"></label>
+        <input id="name" type="text" formControlName="name"  placeholder="Imie*" class="input">
+        
+       <label for surname></label> 
+        <input id="surname" type="text" formControlName="surname" placeholder="Nazwisko*" class="input">
+        
+            <br>
+            <label for="phone"></label>
+        <input name="phone" id="phone" type="text" formControlName="phone" placeholder="Numer telefonu" class="input">
+    <label for="email"></label>
+            <br>
+        <input id="email" type="email" formControlName="email" placeholder="Adres email" class="input" [email]="true">
+            <br>
+    <label for="emailConfirm"></label>
+            
+        <input id="emailConfirm" type="text" formControlName="emailConfirm" placeholder="Powtorz adres email" class="input">
+            <br>
+        <input id="zgoda" type="radio" class="input" formControlName="zgoda">Chcę otrzymywać powiadomienia
+        <br>
+    <label for="discount"></label>
+           
+        <input id="discount" type="text" formControlName="discount" placeholder="Podaj kod znizkowy" class="input"> 
+        <br><button id="zamawiam-btn" type="submit" [disabled]="userForm.valid">Zamawiam</button><br>
+       
+</form>
+</div>
+
+

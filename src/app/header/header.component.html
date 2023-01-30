@@ -1,0 +1,21 @@
+<!-- <div class="header">
+    <header class="header__container">
+      <fa-icon class="header__icon" [icon]="faVideo"></fa-icon>
+      <h1 class="header__title"  routerLink="/">Ale kino</h1>
+      <div class="header__buttons">
+      <button class="header__cart-button" routerLink="/order">W koszyku jest ({{ cart.lines.length}}) biletów</button>
+      <button class="header__login-button" routerLink="/signin">Zaloguj się</button>
+    </div>
+    </header>
+    </div> -->
+<header>
+  <div class="header__container">
+    <fa-icon class="header__icon" [icon]="faVideo"></fa-icon>
+    <h1 class="header__title"  routerLink="/">Ale kino</h1>
+  
+    <div class="header__buttons-container">
+      <button class="header__cart-button" routerLink="/order"><fa-icon [icon]="faShoppingCart"></fa-icon> ({{ cart.lines.length}}) </button>
+      <button class="header__login-button" routerLink="/signin">Zaloguj się</button>
+  </div>
+  </div>
+</header>

@@ -1,0 +1,53 @@
+.reservation__letters{
+width: 90vw; 
+display: grid;
+grid-template-columns: repeat(17,1fr);
+grid-template-rows:  (7,1fr);
+margin: auto;
+text-align: center;
+
+
+
+
+
+
+}
+.reservation__number{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+
+.reservation__container{
+    margin-top: 5vh;
+}
+.reservation__title-box{
+display: flex;
+justify-content: center;
+}
+.reservation__display{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    width: 90vw;
+    border-bottom: 4px solid grey;
+
+}
+
+.ng{
+    background-color: white;
+    height: 20vh;
+    width: 80vw;
+   margin: auto;
+    color: black;
+}
+.aa{
+    width: 500px;
+    height: 500px;
+    background-color:black;
+}
