@@ -17,8 +17,25 @@
 .data-container{
     display: flex;
     justify-content: center;
+  
 }
-.error{
-
+.form-container{
+   display: flex;
+   justify-content: center;
+    height: 700px;
 }
-
+.user-errors{
+    width: 200px;
+    height: 200px;
+}
+.container-box{
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+}
+input{
+    width: 280px;
+}
+button{
+    width: 280px;
+}

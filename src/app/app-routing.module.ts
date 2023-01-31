@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { CardComponent } from './card/card.component';
 import { ModelResolver } from "./model/model.resolver";
+import { OrderCompletedComponent } from './order-completed/order-completed.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'card'   , component : CardComponent},
   { path: 'reservation', component: ReservationComponent},
   { path: 'reservation/:selectedDate/:showId', component: ReservationComponent,resolve: { model: ModelResolver } },
-  { path: 'order'      , component: OrderComponent},
+  { path: 'order'      , component: OrderComponent,},
+  { path: 'order-completed'      , component: OrderCompletedComponent,},
   { path: "**"         , redirectTo: "/card" } 
 ];
 

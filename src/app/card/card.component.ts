@@ -17,6 +17,7 @@ import {  Input, Output,EventEmitter } from '@angular/core'
 })
 
 export class CardComponent  {
+  
 
   isReadMore = true;
   godziny = ['12:30','15:30','16:30'];
@@ -37,6 +38,7 @@ export class CardComponent  {
   }
   showText() {
      this.isReadMore = !this.isReadMore
+     console.log(this.films)
   }
   
 }

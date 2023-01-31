@@ -13,7 +13,18 @@ import { FooterComponent } from './footer/footer.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { DatePanelComponent } from './date-panel/date-panel.component';
 import { FormsModule} from "@angular/forms";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MatFormFieldModule, MatError, MatHint} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import { OrderCompletedComponent } from './order-completed/order-completed.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
+
+
+
 
 
 @NgModule({
@@ -26,6 +37,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     ReservationComponent,
     DatePanelComponent,
+    OrderCompletedComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     ModelModule,
@@ -35,6 +48,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
