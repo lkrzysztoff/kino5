@@ -209,6 +209,20 @@
         "actors": ["Artut", "Ziemowit", "Wiesiek", "Leszek"],
         "boxOff": 10,
         "premier": false
+      },
+      {
+        "id": 2,
+        "img": "film.jpg",
+        "title": "Lombard",
+        "genre": "Dokumentalny",
+        "length": "110 min",
+        "ageRest": "PG-13",
+        "description": "W mieście zwanym polskim Detroit, Jola i Wiesiek próbują ratować upadający biznes i rozpadający się związek. Przy ulicy Wytrwałych 1, każdego dnia walczą o przetrwanie, wspierając jednocześnie mieszkańców zubożałej, poprzemysłowej dzielnicy, udowadniając tym samym, że siła tkwi we wspólnocie.  ",
+        "score": "7/10",
+        "director": "Łukasz Kowalski",
+        "actors": ["Artut", "Ziemowit", "Wiesiek", "Leszek"],
+        "boxOff": 10,
+        "premier": false
       }
   ]
 }
