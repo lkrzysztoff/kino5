@@ -1,0 +1,11 @@
+.order-completed-container{
+    height: 80vh;
+    width: 60vw;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.details-container{
+    margin-top: 40px;
+}

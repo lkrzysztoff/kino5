@@ -7,11 +7,11 @@ import { MainDataSource } from "./main.datasource";
 
 @Injectable()
 export class FilmRepository  implements OnInit{
-    private films: Film[] = new Array<Film>();
+    public films: Film[] = new Array<Film>();
     private shows: Show[] = [];
     private screens: Screen[] = [];
     
-    constructor(private dataSource: MainDataSource) {
+    constructor(public dataSource: MainDataSource) {
         this.dataSource.getFilms().subscribe(data =>  this.films = data );
         this.dataSource.getShows().subscribe(data =>  this.shows = data );
         this.dataSource.getScreens().subscribe(data =>  this.screens = data );
@@ -56,7 +56,7 @@ export class FilmRepository  implements OnInit{
         let show : any= this.shows.find( sh => sh.id == showId);
         return ( show ? this.getScreen( show.screen ) : null );
     }
-
+    
     /*
     getProducts(category: string = null): Product[] {
         return this.products
