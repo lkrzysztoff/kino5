@@ -1,0 +1,31 @@
+<div class="date__container">
+<div class="date__menu"  >
+    <button (click)="setSelectedDate( date )" 
+    class="date__buttons" 
+    [ngClass]="{'dupa' : date == selectedDate }"
+    *ngFor="let date of dates" [routerLink]="['/app-card-panel-body', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} </button>
+    <!-- [routerLink]="['/app-card-panel-body', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} -->
+</div>
+</div> 
+
+ <div  class="date__menu" >
+  <p>
+    Wybrana data : {{ selectedDate | date:'YYYY-MM-dd' }}
+  </p>
+ </div> 
+         
+
+
+<!-- 
+<div class="wrapper" *ngIf="date$ | async as date">
+    <button
+      class="wrapper__date-box"
+      *ngFor="let item of date"
+      [disabled]="item.isDisabled"
+      [ngClass]="{ selected: item.day == (selectedDay$ | async) }"
+      (click)="changeDay(item.day)"
+    >
+      {{ item.dateShortcut }}
+    </button>
+  </div>
+   -->

@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderComponent } from './order/order.component';
-import { SigninComponent } from './signin/signin.component';
+import { OrderComponent } from './shared/ui/orders/order/order.component';
+import { SigninComponent } from './auth/signin/signin.component';
 import { AppComponent } from './app.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { CardComponent } from './card/card.component';
+import { ReservationComponent } from './shared/pages/reservation/reservation.component';
+import { CardComponent } from './shared/ui/movies/card/card.component';
 import { ModelResolver } from "./model/model.resolver";
-import { OrderCompletedComponent } from './order-completed/order-completed.component';
+import { OrderCompletedComponent } from './shared/ui/orders/order-completed/order-completed.component';
+import { QrCodePageComponent } from './shared/ui/orders/qr-code-page/qr-code-page.component';
+import { OrderGeneratedComponent } from './shared/ui/orders/order-generated/order-generated.component';
+import { CardPanelBodyComponent } from './shared/pages/card-panel-body/card-panel-body.component';
+import { DatePanelComponent } from './shared/ui/components/date-panel/date-panel.component';
 
 
 
 const routes: Routes = [
-  { path: ''           ,  component: CardComponent},
+  { path: ''           ,  component: CardPanelBodyComponent},
   { path: 'signin'     , component: SigninComponent },
-  { path: 'card/:selectedDate'   , component : CardComponent},
-  { path: 'card'   , component : CardComponent},
+  { path: 'home/:selectedDate'   , component : CardPanelBodyComponent},
+  { path: 'card'   , component : CardPanelBodyComponent},
   { path: 'reservation', component: ReservationComponent},
   { path: 'reservation/:selectedDate/:showId', component: ReservationComponent,resolve: { model: ModelResolver } },
   { path: 'order'      , component: OrderComponent,},
   { path: 'order-completed'      , component: OrderCompletedComponent,},
-  { path: "**"         , redirectTo: "/card" } 
+  { path: 'qrcode' , component: QrCodePageComponent},
+  {path:'orderg', component: OrderGeneratedComponent},
+  { path: "**"         , redirectTo: "" },
 ];
 
 @NgModule({

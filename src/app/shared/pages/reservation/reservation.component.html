@@ -1,0 +1,109 @@
+<!-- <div class="box-container">
+<div class="box">
+    <div class="reservation__title-box">
+        <h1 class="reservation__title">{{film.title}} | {{selectedDate | date:'d/YY'}} | {{show.hour}}</h1>
+
+    </div>
+    <div class="reservation__display">
+        <span class="reservation__ekran">Ekran {{screen.name}}</span>
+    </div> -->
+
+<div class="rsrv">
+    <div class="box">
+        <div class="reservation__title-box">
+            <h1 class="reservation__title">{{film.title}} | {{selectedDate | date:'d/YY'}} | {{show.hour}}</h1>
+    
+        </div>
+        <div class="reservation__display">
+            <span class="reservation__ekran">Ekran {{screen.name}}</span>
+        </div> 
+<div class="reservation__container">
+    <div class="reservation__net">
+        <div class="reservation__letters"  *ngFor="let letter of letters,let a = index">
+           <div class="ltr">{{ letter }}   
+
+           </div>  
+           <div >
+            <span id="{{ a+i }}" class="reservation__number"   *ngFor="let number of numbers,let i = index" (click)="seatReturn(i,a)" (click)="ticket()">{{ number }}</span>
+           </div> 
+               
+            
+    </div>
+    </div>
+
+</div>
+<!-- </div> -->
+
+
+<div class="seats-title"><p>Wybieranie miejsca </p></div>
+<div class="reservation-panel__order-container" *ngIf="reservationBuffer">
+    <mat-card>
+        <div class="reservation-panel__order-container-chosen-seats">Wybrane miejsce {{ reservationBuffer.name }} 
+        <mat-form-field appearance="fill">
+            <mat-label>Wybierz typ biletu</mat-label>
+        <select (change)="priceTypeChange($event)">
+        <option  *ngFor="let priceType of show.priceList" >{{priceType.type}} {{priceType.price}}</option>
+        </select>
+        </mat-form-field>
+        <div>
+        <button mat-raised-button  (click)="addToReservationBuffer()"> Dodaj </button>&nbsp;&nbsp;
+        <button mat-raised-button  (click)="clearReservationBuffer()">🗑</button>
+        </div>
+    </div>
+      </mat-card>
+      
+</div>
+<div class="list-container" *ngIf="seatDisplay().length">
+
+<mat-list class="list" >Twoje Rezerwacje ({{seatDisplay().length}})
+    <mat-list-item class="list-item" *ngFor="let line of seatDisplay(),let i=index"  > Wybrane miejsce {{ line.seat.name }}
+        {{ line.seat.price.type}} {{ line.seat.price.price}}
+        <button class="btn-remove" mat-raised-button  (click)="cart.removeLine( line.seat.show_id, line.seat.name )">🗑</button>
+        <mat-divider></mat-divider>
+        
+    </mat-list-item>
+    <div class="btn-order-container">
+    <button class="btn-order" mat-raised-button   *ngIf="cart.lines.length"  routerLink='/order' >Złóż zamówienie</button>
+    </div>
+</mat-list>
+</div>
+
+
+
+<!-- <mat-list>
+    <mat-list-item>Item 1</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Item 2</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Item 3</mat-list-item>
+  </mat-list> -->
+<!-- <mat-list  class="ng">
+    <div *ngIf="reservationBuffer"> Wybrane miejsce {{ reservationBuffer.name }}
+        <select  (change)="priceTypeChange($event)">
+            <option *ngFor="let priceType of show.priceList">{{priceType.type}} {{priceType.price}}</option>
+        </select>&nbsp;&nbsp;
+        <button (click)="addToReservationBuffer()"> Dodaj </button>&nbsp;&nbsp;
+        <button (click)="clearReservationBuffer()">🗑</button>
+    </div>
+</mat-list> -->
+
+
+
+<!-- <div  class="ng">
+    <div *ngIf="reservationBuffer"> Wybrane miejsce {{ reservationBuffer.name }}
+        <select  (change)="priceTypeChange($event)">
+            <option *ngFor="let priceType of show.priceList">{{priceType.type}} {{priceType.price}}</option>
+        </select>&nbsp;&nbsp;
+        <button (click)="addToReservationBuffer()"> Dodaj </button>&nbsp;&nbsp;
+        <button (click)="clearReservationBuffer()">🗑</button>
+    </div>
+</div>
+<div class="ng" *ngIf="seatDisplay().length">Twoje Rezerwacje
+    <div *ngFor="let line of seatDisplay(),let i=index"  > Wybrane miejsce {{ line.seat.name }}
+        {{ line.seat.price.type}} {{ line.seat.price.price}}
+        <button (click)="cart.removeLine( line.seat.show_id, line.seat.name )">🗑</button>
+    </div>
+    <button *ngIf="cart.lines.length"  routerLink = "/order" >Złóż zamówienie</button>
+</div>
+</div> -->
+</div>

@@ -1,0 +1,23 @@
+<!-- <app-date-panel (dateExport)="dateImport($event)"></app-date-panel> -->
+<!-- <app-date-panel (dateExport)="dateImport($event)"></app-date-panel> -->
+<div class="wrapper">
+  <div class="img-container">
+    <img class="img" src="../../assets/images/{{films.img}}">
+    </div>
+    <div class="movie-card">
+  
+      <div class="text-container">
+      <h3 class="movie-title" >{{ films.title }}</h3>
+      <h4 class="movie-facts">{{ films.genre }} | {{films.length}} | {{films.ageRest}}</h4>
+    </div>
+      <h5 class="movie-score">{{films.score}}</h5>
+      <div class="description-container">
+      <p class="tekst" [ngClass]="{'limitTextHeight': isReadMore}">{{films.description}}</p>
+      
+      </div>  
+      <a class="movie-card__showMore" (click)="showText()">{{ isReadMore ? 'Więcej': 'Schowaj' }}</a>
+        <div class="btn-container">
+        <button #hourSelector class="movie-card__hours" *ngFor="let show of getShows(films.id), let hourIndex = index" routerLink="/reservation/{{selectedDate | date:'YYYY-MM-dd'}}/{{show.id}}">{{show.hour}}</button>
+        </div>
+      </div>
+    </div>

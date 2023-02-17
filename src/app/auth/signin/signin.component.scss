@@ -1,0 +1,141 @@
+.login__image{
+   
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.login__panel{
+   display: flex;
+   justify-content: center;
+}
+.form__container{
+    display: flex;
+    justify-content: center;
+}
+h1{
+    display: flex;
+    justify-content: center;
+}
+.login__view{
+    margin-bottom: 75px;
+    margin-top: 50px;
+    border: 2px solid black;
+    width: 300px;
+    height: 500px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.body{
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h2 {
+    font-weight: 400;
+    padding: 0 24px 24px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  
+    mat-error {
+      font-size: var(--S_font-size);
+    }
+  }
+  
+  .button {
+    height: 45px;
+    text-transform: uppercase;
+  }
+  .container{
+    display: flex;
+    justify-content: center;
+  }
+  .btn{ 
+    background-color: #007FFF;
+    color: white;
+  }
+  input{
+  
+  }
+  mat-input{
+    color: black !important;
+  }
+
+
+
+  // mat-icon-stepper selected color change 
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: blACK !important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black!important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: black!important;
+    
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+    color: red!important;
+    
+    opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: black!important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+    caret-color: black!important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: rgba(0,0,0,.6)!important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: black!important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: red!important;
+}

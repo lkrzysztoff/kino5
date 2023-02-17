@@ -1,0 +1,43 @@
+.order-g{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80%;
+    &__container{
+        
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+    }
+}
+
+
+
+ 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+
+  
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  *{
+    font-size: 20px;
+  }
+  th{
+    border: 1px solid white;
+  }
+  body{
+    height: 100%;
+
+  }
+table{
+  margin-bottom: 40px;
+}

@@ -1,0 +1,17 @@
+.footer__menu{
+    display: flex;
+    justify-content: flex-end;
+    background-color: black;
+    color: white;
+    border-top: solid 1px black;
+    
+}
+ul{
+float: left;
+
+
+}
+ul>li{
+display: inline-block;
+margin: 5px;
+}

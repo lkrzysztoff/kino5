@@ -1,0 +1,259 @@
+@media screen and (min-width:650px){
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        
+
+    }
+    .movie-card{
+        width:70vw;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position: relative;
+
+    }
+    .text-container{
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+        }
+        .description-container{
+           position: relative;
+            display: flex;
+            padding-left: 15px;
+            bottom: 15px;
+        }
+        .movie-score{
+            position: absolute;
+            right: 20px;
+            top: 40px;
+        }
+        .movie-card__hours{
+                width: 10vw;
+                height: 30px;
+                background-color: gainsboro;
+                color: black;
+                font: 20px;
+                border: none;
+        }
+        .movie-card__hours:hover{
+            width: 10vw;
+            height: 30px;
+            background-color: black;
+            color: white;
+            font: 20px;
+            border: none;
+    }
+    .btn-container{
+        position: absolute;
+        right: 0;
+        bottom: 20px;
+    }
+    .movie-card__showMore{
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        margin-left: 3px;
+        padding: 3px;
+    }
+    .movie-card__showMore:hover{
+        text-decoration: none;
+        color: black;
+        padding: 3px;
+        background-color: white;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+        .tekst{
+            margin-top: 15px;
+        }
+    .img{
+        height: 200px;
+        float: left;
+    
+    /* }
+    .tekst{
+       */
+        
+        
+    }
+    .limitTextHeight {
+        height: 20px;
+        overflow: hidden;
+    }
+
+    
+}
+
+@media screen and (max-width:650px){
+    .wrapper{
+        width: 100%;
+    }
+    .movie-card{
+        width: 100%;
+        margin-bottom: 30px;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        
+    }
+    .img{
+        height: 200px;  
+    }
+    .img-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #FAFAFA;
+        
+    }
+    .text-container{
+      text-align: center;
+      padding: 5px;
+    }
+    .description-container{
+        position: relative;
+         display: flex;
+         bottom: 15px;
+     }
+     .limitTextHeight {
+        height: 20px;
+        overflow: hidden;
+    } .movie-score{
+        text-align: center;
+        padding: 5px;
+    
+    }
+    .movie-card__hours{
+        width: 100px;
+        height: 30px;
+        background-color: gainsboro;
+        color: black;
+        font: 20px;
+        border:none;
+}
+.movie-card__hours:hover{
+    width: 100px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    font: 20px;
+    border: none;
+}
+.movie-card__showMore{
+    display: flex;
+    width: 100px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    padding: 3px;
+    margin:auto;
+    margin-bottom: 5px;
+}
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    /* }
+    .movie-card{
+        width: 70vw;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position: relative;
+
+    }
+    .text-container{
+        display: flex;
+        flex-direction: column;
+        padding-left: 15px;
+        }
+        .description-container{
+           position: relative;
+            display: flex;
+            padding-left: 15px;
+            bottom: 15px;
+        }
+        .movie-score{
+            position: absolute;
+            right: 20px;
+            top: 40px;
+        }
+        .movie-card__hours{
+                width: 10vw;
+                height: 30px;
+                background-color: gainsboro;
+                color: black;
+                font: 20px;
+                border: none;
+        }
+        .movie-card__hours:hover{
+            width: 10vw;
+            height: 30px;
+            background-color: black;
+            color: white;
+            font: 20px;
+            border: none;
+    }
+    .btn-container{
+        position: absolute;
+        right: 0;
+        bottom: 20px;
+    }
+    .movie-card__showMore{
+        text-decoration: none;
+        color: black;
+        position: absolute;
+        left: 10px;
+        border: 1px solid black;
+        padding: 3px;
+    }
+    .movie-card__showMore:hover{
+        text-decoration: none;
+        color: white;
+        position: absolute;
+        left: 10px;
+        padding: 3px;
+        background-color: black;
+        cursor: pointer;
+    }
+        .tekst{
+            margin-top: 30px;
+        }
+    .img{
+        height: 200px;
+        float: left;
+    
+    /* }
+    .tekst{
+       */
+        
+    /* }    
+    .limitTextHeight {
+        height: 20px;
+        overflow: hidden;
+    } */ 
+
+    
+/* .wrapper{
+
+}
+.img{
+    height: 200px;
+    float: left;
+
+}
+.tekst{
+  
+    justify-content: center;
+    background-color: lightgray;
+    
+    
+}
+.limitTextHeight {
+    height: 20px;
+    overflow: hidden;
+} */
+    }

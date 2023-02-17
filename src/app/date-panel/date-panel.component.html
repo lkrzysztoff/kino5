@@ -1,8 +1,0 @@
-<div class="date__container">
-<div class="date__menu"  >
-    <button (click)="setSelectedDate( timeee )" class="date__buttons" *ngFor="let timeee of czas" [routerLink]="['/card', timeee.toISOString().slice(0, 10)]">{{ timeee | date:'d/MM'}}</button>
-</div>
-<!-- <div  class="date__menu" >
-    Wybrana data : {{ selectedDate | date:'YYYY-MM-dd' }}
-</div> -->
-</div>

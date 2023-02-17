@@ -1,0 +1,226 @@
+<div class="order-body">
+<div class="order-details">
+<app-order-details></app-order-details>
+</div>
+
+<div class="container-box">
+<div class=" justify-content-center ">
+  <div class=" mt-5">
+    <form [formGroup]="reactiveForm" #form="ngForm">
+      <div class="">
+        <div class=" mb-2">
+          <label for="name" class="form-label">Imię:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            formControlName="name"
+            placeholder="Imię"
+            required
+            minlength="2"
+            maxlength="30"
+            class="form-control form-control-sm"
+            [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+          />
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="invalid-feedback"
+          >
+            <div *ngIf="name.errors?.['required']">
+              To pole jest obowiązkowe.
+            </div>
+            <div *ngIf="name.errors?.['minlength']">
+              To pole musi mieć przynajmniej dwa znaki.
+            </div>
+            <div *ngIf="name.errors?.['maxlength']">
+              To polo może mieć maksymalnie dwadzieścia znaków.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class=" mb-2">
+          <label for="surname" class="form-label">Nazwisko:</label>
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            formControlName="surname"
+            placeholder="Nazwisko"
+            required
+            minlength="2"
+            maxlength="30"
+            class="form-control form-control-sm"
+            [class.is-invalid]="
+              surname.invalid && (surname.dirty || surname.touched)
+            "
+          />
+          <div
+            *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+            class="invalid-feedback"
+          >
+            <div *ngIf="surname.errors?.['required']">
+              To pole jest obowiązkowe.
+            </div>
+            <div *ngIf="surname.errors?.['minlength']">
+              To pole musi mieć przynajmniej dwa znaki.
+            </div>
+            <div *ngIf="surname.errors?.['maxlength']">
+              To polo może mieć maksymalnie dwadzieścia znaków.
+            </div>
+          </div>
+          <div class="">
+            <div class=" mb-2 mt-2">
+              <label for="email" class="form-label">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                formControlName="email"
+                placeholder="your-name@provider.com"
+                required
+                minlength="5"
+                maxlength="50"
+                class="form-control form-control-sm"
+                [class.is-invalid]="
+                  email.invalid && (email.dirty || email.touched)
+                "
+              />
+              <div
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="email.errors?.['required']">
+                  To pole jest obowiązkowe.
+                </div>
+                <div *ngIf="email.errors?.['minlength']">
+                  To pole musi mieć conajmniej 5 znaków.
+                </div>
+                <div *ngIf="email.errors?.['maxlength']">
+                  To pole może mieć maksymalnie 50 znaków.
+                </div>
+                <div
+                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']"
+                >
+                  To nie jest prawidłowy adres email.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class=" mb-2">
+              <label for="emailConfirm" class="form-label">Powtórz email</label>
+              <input
+                type="emailConfirm"
+                id="emailConfirm"
+                name="emailConfirm"
+                formControlName="emailConfirm"
+                placeholder="your-name@provider.com"
+                required
+                minlength="5"
+                maxlength="50"
+                class="form-control form-control-sm"
+                [class.is-invalid]="
+                  emailConfirm.invalid &&
+                  (emailConfirm.dirty || emailConfirm.touched)
+                "
+              />
+              <div
+                *ngIf="
+                  emailConfirm.invalid &&
+                  (emailConfirm.dirty || emailConfirm.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="emailConfirm.errors?.['required']">
+                  To pole jest obowiązkowe.
+                </div>
+                <div *ngIf="emailConfirm.errors?.['minlength']">
+                  To pole musi mieć conajmniej 5 znaków.
+                </div>
+                <div *ngIf="emailConfirm.errors?.['maxlength']">
+                  To pole może mieć maksymalnie 50 znaków.
+                </div>
+                <div
+                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && emailConfirm.errors?.['email']"
+                >
+                  To nie jest prawidłowy adres email.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="">
+            <div class=" mb-2">
+              <label for="phone" class="form-label">Numer telefonu:</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                formControlName="phone"
+                placeholder="Numer telefonu"
+                required
+                minlength="9"
+                maxlength="9"
+                class="form-control form-control-sm"
+                [class.is-invalid]="
+                  phone.invalid && (phone.dirty || phone.touched)
+                "
+              />
+              <div
+                *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="phone.errors?.['required']">
+                  To pole jest obowiązkowe.
+                </div>
+                <div *ngIf="phone.errors?.['minlength']">
+                  To pole musi mieć 9 znaków.
+                </div>
+                <div *ngIf="phone.errors?.['maxlength']">
+                  To pole musi mieć 9 znaków.
+                </div>
+                <div
+                  *ngIf="!phone.errors?.['required'] && !phone.errors?.['minlength'] && !phone.errors?.['maxlength'] && phone.errors?.['pattern']"
+                >
+                  To nie jest prawidłowy numer telefonu.
+                </div>
+              </div>
+              <div class="">
+                <div class=" mb-2 mt-2">
+                  <label for="discount" class="form-label">Kod zniżkowy</label>
+                  <input
+                    type="text"
+                    id="discount"
+                    name="discount"
+                    formControlName="discount"
+                    placeholder="Kod zniżkowy"
+                    maxlength="9"
+                    class="form-control form-control-sm"
+                  />
+                </div>
+                <div>
+               
+             
+              </div>
+
+                <div class="row">
+                  <div class="col mb-2 mt-5 ">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-primary"
+                      (click)="validate()"
+                    >
+                      Zamawiam i płacę
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>

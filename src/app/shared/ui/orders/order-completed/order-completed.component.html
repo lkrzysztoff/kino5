@@ -1,0 +1,100 @@
+   
+<!-- <div class="order-completed-container">
+    <app-order-details></app-order-details>
+    <div class="details-container">
+    </div> 
+    <div class="title">
+        <h1 class="order-title"></h1>
+   
+    <div class="order-completed-info">
+        <div class="order-completed-userdata">
+            <p class="full-name">Imię: {{service.userdata.name}} {{service.userdata.surname}}</p>
+            <p class="email">Email: {{service.userdata.email}}</p>
+            <p class="phone">Numer telefonu : {{service.userdata.phone}} </p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+ -->
+
+ <div class="payment__body-container">
+    <div class="payment__container">
+      <div class="payment__container-placement">
+        <div class="payment__container-title">
+            <p class="payment__title">
+                Płatność BLIK
+            </p>
+        </div>
+            <div class="payment__blik-logo">
+                <img class="payment__blik-logo-img" src="/assets/images/Blik_logo.jpg">
+            </div>
+            <div class="payment__input-container">
+              <form class="payment__form"  (ngSubmit)="submit()">
+                <input
+                [formControl]="paymentControl"
+                [class.error]="paymentControl.touched && paymentControl.errors"
+                class="blik-input"
+                placeholder="Kod Blik"
+              />
+              <ng-container *ngIf="paymentControl.errors as errors">
+                <ng-container *ngIf="paymentControl.touched">
+                  <p *ngIf="errors['pattern']" class="text-danger">Tylko cyfry</p>
+                  <p *ngIf="errors['minlength'] as minLength">
+                    Wprowadzono {{ minLength.actualLength }} cyfr, kod BLIK zawiera
+                    {{ minLength.requiredLength }}
+                  </p>
+                  <p *ngIf="errors['maxlength'] as maxLength">
+                    Max liczba cyfr to {{ maxLength.requiredLength }}
+                  </p>
+                  <p *ngIf="errors['required']">Te pole jest obowiązkowe!</p>
+                </ng-container>
+              </ng-container>
+              <div class="modal-nav">
+              </div>
+              <button type="submit">Płacę!</button>
+              <!-- <div *ngIf="">
+                <p *ngFor="">
+                  {{bliczek}}
+                </p>
+              </div> -->
+                <!-- <form #form="ngForm">
+                    <div class="">
+                      <div class=" mb-2">
+                        <label for="name" class="form-label">Imię:</label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          formControlName="name"
+                          placeholder="Imię"
+                          required
+                          minlength="2"
+                          maxlength="30"
+                          class="form-control form-control-sm"
+
+     [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+                          
+                          />
+                        
+                         <div
+                          *ngIf="name.invalid && (name.dirty || name.touched)"
+                          class="invalid-feedback"
+                        >
+                          <div *ngIf="name.errors?.['required']">
+                            To pole jest obowiązkowe.
+                          </div>
+                          <div *ngIf="name.errors?.['minlength']">
+                            To pole musi mieć przynajmniej dwa znaki.
+                          </div>
+                          <div *ngIf="name.errors?.['maxlength']">
+                            To polo może mieć maksymalnie dwadzieścia znaków.
+                          </div>
+                        </div> 
+                      </div>
+                    </div>
+                </form> -->
+            </form>
+          </div>
+    </div>
+</div>
