@@ -43,8 +43,10 @@ import { FormsModule } from '@angular/forms';
             }
           ],
         },
-        {
+        // path: 'reservation/:selectedDate/:showId',
+        { 
             path: 'reservation/:selectedDate/:showId',
+            // path: 'reservation/:selectedDate',
             component: ReservationComponent,
             resolve: { model: ModelResolver } 
         },

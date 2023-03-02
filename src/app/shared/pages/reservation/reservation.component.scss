@@ -208,3 +208,18 @@ button[disabled]{
     flex-direction: column;
   }
 }
+
+.addedToReservation{
+  background-color: orange;
+  color: black;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  
+  &:hover{
+    background-color: orange;
+  color: black;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  cursor:default;
+  }
+}

@@ -1,11 +1,12 @@
 <div class="date__container">
 <div class="date__menu"  >
-    <button (click)="setSelectedDate( date )" 
-    [disabled]="checkPast(date)"
+    <button (click)="setSelectedDate(date)" 
+    [disabled]="checkPast(i,dateService.pastDateLength)"
     class="date__buttons" 
     [ngClass]="{}"
     [ngClass]="{'dupa' : date === selectedDate  }"
-    *ngFor="let date of dates" >{{ date | date:'d/MM'}} </button>
+    *ngFor="let date of dateService.dates, let i = index" 
+    >{{ date | date:'d/MM'}} </button>
     
     <!-- [routerLink]="['/app-home', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} -->
 </div>
@@ -15,6 +16,7 @@
   <p>
     Wybrana data : {{ selectedDate | date:'YYYY-MM-dd' }}
   </p>
+ 
  </div> 
          
 
@@ -32,3 +34,4 @@
     </button>
   </div>
    -->
+   
