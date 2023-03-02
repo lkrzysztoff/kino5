@@ -37,7 +37,7 @@ export class FilmRepository implements OnInit {
   getShow(showId: number): any {
     return this.shows.find((sh) => sh.id == showId);
   }
-  getScreen(screenName: string) {
+  getScreen(screenName: string) : any {
     return this.screens.find((sc) => sc.name == screenName);
   }
 
@@ -45,8 +45,8 @@ export class FilmRepository implements OnInit {
     let show: any = this.shows.find((sh) => sh.id == showId);
     return this.getFilm(show.filmId);
   }
-  getScreenByShow(showId: number) {
-    let show: any = this.shows.find((sh) => sh.id == showId);
+  getScreenByShow(showId: number)  {
+    let show: Show | undefined = this.shows.find((sh) => sh.id == showId);
     return show ? this.getScreen(show.screen) : null;
   }
 

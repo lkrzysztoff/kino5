@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './shared/ui/orders/order/user';
+import { User } from './features/home/subpages/orders/order/user';
 import { Film } from './model/film.model';
 import { testFilm } from './test/test.component';
 import { Observable, filter, map, shareReplay, tap, take, of } from 'rxjs';
