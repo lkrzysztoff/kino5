@@ -30,6 +30,7 @@ import { NgClass } from '@angular/common';
 import { HttpBackend } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { createInjectableType } from '@angular/compiler';
+import { ReservationService } from './reservation.service';
 
 @Component({
   selector: 'app-reservation',
@@ -52,7 +53,8 @@ import { createInjectableType } from '@angular/compiler';
 })
 export class ReservationComponent implements OnInit {
   http = inject(HttpClient);
-  selectedDate: Date = new Date();
+  reservationService = inject(ReservationService)
+  selectedDate!: string;
   showId: number = 0;
   constructor(
     private filmsRepository: FilmRepository,
@@ -61,9 +63,9 @@ export class ReservationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.selectedDate = new Date(
+    this.selectedDate = 
       this.activeRoute.snapshot.params['selectedDate']
-    );
+    ;
     this.showId = this.activeRoute.snapshot.params['showId'];
 
     this.letters = this.screen
@@ -132,7 +134,7 @@ export class ReservationComponent implements OnInit {
     this.reservationBuffer = {
       name: this.letters[a] + (i + 1),
       show_id: this.showId,
-      date: this.selectedDate.toISOString().slice(0, 10),
+      date: this.selectedDate,
       priceType:
         this.show.priceList[0].type + ' ' + this.show.priceList[0].price,
       film: this.film?.title,
@@ -163,12 +165,14 @@ export class ReservationComponent implements OnInit {
     this.reservationBuffer = false;
   }
   seatDisplay() {
-    let testDate = this.selectedDate.toISOString().slice(0, 10);
+    let testDate = this.selectedDate;
     return this.cart.lines.filter(
       (line) => line.seat.show_id == this.showId && line.seat.date == testDate
     );
   }
-
+  clik(){
+    console.log(this.letters)
+  }
   ticket() {
     this.ticketCheck = !this.ticketCheck;
   }

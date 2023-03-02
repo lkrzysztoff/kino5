@@ -35,7 +35,7 @@ import { switchMap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-card[films]',
+  selector: 'app-card[films][selectedDate]',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
@@ -44,10 +44,10 @@ export class CardComponent implements OnInit, OnDestroy {
   sanitizer = inject(DomSanitizer);
 
   @Input() films!: Film;
-  @Input() selectedDate!: Date;
+  @Input() selectedDate!: string;
 
   animal!: string;
-
+  // selectedDate !: string
   score!: number;
 
   isReadMore = true;
@@ -56,7 +56,7 @@ export class CardComponent implements OnInit, OnDestroy {
   private store = inject(Store);
   user$ = this.store.select(selectLoggedUser);
   cs = inject(CookieService);
-
+  
   // openDialog() : void {
   //   const dialogRef = this.dialog.open(ScoredialogComponent, {
   //     data: {
@@ -81,6 +81,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     //  this.cs.delete('token');
+    // this.selectedDate = new Date()
   }
   check() {
     this.cs.deleteAll();
@@ -106,6 +107,8 @@ export class CardComponent implements OnInit, OnDestroy {
   score$ = this.scoreService.score$;
 
   
-
+clicck(){
+  console.log(this.selectedDate)
+}
   ngOnDestroy(): void {}
 }

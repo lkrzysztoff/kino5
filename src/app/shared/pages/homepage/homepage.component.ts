@@ -31,9 +31,12 @@ import { OrderManagmentService } from 'src/app/order-managment.service';
 export class HomePageComponent implements OnInit {
   isReadMore = true;
   godziny = ['12:30', '15:30', '16:30'];
-  selectedDate: Date = new Date();
+  selectedDate!: string;
   service = inject(MainDataSource);
   orderManagmentService = inject(OrderManagmentService);
+  chosenDate !: string;
+
+  testdate = new Date()
 
   // films$ = this.service.getfilms()
 
@@ -50,28 +53,28 @@ export class HomePageComponent implements OnInit {
     this.isReadMore = !this.isReadMore;
   }
   dateImport(newDate: Date) {
-    this.selectedDate = newDate;
-    if (!this.films) {
-      let me = this;
-      setTimeout(function () {
-        me.testComponent.call(me);
-      }, 100);
-    } else this.testComponent();
+    this.selectedDate = this.convertDateToString(newDate);
+    // if (!this.films) {
+    //   let me = this;
+    //   setTimeout(function () {
+    //     me.testComponent.call(me);
+    //   }, 100);
+    // } else this.testComponent();
   }
 
-  dateConver() {
-    console.log(this.selectedDate.toDateString());
-    const today = this.selectedDate;
-    const yyyy = today.getFullYear();
-    let mm: any = today.getMonth() + 1; // Months start at 0!
-    let dd: any = today.getDate();
+  // dateConver() {
+  //   console.log(this.selectedDate.toDateString());
+  //   const today = this.selectedDate;
+  //   const yyyy = today.getFullYear();
+  //   let mm: any = today.getMonth() + 1; // Months start at 0!
+  //   let dd: any = today.getDate();
 
-    if (dd < 10) dd = '0' + dd.toString();
-    if (mm < 10) mm = '0' + mm.toString();
+  //   if (dd < 10) dd = '0' + dd.toString();
+  //   if (mm < 10) mm = '0' + mm.toString();
 
-    const formattedToday = dd + '/' + mm;
-    return formattedToday;
-  }
+  //   const formattedToday = dd + '/' + mm;
+  //   return formattedToday;
+  // }
   // ngOnInit(): void {
 
   // }
@@ -117,9 +120,9 @@ export class HomePageComponent implements OnInit {
     // this.films$ = this.service.getFilms()
   }
 
-  testComponent() {
-    this.getFilmsByRepertoires(this.getShowByDate(this.dateConver()));
-  }
+  // testComponent() {
+  //   this.getFilmsByRepertoires(this.getShowByDate(this.dateConver()));
+  // }
 
   getFilmsByShow() {
     return this.service.getFilms().subscribe((value) => {
@@ -149,6 +152,34 @@ export class HomePageComponent implements OnInit {
   // }
 
   klik() {
-    this.testComponent();
+    // this.testComponent();
   }
+
+  mockArray = [1,2,3,4]
+
+  mockDate = "03/03"
+
+  getRepertoireByDate(repertoire : repertoire[], date: string){
+    return repertoire.filter(repertoire => repertoire.date === date)
+  }
+
+  returnFilmsById(films : Film[],id: number){
+    return films.filter(films => films.id === id)
+  }
+
+  convertDateToString(date: Date){
+    const today = date;
+    const yyyy = today.getFullYear();
+    let mm : string | number = today.getMonth() + 1; // Months start at 0!
+    let dd: string | number = today.getDate();
+    if (dd < 10) dd = '0' + dd.toString();
+    if (mm < 10) mm = '0' + mm.toString();
+    const formattedToday = dd + '/' + mm;
+    return formattedToday;
+  }
+
+  testklik(){
+    
+  }
+
 }
