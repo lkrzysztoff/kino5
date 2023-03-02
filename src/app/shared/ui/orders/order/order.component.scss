@@ -1,0 +1,77 @@
+.order-details{
+    margin-top: 30px;
+    min-width: 320px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.form__container{
+    display: flex;
+    justify-content: center;
+}
+.input{
+    // margin-right: 2vw;
+    margin-top: 30px;
+    
+}
+.title{
+    display: block;
+
+}
+.order{
+    display: block;
+}
+.data-container{
+    display: flex;
+    justify-content: center;
+  
+}
+.form-container{
+   display: flex;
+   justify-content: center;
+    height: 700px;
+}
+.user-errors{
+    width: 200px;
+    height: 200px;
+}
+.container-box{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    width: 280px;
+}
+
+
+
+
+
+.paymentContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 140px;
+height: 70px;
+border: 1px solid black;
+border-radius: 5px;
+cursor: pointer;
+}
+
+
+img{
+  width: 100px;
+  height: 50px;
+  margin-left: 10px;
+}
+#payment{
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+}
+
+.order-body{
+    min-height: 80%;
+}

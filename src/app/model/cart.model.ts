@@ -34,7 +34,7 @@ export class Cart {
 
     getUniqueFilms() : any
     {
-        var unique :any = [];
+        var unique : any  = [];
         
         this.lines.forEach( el => {
             let a = unique.filter( (dl : any)  => (dl.seat.show_id == el.seat.show_id && dl.seat.date == el.seat.date));
@@ -43,7 +43,7 @@ export class Cart {
         console.log( unique);
         return unique;
     }
-    getFilmSeats( show_id : number,date :string) : any
+    getFilmSeats( show_id : number,date :string) 
     {
          return this.lines.filter( (dl : any)  => (dl.seat.show_id == show_id && dl.seat.date == date));
     }

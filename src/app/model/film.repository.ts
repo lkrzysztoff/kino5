@@ -1,63 +1,56 @@
-import { Injectable , OnInit} from "@angular/core";
-import { Seat } from "./seat.model";
-import { Film } from "./film.model";
-import { Screen } from "./screen.model";
-import { Show } from "./show.model";
-import { MainDataSource } from "./main.datasource"; 
+import { Injectable, OnInit } from '@angular/core';
+import { Seat } from './seat.model';
+import { Film } from './film.model';
+import { Screen } from './screen.model';
+import { Show } from './show.model';
+import { MainDataSource } from './main.datasource.service';
 
 @Injectable()
-export class FilmRepository  implements OnInit{
-    public films: Film[] = new Array<Film>();
-    private shows: Show[] = [];
-    private screens: Screen[] = [];
-    
-    constructor(public dataSource: MainDataSource) {
-        this.dataSource.getFilms().subscribe(data =>  this.films = data );
-        this.dataSource.getShows().subscribe(data =>  this.shows = data );
-        this.dataSource.getScreens().subscribe(data =>  this.screens = data );
+export class FilmRepository implements OnInit {
+  public films: Film[] = new Array<Film>();
+  private shows: Show[] = [];
+  private screens: Screen[] = [];
 
-    }
-    ngOnInit(): void {
-    }
-    getFilms(date : Date ){
-        return this.films;
-    }
-    getFilmsAll(){
-        return this.films;
-    }
+  constructor(public dataSource: MainDataSource) {
+    this.dataSource.getFilms().subscribe((data) => (this.films = data));
+    this.dataSource.getShows().subscribe((data) => (this.shows = data));
+    this.dataSource.getScreens().subscribe((data) => (this.screens = data));
+  }
+  ngOnInit(): void {}
+  getFilms(date: Date) {
+    return this.films;
+  }
+  getFilmsAll() {
+    return this.films;
+  }
 
-    isDataLoaded(){
-        return ( this.films.length && this.shows.length && this.screens.length );
-    }
-    getFilmShows( filmId: number ) {
-        return this.shows.filter( show => show.filmId == filmId);
-    }
-    getFilm( filmId :number ) 
-    {
-        return this.films.find( f => f.id == filmId);
-    }
+  isDataLoaded() {
+    return this.films.length && this.shows.length && this.screens.length;
+  }
+  getFilmShows(filmId: number) {
+    return this.shows.filter((show) => show.filmId == filmId);
+  }
+  getFilm(filmId: number) {
+    return this.films.find((f) => f.id == filmId);
+  }
 
-    getShow( showId :number ) : any
-    {
-        return  this.shows.find( sh => sh.id == showId);
-    }
-    getScreen( screenName : string )
-    {
-        return  this.screens.find( sc => sc.name == screenName);
-    }
+  getShow(showId: number): any {
+    return this.shows.find((sh) => sh.id == showId);
+  }
+  getScreen(screenName: string) {
+    return this.screens.find((sc) => sc.name == screenName);
+  }
 
-    getFilmByShow( showId :number ) : any
-    {
-        let show : any= this.shows.find( sh => sh.id == showId);
-        return ( show ? this.getFilm( show.filmId ) : null);
-    }
-    getScreenByShow( showId :number )
-    {
-        let show : any= this.shows.find( sh => sh.id == showId);
-        return ( show ? this.getScreen( show.screen ) : null );
-    }
-    
-    /*
+  getFilmByShow(showId: number) {
+    let show: any = this.shows.find((sh) => sh.id == showId);
+    return this.getFilm(show.filmId);
+  }
+  getScreenByShow(showId: number) {
+    let show: any = this.shows.find((sh) => sh.id == showId);
+    return show ? this.getScreen(show.screen) : null;
+  }
+
+  /*
     getProducts(category: string = null): Product[] {
         return this.products
             .filter(p => category == null || category == p.category);
@@ -88,5 +81,5 @@ export class FilmRepository  implements OnInit{
             findIndex(p => p.id == id), 1); 
         }) 
     }
-    */     
+    */
 }

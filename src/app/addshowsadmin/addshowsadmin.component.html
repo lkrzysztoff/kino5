@@ -1,0 +1,25 @@
+<div class="addshow">
+  <div class="addshow__container">
+    <div class="addshow__form">
+      <form [formGroup]="showForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Link do plakatu</mat-label>
+          <input
+            matInput
+            placeholder="img"
+            type="date"
+            formControlName="date"
+            required
+          />
+          <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+        </mat-form-field>
+        <select *ngIf="screen$ | async as screens" formControlName="sala">
+            <option  *ngFor="let screen of screens" [ngValue]="screen.id+screen.name">Sala nr {{screen.id}} nazwa {{screen.name}}</option>
+
+        </select>
+        <button mat-button >Dalej</button>
+      </form>
+    </div>
+  </div>
+  <app-showform [data]="data" ></app-showform>
+</div>

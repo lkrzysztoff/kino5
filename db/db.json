@@ -1,0 +1,888 @@
+{
+  "tickets": [
+    {
+      "ticket": [
+        "{\"lines\":[{\"seat\":{\"name\":\"D9\",\"show_id\":\"1\",\"date\":\"2023-02-24\",\"price\":{\"type\":\"Normalny\",\"price\":50}}}],\"itemCount\":1,\"cartPrice\":50}"
+      ],
+      "id": 1
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "ajaj",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "email": "krzychu@kino.pl",
+      "password": "$2a$10$Mk5mRMXsUcP2NZmpmf2uFeemwS2IF8jmUglvsGaKp1NLT.bjb9Jpm",
+      "role": "user",
+      "firstName": "Krzychu",
+      "lastName": "Lipiec",
+      "phone": "794941873",
+      "id": 5
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$b7WeKhJXVjSsZJpO2LwfYuw2kkfnAdNvh0Kem.7W30f2VI5/dEHY2",
+      "role": "admin",
+      "firstName": "admin",
+      "lastName": "admin",
+      "phone": "794941873",
+      "id": 6
+    }
+  ],
+  "blik": {
+    "blikCode": "123456"
+  },
+  "screen": [
+    {
+      "id": 0,
+      "name": "A",
+      "rows": 6,
+      "colu": 12,
+      "specialSeats": [
+        "F6",
+        "F5",
+        "F7",
+        "E7",
+        "E8",
+        "E6"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "B",
+      "rows": 5,
+      "colu": 9,
+      "specialSeats": [
+        "E4",
+        "D4",
+        "E5",
+        "D5"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "C",
+      "rows": 12,
+      "colu": 16,
+      "specialSeats": [
+        "J8",
+        "J9",
+        "J10",
+        "J7"
+      ]
+    }
+  ],
+  "show": [
+    {
+      "id": 0,
+      "hour": "12.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A3",
+        "C4",
+        "H5"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 0
+    },
+    {
+      "id": 1,
+      "hour": "16.30",
+      "screen": "A",
+      "reservedSeats": [
+        "A10",
+        "B15",
+        "B16",
+        "C12",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 50
+        },
+        {
+          "type": "Senior",
+          "price": 25
+        },
+        {
+          "type": "Ulgowy",
+          "price": 20
+        }
+      ],
+      "filmId": 0
+    },
+    {
+      "id": 2,
+      "hour": "20.30",
+      "screen": "C",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 20
+        },
+        {
+          "type": "Senior",
+          "price": 15
+        },
+        {
+          "type": "Ulgowy",
+          "price": 10
+        }
+      ],
+      "filmId": 0
+    },
+    {
+      "id": 3,
+      "screen": "A",
+      "hour": "10.30",
+      "reservedSeats": [
+        "H5",
+        "H6",
+        "I3",
+        "I7"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 20
+        },
+        {
+          "type": "Senior",
+          "price": 15
+        },
+        {
+          "type": "Ulgowy",
+          "price": 10
+        }
+      ],
+      "filmId": 1
+    },
+    {
+      "id": 4,
+      "hour": "14.30",
+      "screen": "C",
+      "reservedSeats": [
+        "G10",
+        "H15",
+        "H16",
+        "F12",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 1
+    },
+    {
+      "id": 5,
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 18
+    },
+    {
+      "id": 6,
+      "hour": "14.30",
+      "screen": "C",
+      "reservedSeats": [
+        "G10",
+        "H15",
+        "H16",
+        "F12",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 5
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 1,
+      "id": 7
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 7,
+      "id": 8
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 8,
+      "id": 9
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 9,
+      "id": 10
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 10,
+      "id": 11
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 11,
+      "id": 12
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 12,
+      "id": 13
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 13,
+      "id": 14
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 14,
+      "id": 15
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 15,
+      "id": 16
+    },
+    {
+      "hour": "18.30",
+      "screen": "B",
+      "reservedSeats": [
+        "A7",
+        "A6",
+        "D2",
+        "D4",
+        "E7",
+        "E10",
+        "F1"
+      ],
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "filmId": 16,
+      "id": 17
+    }
+  ],
+  "films": [
+    {
+      "id": 0,
+      "img": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Black_Panther_Wakanda_Forever_poster.jpg/220px-Black_Panther_Wakanda_Forever_poster.jpg",
+      "title": "Black Panther: Wakanda Forever",
+      "genre": "Action, Super hero",
+      "length": "130",
+      "ageRest": "13",
+      "description": "T’Challa, król Wakandy, jest śmiertelnie chory. Jego siostra Shuri wierzy, że można go uleczyć za pomocą ziela w kształcie serca, dlatego próbuje syntetycznie je odtworzyć po tym, jak zostało zniszczone przez Killmongera. Jednak nie udaje jej się to, a T’Challa umiera",
+      "score": "8",
+      "director": "Ryan Coogler",
+      "actors": [
+        "Maciek",
+        "Janek",
+        "Ktos",
+        "Leszek"
+      ],
+      "boxOff": 200,
+      "premier": true
+    },
+    {
+      "id": 1,
+      "img": "https://fwcdn.pl/fpo/55/10/10015510/8029347.3.jpg",
+      "title": "Apokawixa",
+      "genre": "Horror",
+      "length": "110",
+      "ageRest": "13",
+      "description": "Zmęczona pandemią, kwarantanną, wieściami o katastrofach ekologicznych, zaniepokojona własną niepewną przyszłością i losami świata grupa licealistów zostaje zaproszona przez syna milionera Kamila na imprezę w nadmorskiej posiadłości ojca. Już w drodze każdy z bohaterów przeżywa dziwne przygody, a sama impreza jest kulminacją narastających obaw o to, co może się stać z Ziemią, jeśli nie przestaniemy jej zanieczyszczać. Z minuty na minutę wszystko zaczyna wymykać się spod kontroli… APOKAWIXA to opowieść o tym, jak Matka Ziemia mści się na ludziach, którzy po kontakcie z zanieczyszczeniami w Bałtyku zamieniają się w eko-zombie. Film jest ekologiczno-apokaliptyczną opowieścią o dojrzewaniu.",
+      "score": "6",
+      "director": "James Cameron",
+      "actors": [
+        "Artut",
+        "Ziemowit",
+        "Wiesiek",
+        "Leszek"
+      ],
+      "boxOff": 10,
+      "premier": false
+    },
+    {
+      "id": 2,
+      "img": "https://fwcdn.pl/fpo/14/31/10011431/8034149.3.jpg",
+      "title": "Lombard",
+      "genre": "Dokumentalny",
+      "length": "110",
+      "ageRest": "PG-13",
+      "description": "W mieście zwanym polskim Detroit, Jola i Wiesiek próbują ratować upadający biznes i rozpadający się związek. Przy ulicy Wytrwałych 1, każdego dnia walczą o przetrwanie, wspierając jednocześnie mieszkańców zubożałej, poprzemysłowej dzielnicy, udowadniając tym samym, że siła tkwi we wspólnocie.  ",
+      "score": "7",
+      "director": "Łukasz Kowalski",
+      "actors": [
+        "Artut",
+        "Ziemowit",
+        "Wiesiek",
+        "Leszek"
+      ],
+      "boxOff": 10,
+      "premier": false
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/12/76/871276/8051708.3.jpg",
+      "title": "Plan na Miłóść",
+      "description": "Jak odnaleźć prawdziwą miłość we współczesnych czasach? Zoe (Lily James), filmowa dokumentalistka szuka odpowiedzi i idealnego faceta w aplikacjach randkowych. Niestety jej relacje z Internetu to pasmo komicznych katastrof, które coraz bardziej niepokoją matkę dziewczyny – Cath (Emma Thompson). Dla sąsiada i przyjaciela Zoe z dzieciństwa – Kazima (Shazad Latif), sposób na ułożenie życia to zaaranżowane przez rodziców małżeństwo z piękną panną młodą z Pakistanu. Kiedy się na nie decyduje, Zoe postanawia towarzyszyć mu w pełnej nadziei podróż z Londynu do Lahore. Chcąc sfilmować ślub przyjaciela z wybraną przez rodzinę nieznajomą, sama zaczyna zastanawiać się, czy to odmienne podejście do tematu miłości może ją czegoś nauczyć?",
+      "genre": "Romantczny",
+      "ageRest": "13",
+      "date": "",
+      "hour": "",
+      "length": "108",
+      "score": "6,4",
+      "premier": "",
+      "id": 3
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/21/01/602101/8014563.3.jpg",
+      "title": "Top Gun: Maverick",
+      "description": "Po ponad 20 latach służby w lotnictwie marynarki wojennej, Pete \"Maverick\" Mitchell zostaje wezwany do legendarnej szkoły Top Gun. Ma wyszkolić nowe pokolenie pilotów do niezwykle trudnej misji.",
+      "genre": "Film akcji",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "110",
+      "score": "8",
+      "premier": "",
+      "id": 4
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/08/67/430867/8035016.3.jpg",
+      "title": "Na zachodzie bez zmian",
+      "description": "Przerażające przeżycia młodego niemieckiego żołnierza na froncie zachodnim podczas I wojny światowej.",
+      "genre": "Wojenny",
+      "ageRest": "18",
+      "date": "",
+      "hour": "",
+      "length": "120",
+      "score": "9",
+      "premier": "",
+      "id": 5
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/06/17/10000617/8008428.3.jpg",
+      "title": "Downtown Abbey: Nowa epoka",
+      "description": "Do Downton Abbey przybywa ekipa filmowa, a część rodziny wyjeżdża na Riwierę Francuską, by obejrzeć tajemniczą willę odziedziczoną przez lady Violet.",
+      "genre": "Komedia",
+      "ageRest": "7",
+      "date": "",
+      "hour": "",
+      "length": "113",
+      "score": "10",
+      "premier": "",
+      "id": 6
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/19/67/10011967/8056902.6.jpg",
+      "title": "Maskarada",
+      "description": "Adrien i Margot nawiązują namiętny romans i fantazjując o wspólnej przyszłości wymyślają perfidny plan, który zmieni życie czwórki osób.",
+      "genre": "Melodramat",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "100",
+      "score": "4",
+      "premier": "",
+      "id": 7
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/18/64/31864/7521208.3.jpg",
+      "title": "Piękny umysł",
+      "description": "Geniusz matematyczny John Nash za wszelką cenę pragnie opracować teorię, dzięki której zostanie cenionym naukowcem. Przeszkodą staje się jego stopniowo rozwijająca choroba.",
+      "genre": "Dramat",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "110",
+      "score": "11",
+      "premier": "",
+      "id": 8
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/06/60/660/8021891.3.jpg",
+      "title": "Gorączka",
+      "description": "Zawodowy przestępca Neil McCauley organizuje zbrojny napad na opancerzoną furgonetkę. Śledztwo w tej sprawie prowadzi Vincent Hanna.",
+      "genre": "Film akcji",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "120",
+      "score": "10",
+      "premier": "",
+      "id": 9
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/08/62/862/7517878.3.jpg",
+      "title": "Zielona mila",
+      "description": "Emerytowany strażnik więzienny opowiada przyjaciółce o niezwykłym mężczyźnie, którego skazano na śmierć za zabójstwo dwóch 9-letnich dziewczynek.",
+      "genre": "Dramat",
+      "ageRest": "18",
+      "date": "",
+      "hour": "",
+      "length": "133",
+      "score": "9",
+      "premier": "",
+      "id": 10
+    },
+    {
+      "img": "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "title": "Requiem dla snu",
+      "description": "Historia czwórki bohaterów, dla których używki są ucieczką przed otaczającą ich rzeczywistością.",
+      "genre": "Dramat",
+      "ageRest": "18",
+      "date": "",
+      "hour": "",
+      "length": "119",
+      "score": "8",
+      "premier": "",
+      "id": 11
+    },
+    {
+      "img": "https://fwcdn.pl/fpo/10/47/1047/8022081.3.jpg",
+      "title": "Milczenie owiec",
+      "description": "Seryjny morderca i inteligentna agentka łączą siły, by znaleźć przestępcę obdzierającego ze skóry swoje ofiary.",
+      "genre": "Detektywistyczny",
+      "ageRest": "18",
+      "date": "",
+      "hour": "",
+      "length": "121",
+      "score": "10",
+      "premier": "",
+      "id": 12
+    },
+    {
+      "img": "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
+      "title": "Gladiator",
+      "description": "Generał Maximus - prawa ręka cesarza, szczęśliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.",
+      "genre": "Film przygodowy",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "130",
+      "score": "10",
+      "premier": "",
+      "id": 13
+    },
+    {
+      "img": "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg",
+      "title": "Titanic",
+      "description": "Rok 1912, brytyjski statek Titanic wyrusza w swój dziewiczy rejs do USA. Na pokładzie emigrant Jack przypadkowo spotyka arystokratkę Rose.",
+      "genre": "Film romantyczny",
+      "ageRest": "13",
+      "date": "",
+      "hour": "",
+      "length": "140",
+      "score": "9",
+      "premier": "",
+      "id": 14
+    },
+    {
+      "img": "https://flxt.tmsimg.com/assets/p23069_p_v8_aa.jpg",
+      "title": "Podziemny krąg",
+      "description": "Cierpiący na bezsenność mężczyzna poznaje gardzącego konsumpcyjnym stylem życia Tylera Durdena, który jest jego zupełnym przeciwieństwem.",
+      "genre": "Psychologiczny",
+      "ageRest": "16",
+      "date": "",
+      "hour": "",
+      "length": "140",
+      "score": "10",
+      "premier": "",
+      "id": 15
+    }
+  ],
+  "repertoire": [
+    {
+      "id": 0,
+      "date": "28/02",
+      "shows": [
+        17,
+        9,
+        3,
+        8
+      ]
+    },
+    {
+      "id": 1,
+      "date": "01/03",
+      "shows": [
+        7,
+        5,
+        11,14
+      ]
+    },
+    {
+      "id": 2,
+      "date": "02/03",
+      "shows": [
+        0,
+        8,
+        3,
+        4,12
+      ]
+    },
+    {
+      "id": 3,
+      "date": "03/03",
+      "shows": [
+        2,
+        1,
+        5,
+        7,9
+      ]
+    },
+    {
+      "id": 4,
+      "date": "04/03",
+      "shows": [
+        7,
+        8,
+        9,10,11
+      ]
+    },
+    {
+      "id": 5,
+      "date": "05/03",
+      "shows": [
+        10,
+        11,
+        12,15,17
+      ]
+    }
+  ]
+}

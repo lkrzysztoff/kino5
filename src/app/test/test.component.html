@@ -1,0 +1,22 @@
+<!-- <p>test works!</p>
+<button (click)="getvid()" >klik</button> -->
+
+<!-- 
+<div *ngIf="vid$">
+    <p  >{{(vid$ | async)}}</p>
+</div> -->
+<!-- <ul *ngIf="film$ | async as films">
+    <li *ngFor="let film of films">
+       
+    </li>
+</ul> -->
+
+ <!-- <div *ngIf="films$ | async as videos">
+    <div *ngFor="let video of videos">{{video.title}}</div>
+</div>  -->
+
+<ol *ngIf="films$ | async as films">
+    <li *ngFor="let film of films">
+        {{film.title}} {{film.genre}} {{film.id}}
+    </li>
+</ol>

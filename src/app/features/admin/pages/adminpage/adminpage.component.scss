@@ -1,0 +1,14 @@
+.adminpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80%;
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 60%;
+    }
+}

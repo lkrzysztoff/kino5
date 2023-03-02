@@ -1,0 +1,61 @@
+<div class="form__container">
+    <form [formGroup]="movieForm" (ngSubmit)="addMovieFormSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Link do plakatu</mat-label>
+            <input matInput placeholder="img" type="text" formControlName="img" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Tytuł</mat-label>
+            <input matInput placeholder="Tytuł" type="text" formControlName="title" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Opis</mat-label>
+            <input matInput placeholder="Opis" type="textarea" formControlName="description" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Kategoria</mat-label>
+            <input matInput placeholder="Kategoria" type="text" formControlName="genre" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Długość w minutach</mat-label>
+            <input matInput placeholder="Długość" type="text" formControlName="length" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Kategoria wiekowa</mat-label>
+            <input matInput placeholder="Kategoria wiekowa" type="text" formControlName="ageRest" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Ocena</mat-label>
+            <input matInput [numberMaxLength]="10" placeholder="Ocena" type="text" formControlName="score" required />
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill"> -->
+            <!-- <mat-label>Premiera</mat-label>
+            <select formControlName="premiere">
+              <option [value]="true">Tak</option>
+              <option [value]="false">Nie</option>
+            </select> -->
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          <!-- </mat-form-field> -->
+
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Data</mat-label>
+            <input matInput placeholder="Data" type="date" formControlName="date" required />
+            <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          <!-- </mat-form-field> -->
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Godzina</mat-label>
+            <input matInput placeholder="Godzina" type="time" formControlName="hour" required /> -->
+            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+          <!-- </mat-form-field> -->
+          <button  mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+          </button> 
+        </form>
+</div>
