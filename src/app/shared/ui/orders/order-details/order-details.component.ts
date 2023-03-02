@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { Cart } from '../../../../model/cart.model';
 import { FilmRepository } from 'src/app/model/film.repository';
+import { MyticketslistService, orderHistory } from 'src/app/shared/pages/mytickets/myticketslist.service';
 
 
 @Component({
-  selector: 'app-order-details',
+  selector: 'app-order-details[data]',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
+
+
 export class OrderDetailsComponent implements OnInit {
+@Input() data! : orderHistory
+
+
+
 
   constructor(public cart : Cart, public filmRepository : FilmRepository) { }
 
   ngOnInit(): void {
+    console.log(this.cart.lines.values);
   }
   get uniqueFilms(){
     let arr = this.cart.getUniqueFilms();

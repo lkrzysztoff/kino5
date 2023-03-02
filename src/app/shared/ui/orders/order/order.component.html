@@ -1,6 +1,6 @@
 <div class="order-body">
 <div class="order-details">
-<app-order-details></app-order-details>
+<app-order-details [data]="cart"></app-order-details>
 </div>
 
 <div class="container-box">
@@ -31,6 +31,9 @@
             </div>
             <div *ngIf="name.errors?.['minlength']">
               To pole musi mieć przynajmniej dwa znaki.
+            </div>
+            <div *ngIf="name.errors?.['maxlength']">
+              To polo może mieć maksymalnie dwadzieścia znaków.
             </div>
             <div *ngIf="name.errors?.['maxlength']">
               To polo może mieć maksymalnie dwadzieścia znaków.
@@ -146,6 +149,9 @@
                 >
                   To nie jest prawidłowy adres email.
                 </div>
+                <div *ngIf="emailConfirm.errors?.['confirm']">
+                  To pole może mieć maksymalnie 50 znaków.
+                </div>
               </div>
             </div>
           </div>
@@ -204,13 +210,14 @@
               </div>
 
                 <div class="row">
-                  <div class="col mb-2 mt-5 ">
+                  <div class="col mb-2 mt-5 " >
                     <button
                       type="button"
                       class="btn btn-sm btn-primary"
                       (click)="validate()"
                     >
                       Zamawiam i płacę
+                      
                     </button>
                   </div>
                 </div>

@@ -16,6 +16,10 @@
 
 .ltr {
   padding: 7px;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  text-align: center;
 }
 .reservation__number {
   flex: 1;
@@ -51,6 +55,7 @@ color: white;
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  align-items: center;
 }
 .reservation__display {
   margin: auto;
@@ -145,4 +150,61 @@ button {
 
 .rsrv{
   min-height:80%;
+}
+
+.taken{
+  background-color: red !important;
+
+}
+.free{
+  background-color: green !important;
+}
+
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #cccccc !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  border-radius: 10px;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width:650px){
+  .reservation__number{
+    height: 18px;
+    width: 18px;
+    text-align: center;
+
+    padding: 0px;
+  }
+  .ltr{
+    height: 18px;
+    width: 18px;
+    font-size: 20px;
+    padding: 0px;
+  }
+  .reservation__letters {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .resevation__title-box{
+    
+  }
+  .card{
+    width: 320px;
+    min-height: 100px;
+    display: flex;
+   
+  }
+  .btns-div{
+    display: flex;
+    flex-direction: column;
+  }
+  .reservation-panel__order-container-chosen-seats{
+    display: flex;
+    flex-direction: column;
+  }
 }

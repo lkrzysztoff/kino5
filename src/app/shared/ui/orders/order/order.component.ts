@@ -7,6 +7,7 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  inject,
 } from '@angular/core';
 import {
   NonNullableFormBuilder,
@@ -29,6 +30,14 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from './user';
 import { OrderManagmentService } from '../../../../order-managment.service';
 import { Router } from '@angular/router';
+import { selectLoggedUser } from 'src/app/core/store/user.selectors';
+import { Store } from '@ngrx/store';
+import { map, switchMap } from 'rxjs';
+import { daneData } from './dane.interface';
+import { Observable } from 'rxjs';
+import { UserResponse } from 'src/app/core/store/user.interfaces';
+import { whitespaceValidator, emailValidator,emailMatchValidate } from 'src/app/features/auth/subpages/signin/validators';
+
 
 submitted: false;
 
@@ -49,33 +58,48 @@ export class OrderComponent implements OnInit {
     public filmRepository: FilmRepository,
     public cart: Cart,
     public orderService: OrderManagmentService,
-    public router: Router,
+    public router: Router
   ) {}
+  store = inject(Store);
+  dane!: UserResponse;
+
+  user$ = this.store.select(selectLoggedUser).subscribe((value) => {
+    this.dane = value;
+    console.log(value);
+  });
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
-      name: new FormControl(this.orderService.userdata.name, [
+      name: new FormControl(this.dane.firstName, [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(30),
+        whitespaceValidator
       ]),
-      surname: new FormControl(this.orderService.userdata.surname, [
+      surname: new FormControl(this.dane.lastName, [
         Validators.minLength(2),
         Validators.maxLength(30),
+        whitespaceValidator
       ]),
-      email: new FormControl(this.orderService.userdata.email, [
+      email: new FormControl(this.dane.email, [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(250),
-        Validators.email,
+        emailValidator,
+        // emailMatchValidate
       ]),
-      emailConfirm: new FormControl(this.orderService.userdata.emailConfirm, [
+      emailConfirm: new FormControl(this.dane.email, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(50),
         Validators.email,
+        // emailMatchValidate
+        
+        
+        
+    
       ]),
-      phone: new FormControl(this.orderService.userdata.phone, [
+      phone: new FormControl(this.dane.phone, [
         Validators.pattern('^\\d{9}$'),
         Validators.required,
         Validators.minLength(9),
@@ -83,11 +107,12 @@ export class OrderComponent implements OnInit {
       ]),
       discount: new FormControl(this.orderService.userdata.phone, []),
       payment: new FormControl(this.orderService.userdata.payment, [
-        Validators.required
-      ])
+        Validators.required,
+      ]),
     });
+    // this.reactiveForm.setValidators([emailMatchValidate])
   }
-
+  
   get name() {
     return this.reactiveForm.get('name')!;
   }
@@ -109,7 +134,7 @@ export class OrderComponent implements OnInit {
   get phone() {
     return this.reactiveForm.get('phone')!;
   }
-  get payment(){
+  get payment() {
     return this.reactiveForm.get('payment')!;
   }
 

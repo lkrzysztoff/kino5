@@ -1,13 +1,16 @@
 <div class="date__container">
 <div class="date__menu"  >
     <button (click)="setSelectedDate( date )" 
+    [disabled]="checkPast(date)"
     class="date__buttons" 
-    [ngClass]="{'dupa' : date == selectedDate }"
-    *ngFor="let date of dates" [routerLink]="['/app-card-panel-body', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} </button>
-    <!-- [routerLink]="['/app-card-panel-body', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} -->
+    [ngClass]="{}"
+    [ngClass]="{'dupa' : date === selectedDate  }"
+    *ngFor="let date of dates" >{{ date | date:'d/MM'}} </button>
+    
+    <!-- [routerLink]="['/app-home', date.toISOString().slice(0, 10)]">{{ date | date:'d/MM'}} -->
 </div>
 </div> 
-
+<!-- [routerLink]="['/', date.toISOString().slice(0, 10)]" -->
  <div  class="date__menu" >
   <p>
     Wybrana data : {{ selectedDate | date:'YYYY-MM-dd' }}

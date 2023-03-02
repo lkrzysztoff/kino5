@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { User } from '../order/user';
+import { Cart } from 'src/app/model/cart.model';
+import { orderHistory } from 'src/app/shared/pages/mytickets/myticketslist.service';
 
 @Component({
   selector: 'app-order-generated',
@@ -9,11 +11,16 @@ import { User } from '../order/user';
 })
 export class OrderGeneratedComponent implements OnInit {
 user! : User;
-  constructor(private managmentService: OrderManagmentService) { }
+cart = inject (Cart)
+  constructor(private managmentService: OrderManagmentService) {
+    this.cartCopy =  Object.assign({}, this.cart);
+   }
  
+cartCopy !: orderHistory
+
   ngOnInit(): void {
     this.user = this.managmentService.userdata;
-   
+    
   }
 
 }

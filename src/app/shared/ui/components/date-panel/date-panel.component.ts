@@ -3,10 +3,6 @@ import { DatePipe } from '@angular/common';
 import { formatDate } from '@angular/common';
 import { ActivatedRoute } from "@angular/router"; 
 import {  Input, Output,EventEmitter } from '@angular/core'
-
-import { BehaviorSubject, Observable } from 'rxjs';
-
-import { NgClass } from '@angular/common';
 import { eachDayOfInterval, endOfISOWeek, format, getDate, parse, startOfDay, startOfISOWeek } from 'date-fns'
 
 
@@ -18,9 +14,6 @@ import { eachDayOfInterval, endOfISOWeek, format, getDate, parse, startOfDay, st
 
 
 export class DatePanelComponent implements OnInit {
-
-  
-
   date = new Date();
   selectedDate! : Date;
 
@@ -33,7 +26,7 @@ export class DatePanelComponent implements OnInit {
   })
 
   today = new Date()
-
+dzisiaj! : Date;
   // dates(){
   //   for(let  i = 0; i<7;i++){
   //     this.date = new Date();
@@ -55,13 +48,28 @@ export class DatePanelComponent implements OnInit {
     this.export();
      
 this.selectedDate = this.date;
-  
+    
+    this.dzisiaj = new Date()
 
   }
   export() {
     this.dateExport.emit(this.selectedDate);
   }   
- 
+  checkPast(date: Date){
+    let teraz = new Date()
+    teraz.setDate(this.date.getDate()-1)
+    if (date>=this.today) {
+      return false
+    } else return true;
+  }
+  
+
+  
+  checkToday(date: Date){
+     
+    
+    
+  }
 }
 
 

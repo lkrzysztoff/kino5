@@ -11,7 +11,7 @@
 <div class="rsrv">
     <div class="box">
         <div class="reservation__title-box">
-            <h1 class="reservation__title">{{film.title}} | {{selectedDate | date:'d/YY'}} | {{show.hour}}</h1>
+            <h1 class="reservation__title">{{film?.title}} <br>| {{selectedDate | date:'d/YY'}} | {{show.hour}}</h1>
     
         </div>
         <div class="reservation__display">
@@ -20,11 +20,11 @@
 <div class="reservation__container">
     <div class="reservation__net">
         <div class="reservation__letters"  *ngFor="let letter of letters,let a = index">
-           <div class="ltr">{{ letter }}   
+           <div class="ltr" >{{ letter }}   
 
            </div>  
            <div >
-            <span id="{{ a+i }}" class="reservation__number"   *ngFor="let number of numbers,let i = index" (click)="seatReturn(i,a)" (click)="ticket()">{{ number }}</span>
+            <button id="{{ a+i }}" class="reservation__number" [disabled]="checkReserved(letter+(i+1))"    *ngFor="let number of numbers,let i = index" (click)="seatReturn(i,a)" (click)="ticket()">{{ number }}</button>
            </div> 
                
             
@@ -37,16 +37,16 @@
 
 <div class="seats-title"><p>Wybieranie miejsca </p></div>
 <div class="reservation-panel__order-container" *ngIf="reservationBuffer">
-    <mat-card>
+    <mat-card class="card">
         <div class="reservation-panel__order-container-chosen-seats">Wybrane miejsce {{ reservationBuffer.name }} 
-        <mat-form-field appearance="fill">
+        
             <mat-label>Wybierz typ biletu</mat-label>
         <select (change)="priceTypeChange($event)">
         <option  *ngFor="let priceType of show.priceList" >{{priceType.type}} {{priceType.price}}</option>
         </select>
-        </mat-form-field>
-        <div>
-        <button mat-raised-button  (click)="addToReservationBuffer()"> Dodaj </button>&nbsp;&nbsp;
+        
+        <div class="btns-div">
+        <button (click)="prank()" mat-raised-button  (click)="addToReservationBuffer(); addToReserved()"> Dodaj </button>&nbsp;&nbsp;
         <button mat-raised-button  (click)="clearReservationBuffer()">🗑</button>
         </div>
     </div>

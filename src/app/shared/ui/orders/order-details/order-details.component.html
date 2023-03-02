@@ -28,7 +28,7 @@
     </tr>
     
     <tr *ngFor="let sLine of getSeats(line.seat.show_id ,line.seat.date ) ">
-      <th >{{filmRepository.getFilmByShow( line.seat.show_id ).title}}</th>
+      <th >{{filmRepository.getFilmByShow( line.seat.show_id )?.title}}</th>
       <th>{{filmRepository.getShow( line.seat.show_id ).hour}}</th>
       <th>{{sLine.seat.name}}</th>
       <th>{{sLine.seat.price.type}}</th>
@@ -39,9 +39,11 @@
     
   </table>
 
-  <tr  *ngIf="cart.itemCount" class="sum">
-    <th>Razem biletów  {{cart.itemCount}}</th>
-    <th>Łączna wartość zamówienia: {{cart.cartPrice}}</th>
+  <tr  *ngIf="data.lines" class="sum">
+    <th>Razem biletów  {{data.cartPrice}}</th>
+    <th>Łączna wartość zamówienia: {{data.itemCount}}</th>
   </tr>
+
+
 
 </div>

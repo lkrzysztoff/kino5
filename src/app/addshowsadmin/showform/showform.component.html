@@ -1,0 +1,16 @@
+
+<form [formGroup]="repertoireForm" *ngIf="data&&films$ | async as films">
+  <h1 >Data {{data.date}} Sala {{data.sala}}</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Godzina</mat-label>
+        <input matInput placeholder="img" type="hour" formControlName="hour" required />
+        <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+      </mat-form-field>
+      
+        <label>Film</label>
+        <select >
+          <option *ngFor="let film of films">{{film.title}}</option>
+        </select>
+          
+<!-- <button (click)="getRepertoire()">KLIK</button> -->
+

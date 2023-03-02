@@ -16,9 +16,9 @@
         </div>
     </div>
 </div>
- -->
+ --> -->
 
- <div class="payment__body-container">
+  <div class="payment__body-container">
     <div class="payment__container">
       <div class="payment__container-placement">
         <div class="payment__container-title">
@@ -52,49 +52,15 @@
               </ng-container>
               <div class="modal-nav">
               </div>
-              <button type="submit">Płacę!</button>
-              <!-- <div *ngIf="">
-                <p *ngFor="">
-                  {{bliczek}}
-                </p>
-              </div> -->
-                <!-- <form #form="ngForm">
-                    <div class="">
-                      <div class=" mb-2">
-                        <label for="name" class="form-label">Imię:</label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          formControlName="name"
-                          placeholder="Imię"
-                          required
-                          minlength="2"
-                          maxlength="30"
-                          class="form-control form-control-sm"
-
-     [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
-                          
-                          />
-                        
-                         <div
-                          *ngIf="name.invalid && (name.dirty || name.touched)"
-                          class="invalid-feedback"
-                        >
-                          <div *ngIf="name.errors?.['required']">
-                            To pole jest obowiązkowe.
-                          </div>
-                          <div *ngIf="name.errors?.['minlength']">
-                            To pole musi mieć przynajmniej dwa znaki.
-                          </div>
-                          <div *ngIf="name.errors?.['maxlength']">
-                            To polo może mieć maksymalnie dwadzieścia znaków.
-                          </div>
-                        </div> 
-                      </div>
-                    </div>
-                </form> -->
+              <button type="submit" (click)=" ticketService.getObiekcik(obiekcik);  ticketService.addScore(obiekcik); cart.clear()" >Płacę!</button>
+             
+            
             </form>
           </div>
     </div>
-</div>
+
+
+   
+</div> 
+
+

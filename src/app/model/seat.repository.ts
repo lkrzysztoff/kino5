@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Seat } from "./seat.model";
-import { MainDataSource } from "./main.datasource"; 
+import { MainDataSource } from "./main.datasource.service"; 
 
 @Injectable()
 export class SeatRepository {

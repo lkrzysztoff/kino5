@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { OrderManagmentService } from '../../../../order-managment.service';
 import { User } from '../order/user';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
@@ -9,7 +9,8 @@ import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { map,tap } from 'rxjs';
 import { Route, Router } from '@angular/router';
-
+import { Cart } from 'src/app/model/cart.model';
+import { MyticketslistService, orderHistory } from 'src/app/shared/pages/mytickets/myticketslist.service';
 
 const PROTOCOL = "http";
 const PORT = 3000;
@@ -21,14 +22,29 @@ const PORT = 3000;
   styleUrls: ['./order-completed.component.scss']
 })
 
-
-
-export class OrderCompletedComponent implements OnInit {    
+export class OrderCompletedComponent implements OnInit {
+   
   baseUrl!: string;
   blikCode!: BlikCode[];
   blikValueArray! : any;
 
+  ticketService = inject (MyticketslistService)
 
+  cart = inject (Cart)
+
+ 
+
+
+
+  // fn()  {
+    
+  //   return this.http.post<[orderHistory]>(this.baseUrl+"tickets",{"ticket":[JSON.stringify(this.obiekcik)]}).subscribe(
+  //     value => {console.log(value)}
+  //   );
+   
+  // }
+
+  
 
   // get blik$() {
   //   return this.http.get<BlikCode[]>(this.baseUrl+"blik");
@@ -42,7 +58,7 @@ export class OrderCompletedComponent implements OnInit {
     
   // )
 
-  
+  obiekcik! : orderHistory
   userito :  User;
   booksList: any;
   constructor(public service : OrderManagmentService, private http: HttpClient, private router : Router) { 
@@ -59,12 +75,12 @@ dupa(){
     .subscribe(
       {
         next:(response) => {
-          this.blikCode = response;
+          console.log(response)
         }
       }
     )
 
-
+    this.obiekcik = Object.assign({}, this.cart);
   }
 
   paymentControl = new FormControl('', {
