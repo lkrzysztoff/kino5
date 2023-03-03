@@ -91,7 +91,7 @@
     {
       "id": 0,
       "hour": "12.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A3",
         "C4",
@@ -116,7 +116,7 @@
     {
       "id": 1,
       "hour": "16.30",
-      "screen": "A",
+      "screen": 0,
       "reservedSeats": [
         "A10",
         "B15",
@@ -143,7 +143,7 @@
     {
       "id": 2,
       "hour": "20.30",
-      "screen": "C",
+      "screen": 2,
       "reservedSeats": [
         "A7",
         "A6",
@@ -171,7 +171,7 @@
     },
     {
       "id": 3,
-      "screen": "A",
+      "screen": 2,
       "hour": "10.30",
       "reservedSeats": [
         "H5",
@@ -198,7 +198,7 @@
     {
       "id": 4,
       "hour": "14.30",
-      "screen": "C",
+      "screen": 1,
       "reservedSeats": [
         "G10",
         "H15",
@@ -225,7 +225,7 @@
     {
       "id": 5,
       "hour": "18.30",
-      "screen": "B",
+      "screen": 0,
       "reservedSeats": [
         "A7",
         "A6",
@@ -254,7 +254,7 @@
     {
       "id": 6,
       "hour": "14.30",
-      "screen": "C",
+      "screen": 1,
       "reservedSeats": [
         "G10",
         "H15",
@@ -280,7 +280,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 3,
       "reservedSeats": [
         "A7",
         "A6",
@@ -309,7 +309,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 2,
       "reservedSeats": [
         "A7",
         "A6",
@@ -338,7 +338,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A7",
         "A6",
@@ -367,7 +367,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A7",
         "A6",
@@ -396,7 +396,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 2,
       "reservedSeats": [
         "A7",
         "A6",
@@ -425,7 +425,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 2,
       "reservedSeats": [
         "A7",
         "A6",
@@ -454,7 +454,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A7",
         "A6",
@@ -483,7 +483,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A7",
         "A6",
@@ -512,7 +512,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 0,
       "reservedSeats": [
         "A7",
         "A6",
@@ -541,7 +541,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 0,
       "reservedSeats": [
         "A7",
         "A6",
@@ -570,7 +570,7 @@
     },
     {
       "hour": "18.30",
-      "screen": "B",
+      "screen": 1,
       "reservedSeats": [
         "A7",
         "A6",

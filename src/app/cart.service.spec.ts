@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DateService } from './shared/ui-components/date-panel/date.service';
+import { CartService } from './test/cart.service';
 
-describe('DateService', () => {
-  let service: DateService;
+describe('CartService', () => {
+  let service: CartService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DateService);
+    service = TestBed.inject(CartService);
   });
 
   it('should be created', () => {

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { repertoire } from '../addshowsadmin/showform/showform.interface';
+import { repertoire } from '../features/admin/pages/add-shows-admin/showform/showform.interface';
 import { MainDataSource } from '../model/main.datasource.service';
 import { Film } from '../model/film.model';
 import { Show } from '../model/show.model';
@@ -7,11 +7,36 @@ import { filter, Observable, Subscription, switchMap } from 'rxjs';
 import { map } from 'rxjs';
 import { OrderManagmentService } from '../order-managment.service';
 import { FilmRepository } from '../model/film.repository';
+import { Screen } from '../model/screen.model';
+import { priceType } from '../model/show.model';
+import { ReservationService } from '../features/home/subpages/reservation/reservation.service';
 
+export interface testFilm {
+  title: string;
+  id: number;
+  genre: string;
+}
+export interface Screens {
+   
+  id : number,
+  name: string, //"B",
+  rows: number, //5,
+  colu: number, //  specialSeats: string[] //["E4", "D4", "E5", "D5"]        
 
+}
 
-export interface testFilm {title:string,id:number,genre:string}
+export interface Showtest {
+    
+  id: number, //0,
+  hour: string, //"12.30",
+  screen: number, //"B", 
+  reservedSeats: string[], //["A3", "C4", "H5"],
+  priceList: priceType[],
+  filmId: number, //0
 
+}
+
+const numbersArray: number[] = []
 
 @Component({
   selector: 'app-test',
@@ -20,19 +45,22 @@ export interface testFilm {title:string,id:number,genre:string}
 })
 export class TestComponent implements OnInit {
   service = inject(MainDataSource);
+  reservationService = inject (ReservationService)
   repertoire!: repertoire[];
   shows!: Show[];
-  dataService = inject(OrderManagmentService)
+  dataService = inject(OrderManagmentService);
 
-//   filmsAll!: Film[];
-//   films!: {title:string,id:number,genre:string}[];
 
-//   kontrola : any
+  //   filmsAll!: Film[];
+  //   films!: {title:string,id:number,genre:string}[];
 
-// films$ !: {title:string}
-// filmsSub !: Subscription
+  // films$ !: {title:string}
+  // filmsSub !: Subscription
 
-films$!: Observable<testFilm[]>
+  films$!: Observable<Film[]>;
+  show$ !: Observable<Showtest[]>;
+  screen$ !: Observable<Screens[]>;
+  temporaryReservedSeats$ !: Observable<string[]>
 
   getShows() {
     return this.service.getRepertoire().subscribe((value) => {
@@ -54,35 +82,50 @@ films$!: Observable<testFilm[]>
     });
   }
 
-  getFilmsByRepertoire(repertoire: any) {
-    return this.shows.filter((record) => {
-      return repertoire.shows.indexOf(record.id) >= 0;
-    });
+  private properFilms(films: Film[]): testFilm[] {
+    return films.map((films) => ({
+      title: films.title,
+      id: films.id,
+      genre: films.genre,
+    }));
+  }
+  letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'];
+  createNumbersArray(rows:number){
+    let numbers = []
+    for(let i=1; i<=rows; i++){
+      numbers.push(i)
+    } return numbers
+    }
+
+    displayProperAmmountOfLetters(letters: string[], rows:number){
+      return letters.slice(0,rows)
+    }
+
+    displayProperAmmountOfNumbers(columns:number){
+      numbersArray.filter(numbers => numbers <= columns)  
+    }
+
+  returnFilmsById(films: Film[], id: number) {
+    return films.filter((films) => films.id === id);
   }
 
-
-
-private properFilms(films: Film[]) : testFilm[] {
-return films.map((films) => ({
-  title: films.title,
-  id: films.id,
-  genre: films.genre
-}))
-}
+  returnScreenById(screen: Screens[],id:number){
+    return screen.filter(screen => screen.id == id)
+  }
 
   ngOnInit(): void {
     this.getShows();
     this.getFilms();
-   
-
     // this.films$ = this.service.getFilms().pipe(
     //   map((films) => this.dataService.properFilms(films))
-    // )
-
-    this.films$ = this.service.getFilms().pipe(
-      map((films => films.filter(films => films.id = 4)))
+    
+    this.temporaryReservedSeats$ = this.reservationService.temporaryReservedSeats$;
+    this.show$ = this.service.getShowtest().pipe(
+    map(value => value.filter(value=> value.id == 4))
     )
-   
+    this.films$ = this.service.getFilms()
+    this.screen$ = this.service.getScreens()
+      // .pipe(map((films) => films.filter((films) => (films.id == 4))));
 
     // this.films$ = this.service.getFilms().pipe(
     //  (films) => {
@@ -91,14 +134,12 @@ return films.map((films) => ({
     //   }))
     //  }
     // )
-   
   }
-// filmById(films: Film[]){
-  
-//    return films.map((films => films.filter(films => films.id >4)))
-    
-// }
+  // filmById(films: Film[]){
 
+  //    return films.map((films => films.filter(films => films.id >4)))
+
+  // }
 
   // testComponent() {
   //   this.getFilmsByRepertoires(this.getShowByDate('28/02'));
@@ -118,22 +159,9 @@ return films.map((films) => ({
   //   response => console.log(response)
   // } )
 
-  // getFilmsByRepertoires(repertoire: any) {
-  //   this.films = this.filmsAll.filter(
-  //     (film) =>
-  //       this.getFilmsByRepertoire(repertoire)
-  //         .map((r) => r.filmId)
-  //         .indexOf(film.id) >= 0
-  //   );
-  // }
-
-  get vid$(){
-     return this.service.getFilms()
-}
-
-
-
-
+  get vid$() {
+    return this.service.getFilms();
+  }
 }
 
 // login$ = createEffect(() => {
@@ -160,12 +188,9 @@ return films.map((films) => ({
 // });
 // }
 
-
-
 // this.films$ = this.service.getFilms().pipe(
 //   map((films => films.filter(films => films.id>7)))
 // )
-
 
 // properFilms(films: Film[]) : testFilm[] {
 //   return films.map((films) => ({
@@ -175,9 +200,6 @@ return films.map((films) => ({
 //   }))
 //   }
 
-
-
 // filmById(films : Film[]){
 // return films.map((films)=>(films.filter(films=>films.id)))
 // }
-  
