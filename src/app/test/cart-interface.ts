@@ -1,4 +1,5 @@
 export interface Cart {
     showId:number;
-    tickets:string[],
+    tickets:Partial<{ ticketType: string;}> | {},
+    seat:string,
 }

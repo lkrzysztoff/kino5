@@ -10,6 +10,12 @@ import { FilmRepository } from '../model/film.repository';
 import { Screen } from '../model/screen.model';
 import { priceType } from '../model/show.model';
 import { ReservationService } from '../features/home/subpages/reservation/reservation.service';
+import { NonNullableFormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { CartService } from './cart.service';
+import { Cart } from './cart-interface';
+import {MatSelectModule} from '@angular/material/select';
+
 
 export interface testFilm {
   title: string;
@@ -49,6 +55,8 @@ export class TestComponent implements OnInit {
   repertoire!: repertoire[];
   shows!: Show[];
   dataService = inject(OrderManagmentService);
+  formBuilder = inject (NonNullableFormBuilder)
+  cartService = inject(CartService)
 
 
   //   filmsAll!: Film[];
@@ -60,8 +68,30 @@ export class TestComponent implements OnInit {
   films$!: Observable<Film[]>;
   show$ !: Observable<Showtest[]>;
   screen$ !: Observable<Screens[]>;
+  cart$ !: Observable<Cart[]>
   temporaryReservedSeats$ !: Observable<string[]>
+  seatForm = this.createSeatForm();
 
+  private createSeatForm() {
+    const form = this.formBuilder.group({
+      ticketType: this.formBuilder.control('', [
+        Validators.required
+      ]),
+    })
+  return form;
+  }
+
+  dodajtest(seat:string,showId:number){
+    this.seatForm.markAllAsTouched()
+    if(this.seatForm.invalid){
+      return 
+    } else
+    return this.seatForm.getRawValue(), console.log(seat,this.seatForm.value,showId)
+  }
+
+  isFormValid(){
+   return this.seatForm.invalid
+  }
   getShows() {
     return this.service.getRepertoire().subscribe((value) => {
       this.repertoire = value;
@@ -112,6 +142,7 @@ export class TestComponent implements OnInit {
   returnScreenById(screen: Screens[],id:number){
     return screen.filter(screen => screen.id == id)
   }
+  
 
   ngOnInit(): void {
     this.getShows();
@@ -125,6 +156,7 @@ export class TestComponent implements OnInit {
     )
     this.films$ = this.service.getFilms()
     this.screen$ = this.service.getScreens()
+    this.cart$ = this.cartService.cart$;
       // .pipe(map((films) => films.filter((films) => (films.id == 4))));
 
     // this.films$ = this.service.getFilms().pipe(

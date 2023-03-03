@@ -1,9 +1,14 @@
-<div class="rsrv">
+ <!-- <div class="rsrv">
   <div class="box">
     <div class="reservation__title-box">
       <h1 class="reservation__title">
-        {{ film?.title }} <br />| {{ selectedDate }} | {{ show.hour }}
+        {{ film?.title }} <br />| {{ selectedDate }} | {{ showId }}
       </h1>
+ -->
+
+
+
+<!-- 
     </div>
     <div class="reservation__display">
       <span class="reservation__ekran">Ekran {{ screen.name }}</span>
@@ -28,12 +33,13 @@
             >
               {{ number }}
             </button>
+            
           </div>
         </div>
       </div>
-    </div>
+    </div> --> -->
     <!-- </div> -->
-
+<!-- 
     <div class="seats-title"><p>Wybieranie miejsca</p></div>
     <div class="reservation-panel__order-container" *ngIf="reservationBuffer">
       <mat-card class="card">
@@ -91,6 +97,101 @@
           </button>
         </div>
       </mat-list>
+    </div>
+  </div>
+</div> -->
+
+
+
+<h1>Films specs {{selectedDate}} {{showId}}</h1>
+<div class="reservation__display" *ngIf="show$ | async as shows">
+  <div *ngFor="let show of returnShowById(shows,showId)">
+    <div *ngIf="films$ | async as films">
+      <div *ngFor="let film of returnFilmsById(films, show.filmId)">
+        <h1>Films specs {{ film.title }} {{ show.hour }} {{ show.screen }}</h1>
+        <div class="reservation-grid-net" *ngIf="screen$ | async as screens">
+          <div class="grid" *ngFor="let screen of returnScreenById(screens, show.screen)">
+            <div
+              class="letter"
+              *ngFor="
+                let letter of displayProperAmmountOfLetters(
+                  letters,
+                  screen.rows
+                );
+                let letterIndex = index
+              "
+            >
+              {{ letter }}
+              <button
+              class="reservation__number"
+                *ngFor="
+                  let number of createNumbersArray(screen.colu);
+                  let numberIndex = index
+                "
+                (click)="
+                  reservationService.addToTemporaryReservedSeats(letter + (numberIndex + 1));cartService.removeFromCart(letter + (numberIndex + 1))"
+                    
+                [ngClass]="{
+                  addedToReservation:
+                    reservationService.isSeatInTemporaryReserved(
+                      letter + (numberIndex + 1)
+                    )
+                }"
+              >
+                {{ number }}
+              </button>
+            </div>
+            <div
+              *ngIf="temporaryReservedSeats$ | async as temporaryReservedSeats"
+            >
+              <div *ngFor="let temporaryReservedSeat of temporaryReservedSeats">
+                Wybrane miejsce: {{ temporaryReservedSeat }}
+                <form
+                  [formGroup]="seatForm"
+                  (ngSubmit)="dodajtest(temporaryReservedSeat, show.id)"
+                > 
+                  <select formControlName="ticketType" required>
+                    <option value="" disabled selected>Wybierz typ biletu</option>
+                    <option 
+                        
+                      *ngFor="let price of show.priceList"
+                      [ngValue]="[price.type, price.price]"
+                    >
+                      {{ price.type }} {{ price.price }}
+                    </option>
+                  </select>
+                  <button
+                    (click)="
+                      cartService.addToCart$$({
+                        showId: show.id,
+                        tickets: seatForm.value,
+                        seat: temporaryReservedSeat
+                      })
+                    "
+                    [disabled]="cartService.doesCartHave(temporaryReservedSeat)"
+                      [disabled]="isFormValid()"
+                    type="submit"
+                  >
+                    Zatwierdź
+                  </button>
+                  <button
+                    *ngIf="cart$ | async as cart"
+                    (click)="
+                      cartService.removeFromCart(temporaryReservedSeat);
+                      reservationService.removeFromTemporaryReservedSeats(
+                        temporaryReservedSeat
+                      )
+                    "
+                  >
+                    Usun
+                  </button>
+                </form>
+              </div>
+            </div>
+            <button [disabled]="checkIfFormIsFilled()">Zamawiam!</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
