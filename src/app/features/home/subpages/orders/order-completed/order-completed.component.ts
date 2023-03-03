@@ -26,7 +26,7 @@ const PORT = 3000;
 export class OrderCompletedComponent implements OnInit {
   baseUrl!: string;
   blikCode!: BlikCode[];
-  blikValueArray!: any;
+  
 
   ticketService = inject(MyticketslistService);
 

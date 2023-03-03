@@ -10,6 +10,7 @@ import { repertoire } from '../features/admin/pages/add-shows-admin/showform/sho
 import { OrderManagmentService } from '../order-managment.service';
 import { map, pipe } from 'rxjs';
 import { shareReplay } from 'rxjs';
+import { Showtest } from '../test/test.component';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -51,4 +52,10 @@ export class MainDataSource {
   getFilmsByShowsId(id: number): Observable<Film[]> {
     return this.http.get<Film[]>(this.baseUrl + 'films/' + id);
   }
+
+  getShowtest(){
+    return this.http.get<Showtest[]>(this.baseUrl+'show')
+  }
+  
+
 }

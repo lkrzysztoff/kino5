@@ -174,14 +174,6 @@
 
 //   // ngOnInit(): void {
 
-//   // }
-//   // async signinBtnClikced() : Promise<any> {
-//   //   const credentials = {
-//   //     email: this['user'].email,
-//   //     password: this['password'].password
-//   //   }
-//   //   this.Store.dispatch(loginRequest({credentials}));
-//   // }
 
   
 import { NgIf } from '@angular/common';
