@@ -1,12 +1,10 @@
- <!-- <div class="rsrv">
+<!-- <div class="rsrv">
   <div class="box">
     <div class="reservation__title-box">
       <h1 class="reservation__title">
         {{ film?.title }} <br />| {{ selectedDate }} | {{ showId }}
       </h1>
  -->
-
-
 
 <!-- 
     </div>
@@ -37,8 +35,9 @@
           </div>
         </div>
       </div>
-    </div> --> -->
-    <!-- </div> -->
+    </div> -->
+-->
+<!-- </div> -->
 <!-- 
     <div class="seats-title"><p>Wybieranie miejsca</p></div>
     <div class="reservation-panel__order-container" *ngIf="reservationBuffer">
@@ -101,59 +100,36 @@
   </div>
 </div> -->
 
-
-
-<h1>Films specs {{selectedDate}} {{showId}}</h1>
+<h1>Films specs {{ selectedDate }} {{ showId }}</h1>
 <div class="reservation__display" *ngIf="show$ | async as shows">
-  <div *ngFor="let show of returnShowById(shows,showId)">
+  <div *ngFor="let show of returnShowById(shows, showId)">
     <div *ngIf="films$ | async as films">
       <div *ngFor="let film of returnFilmsById(films, show.filmId)">
-        <h1>Films specs {{ film.title }} {{ show.hour }} {{ show.screen }}</h1>
-        <div class="reservation-grid-net" *ngIf="screen$ | async as screens">
-          <div class="grid" *ngFor="let screen of returnScreenById(screens, show.screen)">
-            <div
-              class="letter"
-              *ngFor="
-                let letter of displayProperAmmountOfLetters(
-                  letters,
-                  screen.rows
-                );
-                let letterIndex = index
-              "
-            >
-              {{ letter }}
-              <button
-              class="reservation__number"
-                *ngFor="
-                  let number of createNumbersArray(screen.colu);
-                  let numberIndex = index
-                "
-                (click)="
-                  reservationService.addToTemporaryReservedSeats(letter + (numberIndex + 1));cartService.removeFromCart(letter + (numberIndex + 1))"
-                    
-                [ngClass]="{
-                  addedToReservation:
-                    reservationService.isSeatInTemporaryReserved(
-                      letter + (numberIndex + 1)
-                    )
-                }"
-              >
-                {{ number }}
-              </button>
-            </div>
+        <app-test [film]="film" [date]="selectedDate" [show]="show"></app-test>
+        <div *ngIf="cart$ | async as cart">
+          <app-ticket-type-form *ngFor="let cartItem of cartService.filterCartByShowId(cart,show.id)" [show]="show" [cart]="cartItem"></app-ticket-type-form>
+      </div>
+
             <div
               *ngIf="temporaryReservedSeats$ | async as temporaryReservedSeats"
             >
-              <div *ngFor="let temporaryReservedSeat of temporaryReservedSeats">
-                Wybrane miejsce: {{ temporaryReservedSeat }}
-                <form
+              <div *ngFor="let temporaryReservedSeat of filterTemporaryReservedByShowId(temporaryReservedSeats,show.id)">
+                Wybrane miejsce: {{ temporaryReservedSeat.seat }}
+                <!-- <form
                   [formGroup]="seatForm"
-                  (ngSubmit)="dodajtest(temporaryReservedSeat, show.id)"
-                > 
-                  <select formControlName="ticketType" required>
-                    <option value="" disabled selected>Wybierz typ biletu</option>
-                    <option 
-                        
+                  (ngSubmit)="dodajtest(temporaryReservedSeat.seat, show.id)"
+                >
+                  <select formControlName="ticketType" required (change)="
+                  handleTicketTypeChange(
+                    temporaryReservedSeat.seat,
+                    temporaryReservedSeat.seat,
+                    selectTicketPrice(selectedTicket)
+                  )
+                ">
+                    <option value="" disabled selected>
+                      Wybierz typ biletu
+                    </option>
+                    <option
                       *ngFor="let price of show.priceList"
                       [ngValue]="[price.type, price.price]"
                     >
@@ -161,15 +137,11 @@
                     </option>
                   </select>
                   <button
-                    (click)="
-                      cartService.addToCart$$({
-                        showId: show.id,
-                        tickets: seatForm.value,
-                        seat: temporaryReservedSeat
-                      })
+                    
+                    [disabled]="
+                      cartService.doesCartHave(temporaryReservedSeat.seat)
                     "
-                    [disabled]="cartService.doesCartHave(temporaryReservedSeat)"
-                      [disabled]="isFormValid()"
+                    [disabled]="isFormValid()"
                     type="submit"
                   >
                     Zatwierdź
@@ -177,7 +149,7 @@
                   <button
                     *ngIf="cart$ | async as cart"
                     (click)="
-                      cartService.removeFromCart(temporaryReservedSeat);
+                      cartService.removeFromCart(temporaryReservedSeat.seat);
                       reservationService.removeFromTemporaryReservedSeats(
                         temporaryReservedSeat
                       )
@@ -185,13 +157,15 @@
                   >
                     Usun
                   </button>
-                </form>
+                </form> -->
+              
+                
               </div>
             </div>
-            <button [disabled]="checkIfFormIsFilled()">Zamawiam!</button>
+            <button 
+            routerLink="/order"
+            >Zamawiam!</button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+     </div>
+     </div>

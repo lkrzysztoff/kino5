@@ -135,7 +135,7 @@
                 "
                 class="invalid-feedback"
               >
-                <div *ngIf="emailConfirm.errors?.['required']">
+                <div *ngIf="!emailConfirm.errors?.['required']">
                   To pole jest obowiązkowe.
                 </div>
                 <div *ngIf="emailConfirm.errors?.['minlength']">
@@ -145,14 +145,21 @@
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
                 <div
-                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && emailConfirm.errors?.['email']"
-                >
+                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && !emailConfirm.errors?.['email'] && emailConfirm.errors?.['noMatch']">
                   To nie jest prawidłowy adres email.
                 </div>
                 <div *ngIf="emailConfirm.errors?.['confirm']">
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
+                <div *ngIf="!emailConfirm.errors?.['noMatch']">
+                Te adresy nie są takie same
+                </div>
+                
               </div>
+              <ng-container *ngIf="emailConfirm.invalid &&
+                (emailConfirm.dirty || emailConfirm.touched)">
+                <p *ngIf="!emailConfirm.errors?.['noMatch']">Adresy email się różnią!</p>
+              </ng-container>
             </div>
           </div>
           <div class="">

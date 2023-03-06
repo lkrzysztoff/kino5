@@ -60,8 +60,8 @@ import { AddshowsadminComponent } from './features/admin/pages/add-shows-admin/a
 import { ShowformComponent } from './features/admin/pages/add-shows-admin/showform/showform.component';
 import { NumberMaxLengthDirective } from './shared/guards/directives/numbermaxlength.directive';
 import { TestComponent } from './test/test.component';
-import {MatSelectModule} from '@angular/material/select';
-
+import { MatSelectModule } from '@angular/material/select';
+import { TicketTypeFormComponent } from './features/home/subpages/reservation/ticket-type-form/ticket-type-form.component';
 
 export interface AppState {
   user: UserState;
@@ -91,7 +91,6 @@ export interface AppState {
     AddshowsadminComponent,
     ShowformComponent,
     NumberMaxLengthDirective,
-    TestComponent,
   ],
   imports: [
     ModelModule,

@@ -11,6 +11,7 @@ import { OrderManagmentService } from '../order-managment.service';
 import { map, pipe } from 'rxjs';
 import { shareReplay } from 'rxjs';
 import { Showtest } from '../test/test.component';
+import { Cart } from '../test/cart-interface';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -40,6 +41,10 @@ export class MainDataSource {
 
   adminAddMovie(movie: movie) {
     return this.http.post<movie>(this.baseUrl + 'films', movie);
+  }
+
+  addOrderToBase(order: Cart[]){
+    return this.http.post<Cart[]>(this.baseUrl+ 'orders',order)
   }
   getRepertoire() {
     return this.http.get<repertoire[]>(this.baseUrl + 'repertoire');

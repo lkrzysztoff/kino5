@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartLine } from 'src/app/model/cart.model';
 import { Seat } from 'src/app/model/seat.model';
-
+import { Cart } from 'src/app/test/cart-interface';
 
 export interface orderHistory {
   lines: CartLine[],
@@ -16,18 +16,16 @@ export interface orderHistory {
 })
 
 export class MyticketslistService {
-  tickets$$ = new BehaviorSubject<orderHistory[]>([]);
+  tickets$$ = new BehaviorSubject<Cart[][]>([]);
 
   get ticket$(){
     return this.tickets$$.asObservable();
   }
 
-  addScore(cart: orderHistory){
+  addScore(cart: Cart[]){
     this.tickets$$.next([...this.tickets$$.value, cart]);
   }
-getObiekcik (obiekcik: orderHistory) {
-  return obiekcik
-}
+
   // removeScore(cartId:number){
   //   this.tickets$$.next(this.tickets$$.value.filter(({id}) =>id !== cartId ))
   // }

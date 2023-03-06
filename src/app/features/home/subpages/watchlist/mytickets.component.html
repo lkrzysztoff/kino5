@@ -3,7 +3,7 @@
         <h1 class="mytickets__title">Twoje zamówienia ({{mytickets.length}})</h1>
         <mat-card class="crd" *ngFor="let myticket of mytickets">
             <div class="mytickets__content">
-                <table>
+                <table *ngFor="let mytickett of myticket">
                     <tr>
                         <th>Tytuł filmu</th>
                         <th>Fotel</th>
@@ -11,12 +11,12 @@
                         <th>Suma</th>
                         <th>Data</th>
                     </tr>
-                    <tr *ngFor="let line of myticket.lines">
-                        <th>{{filmService.getFilmByShow(line.seat.show_id)?.title}}</th>
-                        <th>{{line.seat.name}}</th>
-                        <th>{{line.seat.price.type}}</th>
-                        <th>{{line.seat.price.price}}</th>
-                        <th>{{line.seat.date}}</th>
+                    <tr >
+                        <th>{{mytickett.movieTitle}}</th>
+                        <th>{{mytickett.seat.position}}</th>
+                        <th>{{mytickett.seat.type}}</th>
+                        <th>{{mytickett.seat.price}}</th>
+                        <th>{{mytickett.date}}</th>
                     </tr>
                 </table>
 
@@ -25,9 +25,9 @@
                         <th class="bg-grn">Łącznie biletów</th>
                         <th class="bg-grn">Kwota za całość</th>
                     </tr>
-                    <th class="bg-grn1">{{myticket.itemCount}}</th>
+                    <!-- <th class="bg-grn1">{{myticket.itemCount}}</th>
                     <th class="bg-grn1">{{myticket.cartPrice}} PLN</th>
-                    <p>Płatność została zrealizowana</p> 
+                    <p>Płatność została zrealizowana</p>  -->
                 </table>
 
             </div>

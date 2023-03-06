@@ -89,26 +89,28 @@ export class OrderComponent implements OnInit {
         Validators.minLength(1),
         Validators.maxLength(250),
         emailValidator,
-        // emailMatchValidate
       ]),
       emailConfirm: new FormControl(this.dane.email, [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(50),
-        Validators.email,
-        // emailMatchValidate
+        emailValidator,
+        emailMatchValidate
       ]),
       phone: new FormControl(this.dane.phone, [
         Validators.pattern('^\\d{9}$'),
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(9),
+        
       ]),
       discount: new FormControl(this.orderService.userdata.phone, []),
       payment: new FormControl(this.orderService.userdata.payment, [
         Validators.required,
       ]),
-    });
+    },
+    { validators: [emailMatchValidate] }
+    );
     // this.reactiveForm.setValidators([emailMatchValidate])
   }
 
@@ -138,6 +140,7 @@ export class OrderComponent implements OnInit {
   }
 
   public validate() {
+    this.reactiveForm.markAllAsTouched()
     if (this.reactiveForm.valid) {
       this.router.navigate(['/order-completed']);
     } else if (this.reactiveForm.invalid) {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, Input } from '@angular/core';
 import { repertoire } from '../features/admin/pages/add-shows-admin/showform/showform.interface';
 import { MainDataSource } from '../model/main.datasource.service';
 import { Film } from '../model/film.model';
@@ -15,6 +15,9 @@ import { Validators } from '@angular/forms';
 import { CartService } from './cart.service';
 import { Cart } from './cart-interface';
 import {MatSelectModule} from '@angular/material/select';
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { selectLoggedUser } from '../core/store/user.selectors';
 
 
 export interface testFilm {
@@ -47,9 +50,16 @@ const numbersArray: number[] = []
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
+  standalone:true,
+  imports:[NgClass,NgFor,NgIf,AsyncPipe],
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
+
+@Input() show !: Showtest
+@Input() date !: string
+@Input() film !: Film
+
   service = inject(MainDataSource);
   reservationService = inject (ReservationService)
   repertoire!: repertoire[];
@@ -57,8 +67,9 @@ export class TestComponent implements OnInit {
   dataService = inject(OrderManagmentService);
   formBuilder = inject (NonNullableFormBuilder)
   cartService = inject(CartService)
+  private store = inject (Store)
 
-
+user$ = this.store.select(selectLoggedUser)
   //   filmsAll!: Film[];
   //   films!: {title:string,id:number,genre:string}[];
 
@@ -80,6 +91,26 @@ export class TestComponent implements OnInit {
     })
   return form;
   }
+
+  addToTicketState(id: string, position: string,email:string) {
+    const ticketDTO: Cart = {
+      id: id,
+      email: email,
+      showId: this.show.id,
+      date: this.date,
+      hour: this.show.hour,
+      movieTitle: this.film.title,
+      screen: this.show.screen,
+      seat: {
+        position: position,
+        price: this.show.priceList[0].price,
+        type: this.show.priceList[0].type,
+      },
+    };
+    this.cartService.addToCart$$(ticketDTO);
+  }
+
+
 
   dodajtest(seat:string,showId:number){
     this.seatForm.markAllAsTouched()
@@ -150,7 +181,7 @@ export class TestComponent implements OnInit {
     // this.films$ = this.service.getFilms().pipe(
     //   map((films) => this.dataService.properFilms(films))
     
-    this.temporaryReservedSeats$ = this.reservationService.temporaryReservedSeats$;
+    // this.temporaryReservedSeats$ = this.reservationService.temporaryReservedSeats$;
     this.show$ = this.service.getShowtest().pipe(
     map(value => value.filter(value=> value.id == 4))
     )

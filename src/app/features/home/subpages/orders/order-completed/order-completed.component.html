@@ -30,7 +30,7 @@
                 <img class="payment__blik-logo-img" src="/assets/images/Blik_logo.jpg">
             </div>
             <div class="payment__input-container">
-              <form class="payment__form"  (ngSubmit)="submit()">
+              <form class="payment__form" *ngIf="cart$ | async as cart" (ngSubmit)="submit(cart)">  
                 <input
                 [formControl]="paymentControl"
                 [class.error]="paymentControl.touched && paymentControl.errors"
@@ -52,7 +52,10 @@
               </ng-container>
               <div class="modal-nav">
               </div>
-              <button type="submit" (click)=" ticketService.getObiekcik(obiekcik);  ticketService.addScore(obiekcik); cart.clear()" >Płacę!</button>
+              
+                <button type="submit" (click)="ticketService.addScore(obiekcik); " >Płacę!</button>
+              
+              
              
             
             </form>

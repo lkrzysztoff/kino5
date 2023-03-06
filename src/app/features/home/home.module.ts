@@ -18,6 +18,8 @@ import { FavlistComponent } from './subpages/favlist/favlist.component';
 import { UnloggedGuard } from '../../shared/guards/unloggedGuard';
 import { RoleUserGuard } from '../../shared/guards/roleUser.guard';
 import { FormsModule } from '@angular/forms';
+import { TestComponent } from 'src/app/test/test.component';
+import { OrderGuard } from 'src/app/shared/guards/order-guard';
 
 @NgModule({
   imports: [
@@ -38,7 +40,7 @@ import { FormsModule } from '@angular/forms';
           },
           {
             path: 'tickets',
-
+            canActivate: [UnloggedGuard],
             component: MyticketsComponent,
           },
         ],
@@ -50,23 +52,18 @@ import { FormsModule } from '@angular/forms';
         component: ReservationComponent,
         resolve: { model: ModelResolver },
       },
-      { path: 'order', component: OrderComponent },
+      { path: 'order', 
+        canActivate:[OrderGuard],
+        component: OrderComponent },
       {
         path: 'order-completed',
+        canActivate:[OrderGuard],
         component: OrderCompletedComponent,
       },
       { path: 'qrcode', component: QrCodePageComponent },
       {
         path: 'orderg',
         component: OrderGeneratedComponent,
-      },
-      {
-        path: 'favlist',
-        component: FavlistComponent,
-      },
-      {
-        path: 'mytickets',
-        component: MyticketsComponent,
       },
     ]),
   ],

@@ -843,7 +843,8 @@
       "shows": [
         7,
         5,
-        11,14
+        11,
+        14
       ]
     },
     {
@@ -853,7 +854,8 @@
         0,
         8,
         3,
-        4,12
+        4,
+        12
       ]
     },
     {
@@ -863,7 +865,8 @@
         2,
         1,
         5,
-        7,9
+        7,
+        9
       ]
     },
     {
@@ -872,7 +875,9 @@
       "shows": [
         7,
         8,
-        9,10,11
+        9,
+        10,
+        11
       ]
     },
     {
@@ -881,8 +886,204 @@
       "shows": [
         10,
         11,
-        12,15,17
+        12,
+        15,
+        17
+      ]
+    },
+    {
+      "id": 6,
+      "date": "06/03",
+      "shows": [
+        4,
+        11,
+        6,
+        15,
+        9
+      ]
+    },
+    {
+      "id": 7,
+      "date": "07/03",
+      "shows": [
+        3,
+        11,
+        6,
+        9,
+        17
       ]
     }
+  ],
+  "orders": [
+    [
+      {
+        "id": "G13",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "G13",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "F13",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "F13",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "E13",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "E13",
+          "price": 30,
+          "type": "Normalny"
+        }
+      }
+    ],
+    [
+      {
+        "id": "G7",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "G7",
+          "price": 15,
+          "type": "Ulgowy"
+        }
+      },
+      {
+        "id": "F6",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "F6",
+          "price": 15,
+          "type": "Ulgowy"
+        }
+      },
+      {
+        "id": "E6",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "E6",
+          "price": 15,
+          "type": "Ulgowy"
+        }
+      }
+    ],
+    [
+      {
+        "id": "G7",
+        "email": "krzychu@kino.pl",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "G7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "F8",
+        "email": "krzychu@kino.pl",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "F8",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "F9",
+        "email": "krzychu@kino.pl",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "F9",
+          "price": 30,
+          "type": "Normalny"
+        }
+      }
+    ],
+    [
+      {
+        "id": "I7",
+        "email": "",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "I7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "H8",
+        "email": "",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "H8",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      {
+        "id": "H9",
+        "email": "",
+        "showId": 12,
+        "date": "06-03",
+        "hour": "18.30",
+        "movieTitle": "Requiem dla snu",
+        "screen": 2,
+        "seat": {
+          "position": "H9",
+          "price": 30,
+          "type": "Normalny"
+        }
+      }
+    ]
   ]
 }

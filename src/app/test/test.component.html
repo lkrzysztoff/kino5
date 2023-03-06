@@ -21,7 +21,7 @@
     </li>
 </ol> -->
 
-<h1>Films specs</h1>
+<!-- <h1>Films specs</h1>
 <div class="container" *ngIf="show$ | async as shows">
   <div *ngFor="let show of shows">
     <div *ngIf="films$ | async as films">
@@ -112,4 +112,52 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+    <h1>Films specs {{ film.title }} {{ show.hour }} {{ show.screen }}</h1>
+    <div class="reservation-grid-net" *ngIf="user$ | async as user">
+    <div  *ngIf="screen$ | async as screens">
+      <div
+        class="grid"
+        *ngFor="let screen of returnScreenById(screens, show.screen)"
+      >
+        <div
+          class="letter"
+          *ngFor="
+            let letter of displayProperAmmountOfLetters(
+              letters,
+              screen.rows
+            );
+            let letterIndex = index
+          "
+        >
+          {{ letter }}
+          <button 
+            class="reservation__number"
+            *ngFor="
+              let number of createNumbersArray(screen.colu);
+              let numberIndex = index
+            "
+            (click)="
+              addToTicketState(letter + (numberIndex + 1),letter + (numberIndex + 1),user.email);
+            "
+            [ngClass]="{
+              addedToReservation:
+                cartService.doesCartHave(letter + (numberIndex + 1),show.id)
+            }"
+          >
+            {{ number }}
+            <!-- <button (click)="reservationService.check({seat:letter + (numberIndex + 1),showId:show.id});reservationService.removeFromTemporaryReservedSeats({seat:letter + (numberIndex + 1),showId:show.id})">test</button> -->
+          </button>
+        </div>
+      </div>
+
+
+        <!-- (click)="
+              reservationService.addToTemporaryReservedSeats({
+                seat: letter + (numberIndex + 1),
+                showId: show.id
+              });
+              addToTicketState(letter + (numberIndex + 1),letter + (numberIndex + 1)); -->

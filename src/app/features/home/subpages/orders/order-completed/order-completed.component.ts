@@ -9,11 +9,13 @@ import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { map, tap } from 'rxjs';
 import { Route, Router } from '@angular/router';
-import { Cart } from 'src/app/model/cart.model';
+import { Cart } from 'src/app/test/cart-interface';
 import {
-  MyticketslistService,
-  orderHistory,
+  MyticketslistService, orderHistory,
+
 } from 'src/app/features/home/subpages/watchlist/myticketslist.service';
+import { CartService } from 'src/app/test/cart.service';
+import { MainDataSource } from 'src/app/model/main.datasource.service';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -27,10 +29,11 @@ export class OrderCompletedComponent implements OnInit {
   baseUrl!: string;
   blikCode!: BlikCode[];
   
-
+  filmService = inject(MainDataSource)
   ticketService = inject(MyticketslistService);
 
-  cart = inject(Cart);
+  // cart = inject(Cart);
+  cartService = inject(CartService)
 
   // fn()  {
 
@@ -50,8 +53,9 @@ export class OrderCompletedComponent implements OnInit {
 
   // )
 
-  obiekcik!: orderHistory;
+  obiekcik!: Cart[];
   userito: User;
+  cart$ !: Observable<Cart[]>
   constructor(
     public service: OrderManagmentService,
     private http: HttpClient,
@@ -70,7 +74,16 @@ export class OrderCompletedComponent implements OnInit {
       },
     });
 
-    this.obiekcik = Object.assign({}, this.cart);
+// properFilms(films: Film[]) : testFilm[] {
+//   return films.map((films) => ({
+//     title: films.title,
+//     id: films.id,
+//     genre: films.genre
+//   }))
+//   }
+
+    this.cart$ = this.cartService.cart$
+    this.obiekcik = Object.assign({}, this.cartService.cart$$.value,'dupa');
   }
 
   paymentControl = new FormControl('', {
@@ -82,10 +95,13 @@ export class OrderCompletedComponent implements OnInit {
     ],
   });
 
-  submit() {
+  submit(cart: Cart[]) {
     this.paymentControl.markAllAsTouched();
     if (this.paymentControl.touched && this.paymentControl.valid) {
-      this.router.navigate(['/qrcode']);
+      this.filmService.addOrderToBase(cart).subscribe(
+        value => console.log(value)
+      )
+      this.router.navigate(['/qrcode'])
     } else return;
     // this.paymentControl.markAllAsTouched();
     // if (this.paymentControl.valid){
