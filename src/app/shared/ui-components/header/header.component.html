@@ -20,8 +20,8 @@
         <button class="header__login-button" (click)="log()" [matMenuTriggerFor]="menu">Cześć {{user.firstName }}</button>
         <mat-menu #menu="matMenu">
           <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/tickets'">Moje zamówienia</button>
-          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/favlist'">Chcę obejrzeć</button>
-          <button mat-menu-item (click)="wyloguj()">Wyloguj</button>
+          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/watchlist'">Chcę obejrzeć</button>
+          <button mat-menu-item (click)="logout()">Wyloguj</button>
         </mat-menu>
       </ng-template>
   </div>

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { Film } from 'src/app/model/film.model';
-import { MyfavlistService } from './myfavlist.service';
+import { MywatchlistService } from './mywatchlist.service';
 
-describe('MyfavlistService', () => {
-  let service: MyfavlistService;
+describe('MywatchlistService', () => {
+  let service: MywatchlistService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MyfavlistService);
+    service = TestBed.inject(MywatchlistService);
   });
 
   it('should be created', () => {

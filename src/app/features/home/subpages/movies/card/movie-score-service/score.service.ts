@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { score } from '../scoredialog/score.interface';
+import { score } from '../../scoredialog/score.interface';
 
 @Injectable({
   providedIn: 'root',

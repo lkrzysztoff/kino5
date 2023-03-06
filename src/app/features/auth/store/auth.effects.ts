@@ -71,7 +71,6 @@ export class AuthEffects {
           }),
           map(({ user }) => {
             this.router.navigate(['']);
-            console.log('dupa')
             return UserApiActions.getUserSuccess({ user });
           }),
           catchError(() => {

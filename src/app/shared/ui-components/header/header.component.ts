@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cart$ = this.cartService.cart$
   }
-  wyloguj() {
+  logout() {
     this.router.navigate(['/']).then(() => {
       window.location.reload();
       this.cookieService.delete('token');

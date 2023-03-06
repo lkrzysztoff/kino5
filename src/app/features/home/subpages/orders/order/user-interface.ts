@@ -13,13 +13,3 @@ export class User {
 
     ){}
 }
-
-// export interface User { 
-//         name:string,
-//      surname:string,
-//      phone:number,
-//      email:string,
-//      emailConfirm:string,
-//      discount:string,
-//      agreement: boolean
-// }

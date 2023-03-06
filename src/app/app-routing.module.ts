@@ -11,10 +11,9 @@
 // import { OrderGeneratedComponent } from './shared/ui/orders/order-generated/order-generated.component';
 // import { HomeComponent } from './shared/pages/home/home.component';
 // import { DatePanelComponent } from './shared/ui/components/date-panel/date-panel.component';
-// import { FavlistComponent } from './shared/pages/favlist/favlist.component';
+// import { WatchlistComponent } from './shared/pages/watchlist/watchlist.component';
 // import { MyticketsComponent } from './shared/pages/mytickets/mytickets.component';
 // import { HomePageComponent } from './shared/pages/homepage/homepage.component';
-
 
 // const routes: Routes = [
 //   { path: ''           ,  component: HomePageComponent},
@@ -27,7 +26,7 @@
 //   { path: 'order-completed'      , component: OrderCompletedComponent,},
 //   { path: 'qrcode' , component: QrCodePageComponent},
 //   {path:'orderg', component: OrderGeneratedComponent},
-//   {path:'favlist', component: FavlistComponent },
+//   {path:'watchlist', component: WatchlistComponent },
 //   {path:'mytickets', component: MyticketsComponent},
 //   { path: "**"         , redirectTo: "" },
 // ];

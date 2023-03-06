@@ -8,9 +8,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FilmRepository } from '../../../../model/film.repository';
 import { Film } from '../../../../model/film.model';
-import { CartLine } from '../../../../model/cart.model';
 import { Seat } from '../../../../model/seat.model';
 import { priceType } from '../../../../model/show.model';
 import { Observable, from } from 'rxjs';
@@ -29,7 +27,7 @@ import { NgClass } from '@angular/common';
 import { HttpBackend } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { createInjectableType, ReturnStatement } from '@angular/compiler';
-import { ReservationService } from './reservation.service';
+import { ReservationService } from './reservation-service/reservation.service';
 import { Screen } from 'src/app/model/screen.model';
 import { MainDataSource } from 'src/app/model/main.datasource.service';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';

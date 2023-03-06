@@ -1,15 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FilmRepository } from '../../../../../model/film.repository';
 import { Film } from '../../../../../model/film.model';
 import { Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLoggedUser } from 'src/app/core/store/user.selectors';
 import { MatDialog } from '@angular/material/dialog';
-import { MyfavlistService } from 'src/app/features/home/subpages/favlist/myfavlist.service';
+import { MywatchlistService } from 'src/app/features/home/subpages/watchlist/watchlist-service/mywatchlist.service';
 import { ScoredialogComponent } from '../scoredialog/scoredialog.component';
 import { score } from '../scoredialog/score.interface';
-import { ScoreService } from './score.service';
+import { ScoreService } from './movie-score-service/score.service';
 import { Observable } from 'rxjs';
+import { MainDataSource } from 'src/app/model/main.datasource.service';
+import { Showtest } from 'src/app/test/test.component';
 
 @Component({
   selector: 'app-card[films][selectedDate]',
@@ -19,28 +20,28 @@ import { Observable } from 'rxjs';
 export class CardComponent implements OnInit {
   @Input() films!: Film;
   @Input() selectedDate!: string;
+  @Input() showId!: number
 
   scoreService = inject(ScoreService);
-  public service = inject(MyfavlistService);
+  public service = inject(MywatchlistService);
   public dialog = inject(MatDialog);
   private store = inject(Store);
-  private filmService = inject(FilmRepository);
+  filmService = inject (MainDataSource)
+
 
   score$!: Observable<score[]>;
   user$ = this.store.select(selectLoggedUser);
   isReadMore = true;
   importedDialogData!: number;
 
-  getShows(filmId: number) {
-    return this.filmService.getFilmShows(filmId);
-  }
-
+shows$ !: Observable<Showtest[]>
   showText() {
     this.isReadMore = !this.isReadMore;
   }
 
   ngOnInit(): void {
     this.score$ = this.scoreService.score$;
+    this.shows$ = this.filmService.getShowtest()
   }
 
   openScoreDialog(): void {
@@ -55,5 +56,9 @@ export class CardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.importedDialogData = result;
     });
+  }
+
+  returnShowById(shows:Showtest[], id:number){
+    return shows.filter(value => value.filmId == id)
   }
 }

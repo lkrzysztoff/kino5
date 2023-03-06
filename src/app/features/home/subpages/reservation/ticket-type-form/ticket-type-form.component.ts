@@ -3,21 +3,22 @@ import { Cart } from '../../../../../test/cart-interface';
 import { CartService } from '../../../../../test/cart.service';
 import { Showtest } from '../../../../../test/test.component';
 import { NgFor } from '@angular/common';
-import { NgModel, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-ticket-type-form [show][cart]',
   standalone: true,
-  imports: [NgFor, ReactiveFormsModule, FormsModule],
+  imports: [NgFor, ReactiveFormsModule, FormsModule, MatCardModule],
   templateUrl: './ticket-type-form.component.html',
   styleUrls: ['./ticket-type-form.component.scss'],
 })
 export class TicketTypeFormComponent implements OnInit {
-  cartService = inject(CartService);
-
   @Input() show!: Showtest;
   @Input() cart!: Cart;
+
+  cartService = inject(CartService);
   selectedTicket = '';
   ticketTypeChange(id: string, type: string, price: number) {
     this.cartService.updateSeatTypeAndPrice(id, type, price);

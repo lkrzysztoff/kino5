@@ -1,24 +1,5 @@
    
-<!-- <div class="order-completed-container">
-    <app-order-details></app-order-details>
-    <div class="details-container">
-    </div> 
-    <div class="title">
-        <h1 class="order-title"></h1>
-   
-    <div class="order-completed-info">
-        <div class="order-completed-userdata">
-            <p class="full-name">Imię: {{service.userdata.name}} {{service.userdata.surname}}</p>
-            <p class="email">Email: {{service.userdata.email}}</p>
-            <p class="phone">Numer telefonu : {{service.userdata.phone}} </p>
-            </div>
-            
-        </div>
-    </div>
-</div>
- --> -->
-
-  <div class="payment__body-container">
+<div class="payment__body-container">
     <div class="payment__container">
       <div class="payment__container-placement">
         <div class="payment__container-title">
@@ -30,7 +11,7 @@
                 <img class="payment__blik-logo-img" src="/assets/images/Blik_logo.jpg">
             </div>
             <div class="payment__input-container">
-              <form class="payment__form" *ngIf="cart$ | async as cart" (ngSubmit)="submit(cart)">  
+              <form class="payment__form" *ngIf="cart$ | async as cart" (ngSubmit)="submit()">  
                 <input
                 [formControl]="paymentControl"
                 [class.error]="paymentControl.touched && paymentControl.errors"
@@ -53,7 +34,7 @@
               <div class="modal-nav">
               </div>
               
-                <button type="submit" (click)="ticketService.addScore(obiekcik); " >Płacę!</button>
+                <button type="submit" (click)="ticketService.addScore(cartDTO); " >Płacę!</button>
               
               
              

@@ -5,6 +5,7 @@ import { MainDataSource } from 'src/app/model/main.datasource.service';
 import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { DateService } from '../../../../shared/ui-components/date-panel/date.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -15,6 +16,7 @@ export class HomePageComponent implements OnInit {
   filmService = inject(MainDataSource);
   orderManagmentService = inject(OrderManagmentService);
   dateService = inject(DateService);
+  activeRoute = inject(ActivatedRoute)
 
   selectedDate!: string;
   repertoire$!: Observable<repertoire[]>;
@@ -35,5 +37,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.repertoire$ = this.filmService.getRepertoire();
     this.films$ = this.filmService.getFilms();
+    this.selectedDate = this.activeRoute.snapshot.params['selectedDate'];
   }
 }

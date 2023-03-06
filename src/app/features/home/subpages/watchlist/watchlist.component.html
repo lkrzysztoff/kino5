@@ -1,7 +1,7 @@
-<div class="favlist__body" *ngIf="count$ | async as count">
+<div class="watchlist__body" *ngIf="count$ | async as count">
     <h1>Do obejrzenia ({{count.length}})</h1>
-    <div class="favlist__container" >
-        <mat-card class="favlist__card" *ngFor="let movie of count">
+    <div class="watchlist__container" >
+        <mat-card class="watchlist__card" *ngFor="let movie of count">
             <div class="text">
             <p class="title">{{movie.title }}</p>
             <p>{{ movie.genre }} | {{movie.length}} | {{movie.ageRest}}</p>

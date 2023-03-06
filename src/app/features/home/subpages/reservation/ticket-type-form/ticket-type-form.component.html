@@ -1,18 +1,20 @@
-<p>ticket-type-form works!</p>
-<select
-class="ticket-select"
-[(ngModel)]="selectedTicket"
-name="ticket-grade"
-id="ticket"
-(change)="
-  ticketTypeChange(
-    cart.id,
-    selectedTicket,
-    ticketPriceChange(selectedTicket)
-  )
-"
->
-<option *ngFor="let ticket of show.priceList" [value]="ticket.type">
-  {{ ticket.type }}
-</option>
-</select>
+<mat-card class="container">
+  <div>Wybrane miejsce to {{cart.seat.position}}, <span class="text">wybierz typ biletu</span></div>
+  <select
+    class="ticket-select"
+    [(ngModel)]="selectedTicket"
+    name="ticket-grade"
+    id="ticket"
+    (change)="
+      ticketTypeChange(
+        cart.id,
+        selectedTicket,
+        ticketPriceChange(selectedTicket)
+      )
+    "
+  >
+    <option *ngFor="let ticket of show.priceList" [value]="ticket.type">
+      {{ ticket.type }}
+    </option>
+  </select>
+</mat-card>

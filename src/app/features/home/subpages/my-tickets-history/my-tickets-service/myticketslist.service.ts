@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CartLine } from 'src/app/model/cart.model';
 import { Seat } from 'src/app/model/seat.model';
 import { Cart } from 'src/app/test/cart-interface';
 
 export interface orderHistory {
-  lines: CartLine[],
   itemCount: number,
   cartPrice: number
 }

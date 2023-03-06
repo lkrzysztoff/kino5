@@ -42,8 +42,8 @@ import { environment } from 'src/enviroment';
 import { AuthEffects } from './features/auth/store/auth.effects';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FavlistComponent } from './features/home/subpages/favlist/favlist.component';
-import { MyticketsComponent } from './features/home/subpages/watchlist/mytickets.component';
+import { WatchlistComponent } from './features/home/subpages/watchlist/watchlist.component';
+import { MyticketsComponent } from './features/home/subpages/my-tickets-history/my-tickets.component';
 import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './features/home/subpages/home-page/homepage.component';
 
@@ -63,6 +63,7 @@ import { TestComponent } from './test/test.component';
 import { MatSelectModule } from '@angular/material/select';
 import { TicketTypeFormComponent } from './features/home/subpages/reservation/ticket-type-form/ticket-type-form.component';
 
+
 export interface AppState {
   user: UserState;
 }
@@ -81,7 +82,7 @@ export interface AppState {
     DatePanelComponent,
     HomeComponent,
     AuthComponent,
-    FavlistComponent,
+    WatchlistComponent,
     MyticketsComponent,
     HomePageComponent,
     AdminComponent,

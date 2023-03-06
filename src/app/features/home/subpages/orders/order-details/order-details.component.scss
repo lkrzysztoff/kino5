@@ -1,51 +1,46 @@
-*{
-    font-size: 20px;
+* {
+  font-size: 20px;
 }
-.order{
-    display: inline;
+.order {
+  display: inline;
 }
-.sum{
-font-size:24px;
+.sum {
+  font-size: 24px;
 }
-.data-container{
-    margin-top: 30px;
-    min-width: 500px;
-    justify-content: center;
-    align-items: center;
+.data-container {
+  margin-top: 30px;
+  min-width: 500px;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    font-size: 14px;
-
-  
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  *{
-    font-size: 20px;
-  }
-  th{
-    border: 1px solid white;
-  }
-  .thTitle{
-    min-width: 220px;
-    background-color: #007FFF;
-    color: white;
-  }
-.sum{
- background-color: black !important;
- color: white;
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 14px;
 }
-.properClr{
-  background-color: #007FFF;
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+* {
+  font-size: 20px;
+}
+th {
+  border: 1px solid white;
+}
+.thTitle {
+  min-width: 220px;
+  background-color: #007fff;
+  color: white;
+}
+.sum {
+  background-color: black !important;
+  color: white;
+}
+.properClr {
+  background-color: #007fff;
   color: white;
 }
