@@ -11,7 +11,7 @@
                 <img class="payment__blik-logo-img" src="/assets/images/Blik_logo.jpg">
             </div>
             <div class="payment__input-container">
-              <form class="payment__form" *ngIf="cart$ | async as cart" (ngSubmit)="submit()">  
+              <form class="payment__form" *ngIf="cart$ | async as cart" (ngSubmit)="submit(cartDTO)">  
                 <input
                 [formControl]="paymentControl"
                 [class.error]="paymentControl.touched && paymentControl.errors"

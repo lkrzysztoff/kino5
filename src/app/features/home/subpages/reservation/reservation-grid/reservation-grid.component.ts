@@ -1,22 +1,22 @@
 import { Component, inject, OnInit, OnDestroy, Input } from '@angular/core';
-import { repertoire } from '../features/admin/pages/add-shows-admin/showform/showform.interface';
-import { MainDataSource } from '../model/main.datasource.service';
-import { Film } from '../model/film.model';
-import { Show } from '../model/show.model';
+import { repertoire } from '../../../../admin/pages/add-shows-admin/showform/showform.interface';
+import { FilmService } from '../../movies/film-service/film-service';
+import { Film } from '../../../../../shared/interfaces/film.interface';
+import { Show } from '../../../../../shared/interfaces/show.interface';
 import { filter, Observable, Subscription, switchMap } from 'rxjs';
 import { map } from 'rxjs';
-import { OrderManagmentService } from '../order-managment.service';
-import { Screen } from '../model/screen.model';
-import { priceType } from '../model/show.model';
-import { ReservationService } from '../features/home/subpages/reservation/reservation-service/reservation.service';
+import { OrderManagmentService } from '../../../../../order-managment.service';
+import { Screen } from '../../../../../shared/interfaces/screen.interface';
+import { priceType } from '../../../../../shared/interfaces/show.interface';
+import { ReservationService } from '../reservation-service/reservation.service';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { CartService } from './cart.service';
-import { Cart } from './cart-interface';
+import { CartService } from '../../../../../shared/services/cart.service';
+import { Cart } from '../../../../../shared/interfaces/cart-interface';
 import { MatSelectModule } from '@angular/material/select';
 import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { selectLoggedUser } from '../core/store/user.selectors';
+import { selectLoggedUser } from '../../../../../core/store/user.selectors';
 
 export interface testFilm {
   title: string;
@@ -42,18 +42,18 @@ export interface Showtest {
 const numbersArray: number[] = [];
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
+  selector: 'app-reservation-grid',
+  templateUrl: './reservation-grid.component.html',
   standalone: true,
   imports: [NgClass, NgFor, NgIf, AsyncPipe],
-  styleUrls: ['./test.component.scss'],
+  styleUrls: ['./reservation-grid.component.scss'],
 })
 export class TestComponent implements OnInit {
   @Input() show!: Showtest;
   @Input() date!: string;
   @Input() film!: Film;
 
-  service = inject(MainDataSource);
+  service = inject(FilmService);
   reservationService = inject(ReservationService);
   repertoire!: repertoire[];
   shows!: Show[];
@@ -101,6 +101,10 @@ export class TestComponent implements OnInit {
     this.cartService.addToCart$$(ticketDTO);
   }
 
+  checkReserved(seat: string,show:Showtest) {
+    return show.reservedSeats.includes(seat);
+  }
+
   dodajtest(seat: string, showId: number) {
     this.seatForm.markAllAsTouched();
     if (this.seatForm.invalid) {
@@ -115,11 +119,6 @@ export class TestComponent implements OnInit {
   isFormValid() {
     return this.seatForm.invalid;
   }
-  getShows() {
-    return this.service.getRepertoire().subscribe((value) => {
-      this.repertoire = value;
-    });
-  }
 
   getShowByDate(date: string) {
     return this.repertoire
@@ -129,11 +128,7 @@ export class TestComponent implements OnInit {
       .pop();
   }
 
-  getFilms() {
-    return this.service.getShows().subscribe((value) => {
-      this.shows = value;
-    });
-  }
+  
 
   private properFilms(films: Film[]): testFilm[] {
     return films.map((films) => ({
@@ -168,8 +163,8 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getShows();
-    this.getFilms();
+
+   
     // this.films$ = this.service.getFilms().pipe(
     //   map((films) => this.dataService.properFilms(films))
 
@@ -200,19 +195,12 @@ export class TestComponent implements OnInit {
   //   this.getFilmsByRepertoires(this.getShowByDate('28/02'));
   // }
 
-  // getFilmsByShow() {
-  //   return this.service.getFilms().subscribe((value) => {
-  //     this.filmsAll = value;
-  //   });
-  // }
+ 
 
   //   )
   // }
 
-  // getFilmsByShow(id:number){
-  //  return this.service.getFilms().pipe(map(filter(response => response.id == id))).subscribe(
-  //   response => console.log(response)
-  // } )
+
 
   get vid$() {
     return this.service.getFilms();

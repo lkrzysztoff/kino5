@@ -22,6 +22,13 @@ import { OrderGuard } from 'src/app/shared/guards/order-guard';
           {
             path: '',
             component: HomePageComponent,
+            children:[
+              {
+                path: 'home/:selectedDate',
+                component: HomePageComponent,
+               
+              },
+            ]
            
           },
           {
@@ -36,7 +43,6 @@ import { OrderGuard } from 'src/app/shared/guards/order-guard';
           },
         ],
       },
-      // path: 'reservation/:selectedDate/:showId',
       {
         path: 'reservation/:selectedDate/:showId',
         // path: 'reservation/:selectedDate',

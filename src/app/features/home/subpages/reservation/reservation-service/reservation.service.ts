@@ -1,13 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Cart } from 'src/app/test/cart-interface';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
 import { __values } from 'tslib';
 import { TemporaryReserved } from '../temporary-reserved.interface';
+import { HttpClient } from '@angular/common/http';
+ 
+
+const PROTOCOL = 'http';
+const PORT = 3000;
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReservationService {
+  private http = inject(HttpClient)
   temporaryReservedSeats$$ = new BehaviorSubject<TemporaryReserved[]>([]);
 
   get temporaryReservedSeats$() {
@@ -23,6 +30,13 @@ export class ReservationService {
         seat,
       ]);
     }
+  }
+
+  reserveSeat(arr: string,showId:number) {
+    return this.http
+      .patch(this.baseUrl+'show/'+showId,{
+        "reservedSeats":arr
+      }).subscribe(value => console.log(value))
   }
 
   removeFromTemporaryReservedSeats(seat: TemporaryReserved) {
@@ -50,5 +64,9 @@ export class ReservationService {
     return this.temporaryReservedSeats$$.value.some(
       (value) => (value.seat = seat.seat)
     );
+  }
+  baseUrl!: string
+  constructor() {
+    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
 }

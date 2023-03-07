@@ -1,16 +1,27 @@
 
-<form [formGroup]="repertoireForm" *ngIf="data&&films$ | async as films">
+<form [formGroup]="showForm" *ngIf="data&&films$ | async as films">
   <h1 >Data {{data.date}} Sala {{data.sala}}</h1>
-    <mat-form-field appearance="fill">
-        <mat-label>Godzina</mat-label>
-        <input matInput placeholder="img" type="hour" formControlName="hour" required />
-        <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-      </mat-form-field>
       
         <label>Film</label>
-        <select >
-          <option *ngFor="let film of films">{{film.title}}</option>
+        <select formControlName="filmId">
+          <option [ngValue]="film.id" *ngFor="let film of films">{{film.title}}</option>
         </select>
-          
-<!-- <button (click)="getRepertoire()">KLIK</button> -->
+        <label>Godzina</label>
+        <input type="time" min="08:00" max="12:00" formControlName="hour">
+        <label>Data</label>
+        <input type="date" formControlName="date">
+        <div *ngIf="repertoire$ | async as repertoire">
+          <div *ngFor="let oneDayRepertoire of filterRepertoireByDate(repertoire,data.date)">{{oneDayRepertoire.shows}}
+            <!-- <div *ngFor="let showsInChosenScreen of filterShowsByScreen(oneDayRepertoire.shows,data.sala)"></div> -->
+            <div *ngFor="let id of oneDayRepertoire.shows">
+              <div *ngIf="shows$ | async as shows">
+                <div *ngFor="let show of filterShowById(shows,id,data.sala)">{{show.hour}}</div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <button (click)="submit()">Klik</button>
+        
+<button (click)="klik()">KLIK</button>
 

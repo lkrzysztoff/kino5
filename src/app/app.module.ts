@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ModelModule } from './model/model.module';
 import { AppComponent } from './app.component';
 import { OrderComponent } from './features/home/subpages/orders/order/order.component';
 import { HeaderComponent } from './shared/ui-components/header/header.component';
@@ -59,10 +58,9 @@ import { ScoredialogComponent } from './features/home/subpages/movies/scoredialo
 import { AddshowsadminComponent } from './features/admin/pages/add-shows-admin/add-shows-admin';
 import { ShowformComponent } from './features/admin/pages/add-shows-admin/showform/showform.component';
 import { NumberMaxLengthDirective } from './shared/guards/directives/numbermaxlength.directive';
-import { TestComponent } from './test/test.component';
+import { TestComponent } from './features/home/subpages/reservation/reservation-grid/reservation-grid.component';
 import { MatSelectModule } from '@angular/material/select';
 import { TicketTypeFormComponent } from './features/home/subpages/reservation/ticket-type-form/ticket-type-form.component';
-
 
 export interface AppState {
   user: UserState;
@@ -94,7 +92,6 @@ export interface AppState {
     NumberMaxLengthDirective,
   ],
   imports: [
-    ModelModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -150,6 +147,6 @@ export interface AppState {
 })
 export class AppModule {}
 
-export interface userPosts {
-  posts: [id: number, title: string, author: string];
-}
+// export interface userPosts {
+//   posts: [id: number, title: string, author: string];
+// }

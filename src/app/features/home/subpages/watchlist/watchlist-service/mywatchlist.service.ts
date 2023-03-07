@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, filter } from 'rxjs';
-import { Film } from 'src/app/model/film.model';
+import { Film } from 'src/app/shared/interfaces/film.interface';
 @Injectable({
   providedIn: 'root',
 })

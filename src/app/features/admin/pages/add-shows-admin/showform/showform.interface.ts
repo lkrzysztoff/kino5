@@ -1,5 +1,5 @@
 export interface showformInput{
-sala:string,
+sala:number,
 date:string,
 }
 

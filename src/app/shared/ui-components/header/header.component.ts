@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 import { selectLoggedUser } from 'src/app/core/store/user.selectors';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { CartService } from 'src/app/test/cart.service';
-import { Cart } from 'src/app/test/cart-interface';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,12 +23,12 @@ export class HeaderComponent implements OnInit {
   private store = inject(Store);
   private router = inject(Router);
   private cookieService = inject(CookieService);
-  cartService = inject(CartService)
+  cartService = inject(CartService);
   user$ = this.store.select(selectLoggedUser);
-  cart$ !: Observable<Cart[]>
+  cart$!: Observable<Cart[]>;
 
   ngOnInit(): void {
-    this.cart$ = this.cartService.cart$
+    this.cart$ = this.cartService.cart$;
   }
   logout() {
     this.router.navigate(['/']).then(() => {
@@ -36,7 +36,5 @@ export class HeaderComponent implements OnInit {
       this.cookieService.delete('token');
     });
   }
-  log() {
-    console.log(this.user$.subscribe((data) => console.log(data)));
-  }
+  
 }

@@ -261,3 +261,11 @@
     align-items: center;
     flex-direction: column;
   }
+  .title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid gray;
+    margin-bottom: 20px;
+   
+  }

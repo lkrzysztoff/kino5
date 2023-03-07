@@ -1,23 +1,26 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Film } from './film.model';
-import { Show } from './show.model';
-import { Screen } from './screen.model';
-import { Order } from './order.model';
-import { movie } from '../features/admin/pages/add-movies-admin/movie.interface';
-import { repertoire } from '../features/admin/pages/add-shows-admin/showform/showform.interface';
-import { OrderManagmentService } from '../order-managment.service';
+import { Film } from 'src/app/shared/interfaces/film.interface';
+import { Show } from 'src/app/shared/interfaces/show.interface';
+import { Screen } from 'src/app/shared/interfaces/screen.interface';
+
+import { movie } from 'src/app/features/admin/pages/add-movies-admin/movie.interface';
+import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
+import { OrderManagmentService } from 'src/app/order-managment.service';
 import { map, pipe } from 'rxjs';
 import { shareReplay } from 'rxjs';
-import { Showtest } from '../test/test.component';
-import { Cart } from '../test/cart-interface';
+import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
 
-@Injectable()
-export class MainDataSource {
+@Injectable({
+  providedIn: 'root',
+})
+export class FilmService {
   baseUrl: string;
   auth_token?: string;
   dataService = inject(OrderManagmentService);
@@ -39,13 +42,10 @@ export class MainDataSource {
   //     return this.http.post<Order>(this.baseUrl + "orders", order);
   // }
 
-  adminAddMovie(movie: movie) {
-    return this.http.post<movie>(this.baseUrl + 'films', movie);
+  adminAddMovie(film: movie) {
+    return this.http.post<movie>(this.baseUrl + 'films', film);
   }
 
-  addOrderToBase(order: Cart[]){
-    return this.http.post<Cart[]>(this.baseUrl+ 'orders',order)
-  }
   getRepertoire() {
     return this.http.get<repertoire[]>(this.baseUrl + 'repertoire');
   }
@@ -58,9 +58,9 @@ export class MainDataSource {
     return this.http.get<Film[]>(this.baseUrl + 'films/' + id);
   }
 
-  getShowtest(){
-    return this.http.get<Showtest[]>(this.baseUrl+'show')
+  getShowtest() {
+    return this.http.get<Showtest[]>(this.baseUrl + 'show');
   }
-  
 
+  
 }

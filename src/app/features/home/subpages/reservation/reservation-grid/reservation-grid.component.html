@@ -115,8 +115,9 @@
 </div> -->
 
 
-
-    <h1>Films specs {{ film.title }} {{ show.hour }} {{ show.screen }}</h1>
+  <div class="title-container"><h1>Tytuł filmu: {{ film.title }} | godzina: {{ show.hour }} |
+     sala: {{ show.screen }}</h1></div>
+    
     <div class="reservation-grid-net" *ngIf="user$ | async as user">
     <div  *ngIf="screen$ | async as screens">
       <div
@@ -147,11 +148,14 @@
               addedToReservation:
                 cartService.doesCartHave(letter + (numberIndex + 1),show.id)
             }"
-          >
+            [disabled]="checkReserved(letter + (numberIndex + 1),show)"
+          > 
             {{ number }}
             <!-- <button (click)="reservationService.check({seat:letter + (numberIndex + 1),showId:show.id});reservationService.removeFromTemporaryReservedSeats({seat:letter + (numberIndex + 1),showId:show.id})">test</button> -->
           </button>
+          
         </div>
+        
       </div>
 
 

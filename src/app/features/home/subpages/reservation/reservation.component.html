@@ -1,171 +1,27 @@
-<!-- <div class="rsrv">
-  <div class="box">
-    <div class="reservation__title-box">
-      <h1 class="reservation__title">
-        {{ film?.title }} <br />| {{ selectedDate }} | {{ showId }}
-      </h1>
- -->
-
-<!-- 
-    </div>
-    <div class="reservation__display">
-      <span class="reservation__ekran">Ekran {{ screen.name }}</span>
-    </div>
-    <div class="reservation__container">
-      <div class="reservation__net">
-        <div
-          class="reservation__letters"
-          *ngFor="let letter of letters; let a = index"
-        >
-          <div class="ltr">{{ letter }}</div>
-          <div>
-            <button
-              id="{{ a + i }}"
-              class="reservation__number"
-              [disabled]="checkReserved(letter + (i + 1))"
-              *ngFor="let number of numbers; let i = index"
-              (click)="seatReturn(i, a)"
-              (click)="ticket()"
-              (click)="reservationService.addToTemporaryReservedSeats(letter + (i + 1))"
-              [ngClass]="{'addedToReservation' : reservationService.isSeatInTemporaryReserved(letter + (i + 1))}"
+<div class="window">
+  <div class="reservation__display" *ngIf="show$ | async as shows">
+    <div *ngFor="let show of returnShowById(shows, showId)">
+      <div *ngIf="films$ | async as films">
+        <div *ngFor="let film of returnFilmsById(films, show.filmId)">
+          <app-reservation-grid
+            [film]="film"
+            [date]="selectedDate"
+            [show]="show"
+          ></app-reservation-grid>
+          <div *ngIf="cart$ | async as cart">
+            <app-ticket-type-form
+              *ngFor="
+                let cartItem of cartService.filterCartByShowId(cart, show.id)
+              "
+              [show]="show"
+              [cart]="cartItem"
             >
-              {{ number }}
-            </button>
-            
-          </div>
+          </app-ticket-type-form>
+          </div> 
         </div>
       </div>
-    </div> -->
--->
-<!-- </div> -->
-<!-- 
-    <div class="seats-title"><p>Wybieranie miejsca</p></div>
-    <div class="reservation-panel__order-container" *ngIf="reservationBuffer">
-      <mat-card class="card">
-        <div class="reservation-panel__order-container-chosen-seats">
-          Wybrane miejsce {{ reservationBuffer.name }}
-
-          <mat-label>Wybierz typ biletu</mat-label>
-          <select (change)="priceTypeChange($event)">
-            <option *ngFor="let priceType of show.priceList">
-              {{ priceType.type }} {{ priceType.price }}
-            </option>
-          </select>
-
-          <div class="btns-div">
-            <button
-              (click)="prank()"
-              mat-raised-button
-              (click)="addToReservationBuffer(); addToReserved()"
-            >
-              Dodaj</button
-            >&nbsp;&nbsp;
-            <button mat-raised-button (click)="clearReservationBuffer()">
-              🗑
-            </button>
-          </div>
-        </div>
-      </mat-card>
-    </div>
-    <div class="list-container" *ngIf="seatDisplay().length">
-      <mat-list class="list"
-        >Twoje Rezerwacje ({{ seatDisplay().length }})
-        <mat-list-item
-          class="list-item"
-          *ngFor="let line of seatDisplay(); let i = index"
-        >
-          Wybrane miejsce {{ line.seat.name }} {{ line.seat.price.type }}
-          {{ line.seat.price.price }}
-          <button
-            class="btn-remove"
-            mat-raised-button
-            (click)="cart.removeLine(line.seat.show_id, line.seat.name)"
-          >
-            🗑
-          </button>
-          <mat-divider></mat-divider>
-        </mat-list-item>
-        <div class="btn-order-container">
-          <button
-            class="btn-order"
-            mat-raised-button
-            *ngIf="cart.lines.length"
-            routerLink="/order"
-          >
-            Złóż zamówienie
-          </button>
-        </div>
-      </mat-list>
     </div>
   </div>
-</div> -->
-
-<h1>Films specs {{ selectedDate }} {{ showId }}</h1>
-<div class="reservation__display" *ngIf="show$ | async as shows">
-  <div *ngFor="let show of returnShowById(shows, showId)">
-    <div *ngIf="films$ | async as films">
-      <div *ngFor="let film of returnFilmsById(films, show.filmId)">
-        <app-test [film]="film" [date]="selectedDate" [show]="show"></app-test>
-        <div *ngIf="cart$ | async as cart">
-          <app-ticket-type-form *ngFor="let cartItem of cartService.filterCartByShowId(cart,show.id)" [show]="show" [cart]="cartItem"></app-ticket-type-form>
-      </div>
-
-            <div
-              *ngIf="temporaryReservedSeats$ | async as temporaryReservedSeats"
-            >
-              <div *ngFor="let temporaryReservedSeat of filterTemporaryReservedByShowId(temporaryReservedSeats,show.id)">
-                Wybrane miejsce: {{ temporaryReservedSeat.seat }}
-                <!-- <form
-                  [formGroup]="seatForm"
-                  (ngSubmit)="dodajtest(temporaryReservedSeat.seat, show.id)"
-                >
-                  <select formControlName="ticketType" required (change)="
-                  handleTicketTypeChange(
-                    temporaryReservedSeat.seat,
-                    temporaryReservedSeat.seat,
-                    selectTicketPrice(selectedTicket)
-                  )
-                ">
-                    <option value="" disabled selected>
-                      Wybierz typ biletu
-                    </option>
-                    <option
-                      *ngFor="let price of show.priceList"
-                      [ngValue]="[price.type, price.price]"
-                    >
-                      {{ price.type }} {{ price.price }}
-                    </option>
-                  </select>
-                  <button
-                    
-                    [disabled]="
-                      cartService.doesCartHave(temporaryReservedSeat.seat)
-                    "
-                    [disabled]="isFormValid()"
-                    type="submit"
-                  >
-                    Zatwierdź
-                  </button>
-                  <button
-                    *ngIf="cart$ | async as cart"
-                    (click)="
-                      cartService.removeFromCart(temporaryReservedSeat.seat);
-                      reservationService.removeFromTemporaryReservedSeats(
-                        temporaryReservedSeat
-                      )
-                    "
-                  >
-                    Usun
-                  </button>
-                </form> -->
-              
-                
-              </div>
-            </div>
-            <button 
-            routerLink="/order"
-            >Zamawiam!</button>
-          </div>
-        </div>
-     </div>
-     </div>
+  <button class="order-nav" routerLink="/order" >Zamawiam!</button>
+  
+</div>

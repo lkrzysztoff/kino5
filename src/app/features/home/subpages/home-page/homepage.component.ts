@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Film } from '../../../../model/film.model';
+import { Film } from '../../../../shared/interfaces/film.interface';
 import { Observable } from 'rxjs';
-import { MainDataSource } from 'src/app/model/main.datasource.service';
 import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { DateService } from '../../../../shared/ui-components/date-panel/date.service';
 import { ActivatedRoute } from '@angular/router';
+import { FilmService } from '../movies/film-service/film-service';
 
 @Component({
   selector: 'app-homepage',
@@ -13,10 +13,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  filmService = inject(MainDataSource);
+  filmService = inject(FilmService);
   orderManagmentService = inject(OrderManagmentService);
   dateService = inject(DateService);
-  activeRoute = inject(ActivatedRoute)
+  activeRoute = inject(ActivatedRoute);
 
   selectedDate!: string;
   repertoire$!: Observable<repertoire[]>;

@@ -6,12 +6,10 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Cart } from 'src/app/test/cart-interface';
-import {
-  MyticketslistService,
-} from 'src/app/features/home/subpages/my-tickets-history/my-tickets-service/myticketslist.service';
-import { CartService } from 'src/app/test/cart.service';
-import { MainDataSource } from 'src/app/model/main.datasource.service';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
+import { MyticketslistService } from 'src/app/features/home/subpages/my-tickets-history/my-tickets-service/myticketslist.service';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { FilmService } from '../../movies/film-service/film-service';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -24,7 +22,7 @@ const PORT = 3000;
 export class OrderCompletedComponent implements OnInit {
   baseUrl!: string;
 
-  filmService = inject(MainDataSource);
+  filmService = inject(FilmService);
   ticketService = inject(MyticketslistService);
   cartService = inject(CartService);
 
@@ -55,10 +53,18 @@ export class OrderCompletedComponent implements OnInit {
     ],
   });
 
-  submit() {
+  submit(order:Cart[]) {
     this.paymentControl.markAllAsTouched();
     if (this.paymentControl.touched && this.paymentControl.valid) {
+      this.sendOrderToBase(order).subscribe(
+        value => console.log(value)
+      )
+      this.cartService.clearCart()
       this.router.navigate(['/qrcode']);
     } else return;
+  }
+
+  sendOrderToBase(order:Cart[]){
+    return this.cartService.addOrderToBase(order)
   }
 }

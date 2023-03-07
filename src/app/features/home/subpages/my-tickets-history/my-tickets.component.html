@@ -1,35 +1,42 @@
-<div class="mytickets__body" *ngIf="mytickets$ | async as mytickets ">
+<div class="mytickets">
+<div class="mytickets__body" *ngIf="orders$ | async as orders">
     <div class="mytickets__container">
-        <h1 class="mytickets__title">Twoje zamówienia ({{mytickets.length}})</h1>
-        <mat-card class="crd" *ngFor="let myticket of mytickets">
+        <h1 class="mytickets__title">Twoje zamówienia ({{orders.length}})</h1>
+        <mat-card class="crd" *ngFor="let order of orders">
             <div class="mytickets__content">
-                <table *ngFor="let mytickett of myticket">
-                    <tr>
+                <table >
+                    <tr> {{order | keyvalue}}
                         <th>Tytuł filmu</th>
                         <th>Fotel</th>
                         <th>Typ biletu</th>
                         <th>Suma</th>
                         <th>Data</th>
                     </tr>
-                    <tr >
-                        <th>{{mytickett.movieTitle}}</th>
-                        <th>{{mytickett.seat.position}}</th>
-                        <th>{{mytickett.seat.type}}</th>
-                        <th>{{mytickett.seat.price}}</th>
-                        <th>{{mytickett.date}}</th>
-                    </tr>
+                    <!-- <tr *ngFor="let oneorder of order">
+                        <th>{{oneorder.movieTitle}}</th> -->
+                        <!-- <th>{{oneorder.seat.position}}</th>
+                        <th>{{oneorder.seat.type}}</th>
+                        <th>{{oneorder.seat.price}}PLN</th> -->
+                        <!-- <th>{{oneorder.date}}</th>
+                    </tr> -->
                 </table>
 
                 <table class="sum">
                     <tr>
-                        <th class="bg-grn">Łącznie biletów</th>
-                        <th class="bg-grn">Kwota za całość</th>
+                        <th class="bg-grn">Łącznie biletów </th>
+                        <!-- <th class="bg-grn">Kwota za całość {{getFullPrice(order)}}PLN</th> -->
                     </tr>
-                    <!-- <th class="bg-grn1">{{myticket.itemCount}}</th>
+                    <!-- < <th class="bg-grn1">{{myticket.itemCount}}</th>
                     <th class="bg-grn1">{{myticket.cartPrice}} PLN</th>
-                    <p>Płatność została zrealizowana</p>  -->
+                    <p>Płatność została zrealizowana</p>  --> -->
                 </table>
 
-            </div>
+            </div> -->
             </mat-card>
 </div>
+</div> 
+
+<div *ngIf="orders$ | async as orders">
+
+        <div></div>
+    </div>

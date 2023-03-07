@@ -173,12 +173,7 @@
       "id": 3,
       "screen": 2,
       "hour": "10.30",
-      "reservedSeats": [
-        "H5",
-        "H6",
-        "I3",
-        "I7"
-      ],
+      "reservedSeats": "H5",
       "priceList": [
         {
           "type": "Normalny",
@@ -197,7 +192,7 @@
     },
     {
       "id": 4,
-      "hour": "14.30",
+      "hour": "08:00",
       "screen": 1,
       "reservedSeats": [
         "G10",
@@ -223,37 +218,8 @@
       "filmId": 1
     },
     {
-      "id": 5,
-      "hour": "18.30",
-      "screen": 0,
-      "reservedSeats": [
-        "A7",
-        "A6",
-        "D2",
-        "D4",
-        "E7",
-        "E10",
-        "F1"
-      ],
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "filmId": 18
-    },
-    {
       "id": 6,
-      "hour": "14.30",
+      "hour": "11.00",
       "screen": 1,
       "reservedSeats": [
         "G10",
@@ -426,15 +392,7 @@
     {
       "hour": "18.30",
       "screen": 2,
-      "reservedSeats": [
-        "A7",
-        "A6",
-        "D2",
-        "D4",
-        "E7",
-        "E10",
-        "F1"
-      ],
+      "reservedSeats": "H16",
       "priceList": [
         {
           "type": "Normalny",
@@ -569,17 +527,22 @@
       "id": 16
     },
     {
-      "hour": "18.30",
-      "screen": 1,
-      "reservedSeats": [
-        "A7",
-        "A6",
-        "D2",
-        "D4",
-        "E7",
-        "E10",
-        "F1"
+      "filmId": 10,
+      "hour": "17:17",
+      "date": "2023-03-22",
+      "priceList": [
+        "Normalny"
       ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 18
+    },
+    {
+      "filmId": 13,
+      "hour": "17:30",
+      "date": "2023-03-08",
       "priceList": [
         {
           "type": "Normalny",
@@ -594,8 +557,227 @@
           "price": 20
         }
       ],
-      "filmId": 16,
-      "id": 17
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 19
+    },
+    {
+      "filmId": 12,
+      "hour": "20:38",
+      "date": "2023-03-21",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 20
+    },
+    {
+      "filmId": 10,
+      "hour": "18:37",
+      "date": "2023-03-15",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 21
+    },
+    {
+      "filmId": 12,
+      "hour": "18:50",
+      "date": "2023-03-21",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 22
+    },
+    {
+      "filmId": 12,
+      "hour": "16:38",
+      "date": "2023-03-28",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 23
+    },
+    {
+      "filmId": 12,
+      "hour": "20:45",
+      "date": "2023-03-20",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 24
+    },
+    {
+      "filmId": 12,
+      "hour": "18:45",
+      "date": "2023-03-08",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 25
+    },
+    {
+      "filmId": 12,
+      "hour": "17:42",
+      "date": "2023-03-28",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 26
+    },
+    {
+      "filmId": 13,
+      "hour": "17:45",
+      "date": "2023-03-28",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 27
+    },
+    {
+      "filmId": 13,
+      "hour": "21:49",
+      "date": "2023-03-29",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
+      ],
+      "reservedSeats": [
+        "A10"
+      ],
+      "screen": 2,
+      "id": 28
     }
   ],
   "films": [
@@ -838,16 +1020,6 @@
       ]
     },
     {
-      "id": 1,
-      "date": "01/03",
-      "shows": [
-        7,
-        5,
-        11,
-        14
-      ]
-    },
-    {
       "id": 2,
       "date": "02/03",
       "shows": [
@@ -912,178 +1084,123 @@
         9,
         17
       ]
+    },
+    {
+      "date": "08/03",
+      "shows": 4,
+      "id": 8
+    },
+    {
+      "date": "08/03",
+      "shows": [
+        4
+      ],
+      "id": 9
+    },
+    {
+      "date": "08/03",
+      "shows": [
+        5,
+        4,
+        2,
+        3,
+        7,
+        9
+      ],
+      "id": 10
     }
   ],
   "orders": [
     [
       {
-        "id": "G13",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "G13",
-          "price": 30,
-          "type": "Normalny"
-        }
-      },
-      {
-        "id": "F13",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "F13",
-          "price": 30,
-          "type": "Normalny"
-        }
-      },
-      {
-        "id": "E13",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "E13",
-          "price": 30,
-          "type": "Normalny"
-        }
+        "0": {
+          "id": "G10",
+          "email": "krzychu@kino.pl",
+          "showId": 12,
+          "date": "07-03",
+          "hour": "18.30",
+          "movieTitle": "Requiem dla snu",
+          "screen": 2,
+          "seat": {
+            "position": "G10",
+            "price": 30,
+            "type": "Normalny"
+          }
+        },
+        "1": {
+          "id": "F9",
+          "email": "krzychu@kino.pl",
+          "showId": 12,
+          "date": "07-03",
+          "hour": "18.30",
+          "movieTitle": "Requiem dla snu",
+          "screen": 2,
+          "seat": {
+            "position": "F9",
+            "price": 30,
+            "type": "Normalny"
+          }
+        },
+        "2": {
+          "id": "E10",
+          "email": "krzychu@kino.pl",
+          "showId": 12,
+          "date": "07-03",
+          "hour": "18.30",
+          "movieTitle": "Requiem dla snu",
+          "screen": 2,
+          "seat": {
+            "position": "E10",
+            "price": 30,
+            "type": "Normalny"
+          }
+        },
+        "id": 1
       }
     ],
-    [
-      {
-        "id": "G7",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "G7",
-          "price": 15,
-          "type": "Ulgowy"
-        }
-      },
-      {
-        "id": "F6",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "F6",
-          "price": 15,
-          "type": "Ulgowy"
-        }
-      },
-      {
-        "id": "E6",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "E6",
-          "price": 15,
-          "type": "Ulgowy"
-        }
-      }
-    ],
-    [
-      {
-        "id": "G7",
+    {
+      "0": {
+        "id": "D5",
         "email": "krzychu@kino.pl",
         "showId": 12,
-        "date": "06-03",
+        "date": "07-03",
         "hour": "18.30",
         "movieTitle": "Requiem dla snu",
         "screen": 2,
         "seat": {
-          "position": "G7",
+          "position": "D5",
           "price": 30,
           "type": "Normalny"
         }
       },
-      {
-        "id": "F8",
+      "1": {
+        "id": "D8",
         "email": "krzychu@kino.pl",
         "showId": 12,
-        "date": "06-03",
+        "date": "07-03",
         "hour": "18.30",
         "movieTitle": "Requiem dla snu",
         "screen": 2,
         "seat": {
-          "position": "F8",
+          "position": "D8",
           "price": 30,
           "type": "Normalny"
         }
       },
-      {
-        "id": "F9",
+      "2": {
+        "id": "D9",
         "email": "krzychu@kino.pl",
         "showId": 12,
-        "date": "06-03",
+        "date": "07-03",
         "hour": "18.30",
         "movieTitle": "Requiem dla snu",
         "screen": 2,
         "seat": {
-          "position": "F9",
+          "position": "D9",
           "price": 30,
           "type": "Normalny"
         }
       }
-    ],
-    [
-      {
-        "id": "I7",
-        "email": "",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "I7",
-          "price": 30,
-          "type": "Normalny"
-        }
-      },
-      {
-        "id": "H8",
-        "email": "",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "H8",
-          "price": 30,
-          "type": "Normalny"
-        }
-      },
-      {
-        "id": "H9",
-        "email": "",
-        "showId": 12,
-        "date": "06-03",
-        "hour": "18.30",
-        "movieTitle": "Requiem dla snu",
-        "screen": 2,
-        "seat": {
-          "position": "H9",
-          "price": 30,
-          "type": "Normalny"
-        }
-      }
-    ]
+    }
   ]
 }

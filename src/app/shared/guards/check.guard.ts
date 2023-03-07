@@ -15,8 +15,7 @@ export class CheckGuard implements CanActivate {
     } else {
       this.router.navigate(['/auth/signin']).then(
         () =>  window.location.reload(),
-      ),
-      this.cookieService.deleteAll()
+      )
       return false
     }
   }

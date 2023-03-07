@@ -3,22 +3,22 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Film } from './film.model';
-import { MainDataSource } from './main.datasource.service';
-import { Show } from './show.model';
-import { Screen } from './screen.model';
-import { movie } from '../features/admin/pages/add-movies-admin/movie.interface';
+import { Film } from 'src/app/shared/interfaces/film.interface';
+import { Show } from 'src/app/shared/interfaces/show.interface';
+import { Screen } from 'src/app/shared/interfaces/screen.interface';
+import { FilmService } from './film-service';
+import { movie } from 'src/app/features/admin/pages/add-movies-admin/movie.interface';
 
-describe('MainDataSource', () => {
-  let dataSource: MainDataSource;
+describe('FilmService', () => {
+  let dataSource: FilmService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MainDataSource],
+      providers: [FilmService],
     });
-    dataSource = TestBed.inject(MainDataSource);
+    dataSource = TestBed.inject(FilmService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -135,7 +135,7 @@ describe('MainDataSource', () => {
       genre: 'Comedy',
       length: '90 min',
       ageRest: 'PG-13',
-      premier: '2023-03-01',
+      premier: 'boolean',
       score: '7.5',
       description: 'A funny movie for testing purposes',
     };

@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Cart } from '../../../../../test/cart-interface';
-import { CartService } from '../../../../../test/cart.service';
-import { Showtest } from '../../../../../test/test.component';
+import { Cart } from '../../../../../shared/interfaces/cart-interface';
+import { CartService } from '../../../../../shared/services/cart.service';
+import { Showtest } from '../reservation-grid/reservation-grid.component';
 import { NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,6 @@ export class TicketTypeFormComponent implements OnInit {
   selectedTicket = '';
   ticketTypeChange(id: string, type: string, price: number) {
     this.cartService.updateSeatTypeAndPrice(id, type, price);
-    this.cartService.cart$.subscribe(console.log);
   }
 
   ticketPriceChange(selectedTicket: string) {

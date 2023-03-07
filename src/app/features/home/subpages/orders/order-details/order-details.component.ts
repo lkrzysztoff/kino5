@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, inject } from '@angular/core';
-import { CartService } from 'src/app/test/cart.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { Observable } from 'rxjs';
-import { Cart } from 'src/app/test/cart-interface';
-import { MainDataSource } from 'src/app/model/main.datasource.service';
-import { Film } from 'src/app/model/film.model';
-import { Showtest } from 'src/app/test/test.component';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
+import { FilmService } from '../../movies/film-service/film-service';
+import { Film } from 'src/app/shared/interfaces/film.interface';
+import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
 
 @Component({
   selector: 'app-order-details',
@@ -13,7 +13,7 @@ import { Showtest } from 'src/app/test/test.component';
 })
 export class OrderDetailsComponent implements OnInit {
   cartService = inject(CartService);
-  service = inject(MainDataSource);
+  service = inject(FilmService);
 
   cart$!: Observable<Cart[]>;
   films$!: Observable<Film[]>;

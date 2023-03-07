@@ -4,11 +4,14 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { MainDataSource } from '../../../../model/main.datasource.service';
+import { FilmService } from 'src/app/features/home/subpages/movies/film-service/film-service';
 import { HttpClient } from '@angular/common/http';
-import { Film } from '../../../../model/film.model';
+import { Film } from '../../../../shared/interfaces/film.interface';
 import { movie } from './movie.interface';
 import { NumberMaxLengthDirective } from '../../../../shared/guards/directives/numbermaxlength.directive';
+import { AdminFilmService } from '../../services/admin-film.service';
+import { Store } from '@ngrx/store';
+import { addFilmsActions } from '../../store/admin.actions';
 
 @Component({
   selector: 'app-addmoviesadmin',
@@ -17,10 +20,11 @@ import { NumberMaxLengthDirective } from '../../../../shared/guards/directives/n
 })
 export class AddmoviesadminComponent {
   private formBuilder = inject(NonNullableFormBuilder);
-  public service = inject(MainDataSource);
+  public service = inject(AdminFilmService);
   movieFormValue!: movie;
-
+  private store = inject (Store)
   movieForm = this.createMovieForm();
+  admin$ = this.store.select('AdminFilm')
 
   private createMovieForm() {
     const form = this.formBuilder.group({
@@ -39,19 +43,11 @@ export class AddmoviesadminComponent {
   }
 
   addMovieFormSubmit() {
-    this.movieForm.markAllAsTouched();
-    if (this.movieForm.invalid) {
-      return;
-    }
-    this.service
-      .adminAddMovie(this.movieForm.getRawValue())
-      .subscribe((value) => {
-        alert('Dodano film pod tytułem ' + value.title);
-      });
-    // alert("Dodano film do bazy")
-    // this.movieForm.markAsUntouched(),
-    // this.movieForm.reset()
+   
+    this.store.dispatch(
+      addFilmsActions.addSingleFilm({ films: this.movieForm.getRawValue() })
+    )
   }
 
-  shows$ = this.service.getShows();
+  // shows$ = this.service.getShows();
 }

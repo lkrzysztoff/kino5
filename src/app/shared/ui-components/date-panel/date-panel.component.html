@@ -5,6 +5,7 @@
     class="date__buttons" 
     [ngClass]="{}"
     [ngClass]="{'dupa' : date === selectedDate  }"
+    [routerLink]="['/home',+date | date:'dd-MM']" 
     *ngFor="let date of dateService.dates, let i = index" 
     >{{ date | date:'d/MM'}} </button>
     

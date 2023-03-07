@@ -17,7 +17,7 @@
       <button *ngIf="user.role === 'user'" class="header__cart-button" routerLink="/order"><fa-icon [icon]="faShoppingCart"></fa-icon><p class="length" *ngIf="cart$ | async as cart">({{cart.length}})</p></button>
       <button *ngIf="!user.id else zalogowany" class="header__login-button" routerLink="/auth/signin">Zaloguj się</button>
       <ng-template #zalogowany>
-        <button class="header__login-button" (click)="log()" [matMenuTriggerFor]="menu">Cześć {{user.firstName }}</button>
+        <button class="header__login-button"  [matMenuTriggerFor]="menu">Cześć {{user.firstName }}</button>
         <mat-menu #menu="matMenu">
           <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/tickets'">Moje zamówienia</button>
           <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/watchlist'">Chcę obejrzeć</button>

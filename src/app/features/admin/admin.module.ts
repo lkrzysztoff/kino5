@@ -5,10 +5,14 @@ import { AdminpageComponent } from './pages/admin-page/adminpage.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from '../auth/store/auth.effects';
 import { NumberMaxLengthDirective } from 'src/app/shared/guards/directives/numbermaxlength.directive';
+import { AdminEffects } from './store/admin.effects';
+import { addFilmReducer } from './store/admin.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
     EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forFeature([AdminEffects]),
     RouterModule.forChild([
       {
         path: '',
@@ -21,6 +25,7 @@ import { NumberMaxLengthDirective } from 'src/app/shared/guards/directives/numbe
         ],
       },
     ]),
+    StoreModule.forFeature('AdminFilm', [addFilmReducer]),
   ],
 })
 export default class AdminModule {}

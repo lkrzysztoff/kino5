@@ -2,19 +2,27 @@
   <div class="addshow__container">
     <div class="addshow__form">
       <form [formGroup]="showForm" (ngSubmit)="submit()">
-        <mat-form-field appearance="outline">
-          <mat-label>Link do plakatu</mat-label>
-          <input
-            matInput
-            placeholder="img"
-            type="date"
-            formControlName="date"
-            required
-          />
+        <!-- <mat-form-field appearance="outline"> -->
+          <!-- <mat-label>Link do plakatu</mat-label> -->
+          <select
+          placeholder="img"
+          type="date"
+          formControlName="date"
+          min=date
+          required>
+            <option [disabled]="true" selected>Data</option>
+            <option [value]="'06/03'">06/03</option>
+            <option [value]="'07/03'">07/03</option>
+            <option [value]="'08/03'">08/03</option>
+            <option [value]="'09/03'">09/03</option>
+            <option [value]="'10/03'">10/03</option>
+          </select>
           <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-        </mat-form-field>
+        <!-- </mat-form-field> -->
         <select *ngIf="screen$ | async as screens" formControlName="sala">
-            <option  *ngFor="let screen of screens" [ngValue]="screen.id+screen.name">Sala nr {{screen.id}} nazwa {{screen.name}}</option>
+            <option   [value]="0">Sala nr 0</option>
+            <option   [value]="1">Sala nr 1</option>
+            <option   [value]="2">Sala nr 2</option>
 
         </select>
         <button mat-button >Dalej</button>

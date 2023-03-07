@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Film } from 'src/app/model/film.model';
+import { Film } from 'src/app/shared/interfaces/film.interface';
 import { MywatchlistService } from './mywatchlist.service';
 
 describe('MywatchlistService', () => {

@@ -63,7 +63,7 @@ color: white;
   justify-content: center;
   align-items: center;
   width: 50%;
-  border-bottom: 4px solid #007FFF;;
+ margin-bottom: 20px;
 }
 
 .ng {
@@ -229,6 +229,22 @@ button[disabled]{
 }
 
 .grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order-nav{
+  margin: auto;
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width: 120px;
+  height: 40px;
+}
+
+.window{
   display: flex;
   justify-content: center;
   align-items: center;
