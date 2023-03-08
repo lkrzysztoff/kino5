@@ -79,8 +79,8 @@ export class ShowformComponent implements OnInit {
       hour: this.formBuilder.control<string>('', {
         validators: [Validators.required],
       }),
-      date: this.formBuilder.control('', {
-        validators: [Validators.required],
+      date: this.formBuilder.control('d', {
+        validators: [],
       }),
       priceList: this.formBuilder.control([{
         "type": "Normalny",
@@ -104,12 +104,22 @@ export class ShowformComponent implements OnInit {
       })
     });
   }
- 
-  submit(){
+  newshowid !: number
+  afterReturn(show: addShowInterface,repertoire:repertoire){
+    const showId = (show.id ? show.id : 0 );
+    if(!repertoire.shows.includes(showId)){
+      repertoire.shows.push(showId);
+      this.http.put<repertoire>(this.baseUrl+'repertoire/'+repertoire.id,repertoire).subscribe(
+        value => console.log(value)
+      )
+    }
+    console.log(show,repertoire);
+  }
+  submit(repertoire: repertoire){
     this.showForm.markAllAsTouched()
     if(this.showForm.invalid) {
       return;
-    } else console.log(this.showForm.value),this.addShow()
+    } else console.log(this.showForm.value),this.addShow().subscribe(value => this.afterReturn(value,repertoire))
   }
 
   ngOnInit(): void {
@@ -129,7 +139,16 @@ export class ShowformComponent implements OnInit {
     const show = this.showForm.getRawValue()
     return this.adminService.adminAddShow(show)
   }
+  //jezeli nie ma repertuaru, to wtedy uzywamy posta do stworzenia nowego repertuaru
+  onSubmit(repertoire: repertoire){
+    const formValue = this.showForm.getRawValue();
+    if(!repertoire){
 
+    } else {
+
+    }
+  }
+  
   addToRepertoire(repertoireId:number,showId:number,date:string){
     const repertoireDTO = {
       showId:showId

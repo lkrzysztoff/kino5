@@ -2,12 +2,16 @@
 <div class="mytickets__body" *ngIf="orders$ | async as orders">
     <div class="mytickets__container">
         <h1 class="mytickets__title">Twoje zamówienia ({{orders.length}})</h1>
-        <mat-card class="crd" *ngFor="let order of orders">
-            <div class="mytickets__content">
-                <table >
-                    <tr> {{order | keyvalue}}
-                        <th>Tytuł filmu</th>
-                        <th>Fotel</th>
+        <mat-card class="crd" *ngFor="let order of orders ">
+            <!-- <div class="mytickets__content" *ngFor="let oneOnrder of orders | keyvalue"> -->
+                <!-- <table *ngFor="let packedOrder of oneOnrder | keyvalue"> -->
+                
+                    <tr> 
+                   
+                        <div></div>
+                        <!-- <div *ngFor="let values of oneOnrder | keyvalue ">{{values | json}}</div> -->
+                        <!-- <th *ngFor="let superOrder of packedOrder | keyvalue">{{packedOrder.value}}</th> -->
+                        <!-- <th>{{order.key | json}}</th> -->
                         <th>Typ biletu</th>
                         <th>Suma</th>
                         <th>Data</th>
@@ -19,8 +23,7 @@
                         <th>{{oneorder.seat.price}}PLN</th> -->
                         <!-- <th>{{oneorder.date}}</th>
                     </tr> -->
-                </table>
-
+  
                 <table class="sum">
                     <tr>
                         <th class="bg-grn">Łącznie biletów </th>
@@ -30,13 +33,17 @@
                     <th class="bg-grn1">{{myticket.cartPrice}} PLN</th>
                     <p>Płatność została zrealizowana</p>  --> -->
                 </table>
-
+<!-- 
             </div> -->
-            </mat-card>
+            </mat-card> -->
 </div>
 </div> 
 
-<div *ngIf="orders$ | async as orders">
 
-        <div></div>
-    </div>
+
+
+
+<div *ngIf="orders$ | async as orders">
+    <div *ngFor="let order of orders">
+        <p></p>
+</div>

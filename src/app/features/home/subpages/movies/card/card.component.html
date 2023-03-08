@@ -13,8 +13,7 @@
     <h5 *ngIf="!user.id; else zalogowany" class="movie-score">
       {{ films.score }}/10
     </h5>
-    
-      
+  
     
       <div *ngFor="let scores of score">
         <p  *ngIf="films.id === scores.id">

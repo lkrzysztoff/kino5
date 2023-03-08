@@ -8,11 +8,14 @@
         </select>
         <label>Godzina</label>
         <input type="time" min="08:00" max="12:00" formControlName="hour">
-        <label>Data</label>
-        <input type="date" formControlName="date">
         <div *ngIf="repertoire$ | async as repertoire">
           <div *ngFor="let oneDayRepertoire of filterRepertoireByDate(repertoire,data.date)">{{oneDayRepertoire.shows}}
             <!-- <div *ngFor="let showsInChosenScreen of filterShowsByScreen(oneDayRepertoire.shows,data.sala)"></div> -->
+
+
+
+
+            <button (click)="submit(oneDayRepertoire)">Klik</button>
             <div *ngFor="let id of oneDayRepertoire.shows">
               <div *ngIf="shows$ | async as shows">
                 <div *ngFor="let show of filterShowById(shows,id,data.sala)">{{show.hour}}</div>
@@ -21,7 +24,7 @@
             </div>
           </div>
         </div>
-        <button (click)="submit()">Klik</button>
+        
         
 <button (click)="klik()">KLIK</button>
 

@@ -42,7 +42,7 @@ export class CardComponent implements OnInit {
     this.score$ = this.scoreService.score$;
     this.shows$ = this.filmService.getShowtest();
   }
-
+ 
   openScoreDialog(): void {
     const dialogRef = this.dialog.open(ScoredialogComponent, {
       data: {
