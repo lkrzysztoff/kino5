@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatePanelComponent } from './date-panel.component';
+import { UniqueOrderComponent } from './unique-order.component';
 
-describe('DatePanelComponent', () => {
-  let component: DatePanelComponent;
-  let fixture: ComponentFixture<DatePanelComponent>;
+describe('UniqueOrderComponent', () => {
+  let component: UniqueOrderComponent;
+  let fixture: ComponentFixture<UniqueOrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DatePanelComponent ]
+      declarations: [ UniqueOrderComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DatePanelComponent);
+    fixture = TestBed.createComponent(UniqueOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

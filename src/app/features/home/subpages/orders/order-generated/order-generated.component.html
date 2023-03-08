@@ -14,23 +14,32 @@
       </div>
   </div> -->
 <div class="order-g">
-  <div class="order-g__container">
-    <mat-card>
-    <table>
+  <div class="order-g__container" *ngIf="orders$ | async as orders">
+    <mat-card >
+      <div >
+      </div>
+      <h1>To twoje bilety!</h1>
+      <table>
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Adres email</th>
-            <th>Numer telefonu</th>
+            <th>Tytuł filmu</th>
+            <th>Sala</th>
+            <th>Miejsce</th>
+            <th>Data</th>
+            <th>Typ biletu</th>
+            <th>Suma</th>
         </tr>
-        <tr>
-            <th>{{user.name}}</th>
-            <th>{{user.surname}}</th>
-            <th>{{user.email}}</th>
-            <th>{{user.phone}}</th>
-        </tr>
+       
+        <tr *ngFor="let order of returnValues(orders)">
+            <th>{{order.movieTitle}}</th> 
+            <th>{{order.screen}}</th> 
+            <th>{{order.seat.position}}</th>
+            <th>{{order.date}}</th>
+            <th>{{order.seat.type}}</th>
+            <th >{{order.seat.price}}</th>
+         </tr>
+  
     </table>
-    <app-order-details></app-order-details>
+    <div>Dziękujemy za dokonanie zakupu w naszym kinie!</div>
 </mat-card>
   </div>
 </div>

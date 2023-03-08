@@ -31,9 +31,12 @@ export class HomePageComponent implements OnInit {
     return repertoire.filter((repertoire) => repertoire.date === date);
   }
 
-  returnFilmsById(films: Film[], id: number, shows: Showtest[]) {
-    const show = shows.filter((value) => value.id == id).pop();
-    return films.filter((films) => films.id == show?.filmId);
+  returnFilmsById(films: Film[], id: number[], shows: Showtest[]) {
+    let filmsArray: number[] = [];
+    shows.forEach((value) => {
+      if(id.includes(value.id)) filmsArray.push( value.filmId)
+    })
+    return films.filter((film) => filmsArray.includes(film.id));
   }
 
   ngOnInit(): void {

@@ -25,6 +25,7 @@
                     Wprowadzono {{ minLength.actualLength }} cyfr, kod BLIK zawiera
                     {{ minLength.requiredLength }}
                   </p>
+                 
                   <p *ngIf="errors['maxlength'] as maxLength">
                     Max liczba cyfr to {{ maxLength.requiredLength }}
                   </p>
@@ -33,9 +34,8 @@
               </ng-container>
               <div class="modal-nav">
               </div>
-              
                 <button type="submit" >Płacę!</button>
-                
+            
              
             
             </form>

@@ -16,6 +16,7 @@ import {
   emailValidator,
   emailMatchValidate,
 } from 'src/app/features/auth/subpages/signin/validators';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 submitted: false;
 
@@ -25,7 +26,8 @@ submitted: false;
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  store = inject(Store);
+  private store = inject(Store);
+  private cartService = inject(CartService)
 
   @ViewChild('titleInput')
   titleInputReference!: ElementRef;

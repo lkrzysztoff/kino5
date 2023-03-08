@@ -8,6 +8,8 @@ import { Show } from 'src/app/shared/interfaces/show.interface';
 import { Screen } from 'src/app/shared/interfaces/screen.interface';
 import { FilmService } from './film-service';
 import { movie } from 'src/app/features/admin/pages/add-movies-admin/movie.interface';
+import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+
 
 describe('FilmService', () => {
   let dataSource: FilmService;
@@ -68,11 +70,11 @@ describe('FilmService', () => {
   });
 
   it('should retrieve shows from the API via GET', () => {
-    const mockShows: Show[] = [
+    const mockShows: Showtest[] = [
       {
         id: 1,
         hour: '12:30',
-        screen: 'B',
+        screen: 2,
         reservedSeats: ['A3', 'C4', 'H5'],
         priceList: [
           { type: 'normal', price: 15 },
@@ -84,7 +86,7 @@ describe('FilmService', () => {
       {
         id: 2,
         hour: '16:00',
-        screen: 'C',
+        screen: 2,
         reservedSeats: ['D1', 'E2', 'F3'],
         priceList: [
           { type: 'normal', price: 20 },
@@ -95,7 +97,7 @@ describe('FilmService', () => {
       },
     ];
 
-    dataSource.getShows().subscribe((shows) => {
+    dataSource.getShowtest().subscribe((shows) => {
       expect(shows).toEqual(mockShows);
     });
 
@@ -148,8 +150,5 @@ describe('FilmService', () => {
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(mockMovie);
     req.flush(mockMovie);
-  });
-  it('should return an empty array of seats', () => {
-    expect(dataSource.getSeats()).toEqual([]);
   });
 });

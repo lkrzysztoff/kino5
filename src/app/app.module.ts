@@ -61,6 +61,7 @@ import { NumberMaxLengthDirective } from './shared/guards/directives/numbermaxle
 import { TestComponent } from './features/home/subpages/reservation/reservation-grid/reservation-grid.component';
 import { MatSelectModule } from '@angular/material/select';
 import { TicketTypeFormComponent } from './features/home/subpages/reservation/ticket-type-form/ticket-type-form.component';
+import { UniqueOrderComponent } from './features/home/subpages/my-tickets-history/unique-order/unique-order.component';
 
 export interface AppState {
   user: UserState;
@@ -90,6 +91,7 @@ export interface AppState {
     AddshowsadminComponent,
     ShowformComponent,
     NumberMaxLengthDirective,
+    UniqueOrderComponent,
   ],
   imports: [
     BrowserModule,

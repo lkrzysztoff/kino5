@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FilmService } from '../../movies/film-service/film-service';
+import { Showtest } from '../../reservation/reservation-grid/reservation-grid.component';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -48,7 +49,7 @@ export class OrderCompletedComponent implements OnInit {
   // return this.http.post<Cart>(this.baseUrl+'tickets',cartDTO[i]).subscribe(value => console.log(value));
   // }
   //   return console.log("dziala?")
-  // } 
+  // }
 
   paymentControl = new FormControl('', {
     validators: [
@@ -59,18 +60,20 @@ export class OrderCompletedComponent implements OnInit {
     ],
   });
 
-  submit(order:Cart[]) {
+  submit(order: Cart[]) {
     this.paymentControl.markAllAsTouched();
     if (this.paymentControl.touched && this.paymentControl.valid) {
-      this.sendOrderToBase(order).subscribe(
-        value => console.log(value)
-      )
-      this.cartService.clearCart()
-      this.router.navigate(['/qrcode']);
+      this.sendOrderToBase(order).subscribe((value) =>
+        this.afterSentToBase(value.id)
+      );
+      this.cartService.clearCart();
     } else return;
   }
+  afterSentToBase(value: number) {
+    this.router.navigate(['/qrcode/' + value]);
+  }
 
-  sendOrderToBase(order:Cart[]){
-    return this.cartService.addOrderToBase(order)
+  sendOrderToBase(order: Cart[]) {
+    return this.cartService.addOrderToBase(order);
   }
 }

@@ -31,14 +31,10 @@ export class FilmService {
   getFilms(): Observable<Film[]> {
     return this.http.get<Film[]>(this.baseUrl + 'films');
   }
- 
+
   getScreens(): Observable<Screen[]> {
     return this.http.get<Screen[]>(this.baseUrl + 'screen');
   }
-
-  // saveOrder(order: Order): Observable<Order> {
-  //     return this.http.post<Order>(this.baseUrl + "orders", order);
-  // }
 
   adminAddMovie(film: movie) {
     return this.http.post<movie>(this.baseUrl + 'films', film);
@@ -55,6 +51,4 @@ export class FilmService {
   getShowtest() {
     return this.http.get<Showtest[]>(this.baseUrl + 'show');
   }
-
-  
 }

@@ -54,9 +54,9 @@ import { OrderGuard } from 'src/app/shared/guards/order-guard';
         canActivate: [OrderGuard],
         component: OrderCompletedComponent,
       },
-      { path: 'qrcode', component: QrCodePageComponent },
+      { path: 'qrcode/:orderId', component: QrCodePageComponent },
       {
-        path: 'orderg',
+        path: 'order-generated/:orderId',
         component: OrderGeneratedComponent,
       },
     ]),

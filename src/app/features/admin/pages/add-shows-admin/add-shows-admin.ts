@@ -2,8 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { FilmService } from 'src/app/features/home/subpages/movies/film-service/film-service';
 import { showformInput } from './showform/showform.interface';
-import { format } from 'date-fns';
+import { eachHourOfInterval, format } from 'date-fns';
 import { AdminFilmService } from '../../services/admin-film.service';
+import { eachDayOfInterval } from 'date-fns';
+import { startOfISOWeek } from 'date-fns';
+import { endOfMonth } from 'date-fns';
+import startOfDay from 'date-fns/startOfDay';
 
 export interface addShowInterface {
   hour: string;
@@ -23,6 +27,16 @@ export class AddshowsadminComponent implements OnInit {
   formBuilder = inject(NonNullableFormBuilder);
   service = inject(FilmService);
   adminService = inject(AdminFilmService);
+
+  dates = eachDayOfInterval({
+    start: startOfISOWeek(new Date()),
+    end: endOfMonth(new Date()),
+  }).map((day) => format(day, 'dd/MM'));
+
+  test(){
+    console.log(this.dates)
+    console.log(this.showForm.getRawValue())
+  }
 
   screen$ = this.service.getScreens();
   today!: Date;
@@ -78,7 +92,8 @@ export class AddshowsadminComponent implements OnInit {
     if (this.showForm.invalid) {
       return;
     }
-    this.data = this.showForm.getRawValue();
+    this.data = this.showForm.getRawValue()
+    console.log(this.data);
   }
   ngOnInit(): void {
     // this.today = new Date().dateArray.push()toDateString().map((today: number | Date) => format(today, 'yyyy-MM-dd'));

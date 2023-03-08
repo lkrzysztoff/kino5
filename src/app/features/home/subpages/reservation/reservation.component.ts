@@ -28,6 +28,7 @@ import { AsyncPipe } from '@angular/common';
 import { TemporaryReserved } from './temporary-reserved.interface';
 import { TestComponent } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
 import { TicketTypeFormComponent } from 'src/app/features/home/subpages/reservation/ticket-type-form/ticket-type-form.component';
+import { HttpClient } from '@angular/common/http';
 
 const numbersArray: number[] = [];
 
@@ -64,6 +65,7 @@ export class ReservationComponent implements OnInit {
   dataService = inject(OrderManagmentService);
   formBuilder = inject(NonNullableFormBuilder);
   cartService = inject(CartService);
+  private http = inject(HttpClient)
 
   selectedDate!: string;
   showId!: number;
@@ -112,9 +114,19 @@ export class ReservationComponent implements OnInit {
   returnShowById(shows: Showtest[], id: number) {
     return shows.filter((shows) => shows.id == id);
   }
-returnSeatsFromCartByShowId(cart: Cart[]){
-cart
-}
 
-
+  reserveSeats(cart:Cart[],show: Showtest){
+    const seatArray: string[] = []
+    console.log(show)
+    cart.forEach((element) => {
+      if (show.reservedSeats.indexOf(element.id)<0){
+        show.reservedSeats.push(element.id)
+      } 
+      this.http.put<Showtest>('http://localhost:3000/show/'+this.showId,show).subscribe(
+        value => console.log(value)
+      )
+      // seatArray.push(element.id)
+    })
+    console.log(seatArray)
+  }
 }

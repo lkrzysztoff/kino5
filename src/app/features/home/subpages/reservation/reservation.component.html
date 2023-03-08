@@ -1,6 +1,6 @@
-<div class="window">
+<div class="window" *ngIf="cart$ | async as cart">
   <div class="reservation__display" *ngIf="show$ | async as shows">
-    <div *ngFor="let show of returnShowById(shows, showId)">
+    <div  *ngFor="let show of returnShowById(shows, showId)">
       <div *ngIf="films$ | async as films">
         <div *ngFor="let film of returnFilmsById(films, show.filmId)">
           <app-reservation-grid
@@ -8,7 +8,7 @@
             [date]="selectedDate"
             [show]="show"
           ></app-reservation-grid>
-          <div *ngIf="cart$ | async as cart">
+          <div >
             <app-ticket-type-form
               *ngFor="
                 let cartItem of cartService.filterCartByShowId(cart, show.id)
@@ -20,8 +20,12 @@
           </div> 
         </div>
       </div>
+      <div class="btn-div">
+      <button class="order-nav center"  routerLink="/order" (click)="reserveSeats(cart,show)">Zamawiam!</button>
     </div>
+    </div>
+    
   </div>
-  <button class="order-nav" routerLink="/order" >Zamawiam!</button>
   
+  <!-- routerLink="/order"  -->
 </div>

@@ -11,11 +11,7 @@
           min=date
           required>
             <option [disabled]="true" selected>Data</option>
-            <option [value]="'06/03'">06/03</option>
-            <option [value]="'07/03'">07/03</option>
-            <option [value]="'08/03'">08/03</option>
-            <option [value]="'09/03'">09/03</option>
-            <option [value]="'10/03'">10/03</option>
+            <option *ngFor="let day of dates" [value]="day">{{day}}</option>
           </select>
           <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
         <!-- </mat-form-field> -->

@@ -11,9 +11,10 @@ import { ScoreService } from './movie-score-service/score.service';
 import { Observable } from 'rxjs';
 import { FilmService } from '../film-service/film-service';
 import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
 
 @Component({
-  selector: 'app-card[films][selectedDate]',
+  selector: 'app-card[films][selectedDate][oneDayRepertoireShows]',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
@@ -21,6 +22,7 @@ export class CardComponent implements OnInit {
   @Input() films!: Film;
   @Input() selectedDate!: string;
   @Input() showId!: number;
+  @Input() oneDayRepertoireShows!: number[];
 
   scoreService = inject(ScoreService);
   public service = inject(MywatchlistService);
@@ -42,7 +44,7 @@ export class CardComponent implements OnInit {
     this.score$ = this.scoreService.score$;
     this.shows$ = this.filmService.getShowtest();
   }
- 
+
   openScoreDialog(): void {
     const dialogRef = this.dialog.open(ScoredialogComponent, {
       data: {
@@ -57,7 +59,10 @@ export class CardComponent implements OnInit {
     });
   }
 
-  returnShowById(shows: Showtest[], id: number) {
-    return shows.filter((value) => value.filmId == id);
+  returnShowById(shows: Showtest[], id: number, selectedDate: string) {
+    return shows.filter(
+      (value) =>
+        value.filmId == id && this.oneDayRepertoireShows.includes(value.id)
+    );
   }
 }
