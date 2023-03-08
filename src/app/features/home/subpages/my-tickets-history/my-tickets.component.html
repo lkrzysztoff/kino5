@@ -1,49 +1,64 @@
-<div class="mytickets">
-<div class="mytickets__body" *ngIf="orders$ | async as orders">
-    <div class="mytickets__container">
-        <h1 class="mytickets__title">Twoje zamówienia ({{orders.length}})</h1>
-        <mat-card class="crd" *ngFor="let order of orders ">
-            <!-- <div class="mytickets__content" *ngFor="let oneOnrder of orders | keyvalue"> -->
-                <!-- <table *ngFor="let packedOrder of oneOnrder | keyvalue"> -->
-                
-                    <tr> 
-                   
-                        <div></div>
-                        <!-- <div *ngFor="let values of oneOnrder | keyvalue ">{{values | json}}</div> -->
-                        <!-- <th *ngFor="let superOrder of packedOrder | keyvalue">{{packedOrder.value}}</th> -->
-                        <!-- <th>{{order.key | json}}</th> -->
-                        <th>Typ biletu</th>
-                        <th>Suma</th>
-                        <th>Data</th>
-                    </tr>
-                    <!-- <tr *ngFor="let oneorder of order">
-                        <th>{{oneorder.movieTitle}}</th> -->
-                        <!-- <th>{{oneorder.seat.position}}</th>
-                        <th>{{oneorder.seat.type}}</th>
-                        <th>{{oneorder.seat.price}}PLN</th> -->
-                        <!-- <th>{{oneorder.date}}</th>
-                    </tr> -->
-  
-                <table class="sum">
-                    <tr>
-                        <th class="bg-grn">Łącznie biletów </th>
-                        <!-- <th class="bg-grn">Kwota za całość {{getFullPrice(order)}}PLN</th> -->
-                    </tr>
-                    <!-- < <th class="bg-grn1">{{myticket.itemCount}}</th>
-                    <th class="bg-grn1">{{myticket.cartPrice}} PLN</th>
-                    <p>Płatność została zrealizowana</p>  --> -->
-                </table>
-<!-- 
-            </div> -->
-            </mat-card> -->
-</div>
-</div> 
+<!-- <div class="mytickets">
+  <div class="mytickets__body">
+    <div class="mytickets__container" *ngIf="orders$$ | async as orders">
+      <div *ngIf="ordersId$$ | async as ordersId">
+        <h1 class="mytickets__title">Twoje zamówienia ({{ orders.length }})</h1>
+        <mat-card class="crd" *ngFor="let id of ordersId">
+          <p>Zamówienie o ID {{ id }}</p>
+          <div class="mytickets__content">
+            <table>
+              <tr>
+                <th>Tytuł filmu {{ ordersId }}</th>
+                <th>Sala</th>
+                <th>Miejsce</th>
+                <th>Typ biletu</th>
+                <th>Suma</th>
+                <th>Data</th>
+              </tr>
+              <tr *ngFor="let order of orders">
+                <th class="mt">{{ order.movieTitle }}</th>
+                <th>{{ order.screen }}</th>
+                <th>{{ order.seat.position }}</th>
+                <th>{{ order.seat.type }}</th>
+                <th>{{ order.seat.price }}PLN</th>
+                <th>{{ order.date }}</th>
+              </tr>
+            </table>
+            <table class="sum">
+              <tr></tr>
+            </table>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div> -->
 
+<div *ngIf="newOrders$ | async as orderHistory" class="container">
+    <mat-card *ngFor="let orders of orderHistory" class="body">
+        <p>Indywidualny numer zamówienia: {{returnIdByObject(orders,getId(orders))}}</p>
+        <table>
+            <tr>
+                <th>Tytuł filmu</th>
+                <th>Sala</th>
+                <th>Miejsce</th>
+                <th>Data</th>
+                <th>Typ biletu</th>
+                <th>Suma</th>
+            </tr>
+           
+            <tr *ngFor="let order of orders | keyvalue" [ngClass]="{'disabled': !order.value.seat}">
+                <th>{{order.value.movieTitle}}</th>
+                <th>{{order.value.screen}}</th>
+                <th>{{order.value.id}}</th>
+                <th>{{order.value.date}}</th>
+                <th >{{order?.value?.seat?.type}}</th>
+                <th >{{order?.value?.seat?.price +'PLN'}}</th> 
+            </tr>
+        
+        </table>
 
-
-
-
-<div *ngIf="orders$ | async as orders">
-    <div *ngFor="let order of orders">
-        <p></p>
+         <!-- <div *ngFor="let order of orders | keyvalue">{{order.value.movieTitle}} 
+        </div>  -->
+    </mat-card>
 </div>

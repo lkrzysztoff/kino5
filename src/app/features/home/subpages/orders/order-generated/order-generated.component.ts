@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { User } from '../order/user-interface';
-import { orderHistory } from 'src/app/features/home/subpages/my-tickets-history/my-tickets-service/myticketslist.service';
+
 
 @Component({
   selector: 'app-order-generated',
@@ -13,7 +13,7 @@ export class OrderGeneratedComponent implements OnInit {
   constructor(private managmentService: OrderManagmentService) {
   }
 
-  cartCopy!: orderHistory;
+  
 
   ngOnInit(): void {
     this.user = this.managmentService.userdata;

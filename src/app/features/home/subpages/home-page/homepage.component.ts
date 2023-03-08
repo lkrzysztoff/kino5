@@ -14,33 +14,32 @@ import { Showtest } from '../reservation/reservation-grid/reservation-grid.compo
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  filmService = inject(FilmService);
-  orderManagmentService = inject(OrderManagmentService);
-  dateService = inject(DateService);
-  activeRoute = inject(ActivatedRoute);
+  private filmService = inject(FilmService);
+  private orderManagmentService = inject(OrderManagmentService);
+  private dateService = inject(DateService);
+  private activeRoute = inject(ActivatedRoute);
 
   selectedDate!: string;
   repertoire$!: Observable<repertoire[]>;
   films$!: Observable<Film[]>;
-  show$ !: Observable<Showtest[]>
+  show$!: Observable<Showtest[]>;
   dateImport(newDate: Date) {
     this.selectedDate = this.dateService.convertDateToString(newDate);
   }
 
   getRepertoireByDate(repertoire: repertoire[], date: string) {
-    return repertoire.filter((repertoire) => repertoire.date === date)
+    return repertoire.filter((repertoire) => repertoire.date === date);
   }
 
-  returnFilmsById(films: Film[], id: number,shows:Showtest[]) {
-    const show = shows.filter(value => value.id == id).pop()
-    console.log(films)
+  returnFilmsById(films: Film[], id: number, shows: Showtest[]) {
+    const show = shows.filter((value) => value.id == id).pop();
     return films.filter((films) => films.id == show?.filmId);
   }
-  
+
   ngOnInit(): void {
     this.repertoire$ = this.filmService.getRepertoire();
     this.films$ = this.filmService.getFilms();
     this.selectedDate = this.activeRoute.snapshot.params['selectedDate'];
-    this.show$ = this.filmService.getShowtest()
+    this.show$ = this.filmService.getShowtest();
   }
 }

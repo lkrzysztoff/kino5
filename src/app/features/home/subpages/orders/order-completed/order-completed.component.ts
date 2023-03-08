@@ -7,7 +7,6 @@ import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
-import { MyticketslistService } from 'src/app/features/home/subpages/my-tickets-history/my-tickets-service/myticketslist.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { FilmService } from '../../movies/film-service/film-service';
 
@@ -23,7 +22,6 @@ export class OrderCompletedComponent implements OnInit {
   baseUrl!: string;
 
   filmService = inject(FilmService);
-  ticketService = inject(MyticketslistService);
   cartService = inject(CartService);
 
   cartDTO!: Cart[];
@@ -43,6 +41,14 @@ export class OrderCompletedComponent implements OnInit {
     this.cart$ = this.cartService.cart$;
     this.cartDTO = Object.assign({}, this.cartService.cart$$.value);
   }
+
+  // testObj(cartDTO:Cart[]){
+  //   let ammountOfRequests = []
+  // for (let i : number = 0; i<=8;i++){
+  // return this.http.post<Cart>(this.baseUrl+'tickets',cartDTO[i]).subscribe(value => console.log(value));
+  // }
+  //   return console.log("dziala?")
+  // } 
 
   paymentControl = new FormControl('', {
     validators: [

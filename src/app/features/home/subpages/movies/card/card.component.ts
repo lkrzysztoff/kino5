@@ -26,7 +26,7 @@ export class CardComponent implements OnInit {
   public service = inject(MywatchlistService);
   public dialog = inject(MatDialog);
   private store = inject(Store);
-  filmService = inject(FilmService);
+  private filmService = inject(FilmService);
 
   score$!: Observable<score[]>;
   user$ = this.store.select(selectLoggedUser);

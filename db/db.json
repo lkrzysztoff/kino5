@@ -1,10 +1,18 @@
 {
   "tickets": [
     {
-      "ticket": [
-        "{\"lines\":[{\"seat\":{\"name\":\"D9\",\"show_id\":\"1\",\"date\":\"2023-02-24\",\"price\":{\"type\":\"Normalny\",\"price\":50}}}],\"itemCount\":1,\"cartPrice\":50}"
-      ],
-      "id": 1
+      "id": "D5",
+      "email": "krzychu@kino.pl",
+      "showId": 36,
+      "date": "08-03",
+      "hour": "13:00",
+      "movieTitle": "Black Panther: Wakanda Forever",
+      "screen": 2,
+      "seat": {
+        "position": "D5",
+        "price": 30,
+        "type": "Normalny"
+      }
     }
   ],
   "posts": [
@@ -1407,6 +1415,327 @@
         }
       },
       "id": 1
+    },
+    {
+      "0": {
+        "id": "E7",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "E7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "D7",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "D7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 2
+    },
+    {
+      "0": {
+        "id": "C7",
+        "email": "krzychu@kino.pl",
+        "showId": 37,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "C7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "C6",
+        "email": "krzychu@kino.pl",
+        "showId": 37,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "C6",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 3
+    },
+    {
+      "0": {
+        "id": "E5",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "E5",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "D6",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "D6",
+          "price": 15,
+          "type": "Ulgowy"
+        }
+      },
+      "2": {
+        "id": "D7",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "D7",
+          "price": 20,
+          "type": "Voucher"
+        }
+      },
+      "id": 4
+    },
+    {
+      "0": {
+        "id": "E5",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "E5",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "E7",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "E7",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 5
+    },
+    {
+      "0": {
+        "id": "E5",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "E5",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "D5",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "D5",
+          "price": 20,
+          "type": "Voucher"
+        }
+      },
+      "2": {
+        "id": "D6",
+        "email": "krzychu@kino.pl",
+        "showId": 4,
+        "date": "08-03",
+        "hour": "08:00",
+        "movieTitle": "Apokawixa",
+        "screen": 1,
+        "seat": {
+          "position": "D6",
+          "price": 15,
+          "type": "Ulgowy"
+        }
+      },
+      "id": 6
+    },
+    {
+      "0": {
+        "id": "D8",
+        "email": "krzychu@kino.pl",
+        "showId": 37,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "D8",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "D9",
+        "email": "krzychu@kino.pl",
+        "showId": 37,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "D9",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 7
+    },
+    {
+      "0": {
+        "id": "E8",
+        "email": "krzychu@kino.pl",
+        "showId": 2,
+        "date": "08-03",
+        "hour": "20.30",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "E8",
+          "price": 20,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "E9",
+        "email": "krzychu@kino.pl",
+        "showId": 2,
+        "date": "08-03",
+        "hour": "20.30",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "E9",
+          "price": 20,
+          "type": "Normalny"
+        }
+      },
+      "2": {
+        "id": "E12",
+        "email": "krzychu@kino.pl",
+        "showId": 2,
+        "date": "08-03",
+        "hour": "20.30",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "E12",
+          "price": 20,
+          "type": "Normalny"
+        }
+      },
+      "id": 8
+    },
+    {
+      "0": {
+        "id": "D7",
+        "email": "krzychu@kino.pl",
+        "showId": 3,
+        "date": "08-03",
+        "hour": "10.30",
+        "movieTitle": "Apokawixa",
+        "screen": 2,
+        "seat": {
+          "position": "D7",
+          "price": 20,
+          "type": "Normalny"
+        }
+      },
+      "id": 9
+    },
+    {
+      "0": {
+        "id": "G9",
+        "email": "krzychu@kino.pl",
+        "showId": 36,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "G9",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "F9",
+        "email": "krzychu@kino.pl",
+        "showId": 36,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "F9",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "2": {
+        "id": "F10",
+        "email": "krzychu@kino.pl",
+        "showId": 36,
+        "date": "08-03",
+        "hour": "13:00",
+        "movieTitle": "Black Panther: Wakanda Forever",
+        "screen": 2,
+        "seat": {
+          "position": "F10",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 10
     }
   ]
 }

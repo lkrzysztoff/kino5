@@ -31,9 +31,7 @@ export class FilmService {
   getFilms(): Observable<Film[]> {
     return this.http.get<Film[]>(this.baseUrl + 'films');
   }
-  getShows(): Observable<Show[]> {
-    return this.http.get<Show[]>(this.baseUrl + 'show');
-  }
+ 
   getScreens(): Observable<Screen[]> {
     return this.http.get<Screen[]>(this.baseUrl + 'screen');
   }
@@ -48,10 +46,6 @@ export class FilmService {
 
   getRepertoire() {
     return this.http.get<repertoire[]>(this.baseUrl + 'repertoire');
-  }
-
-  getSeats(): [] {
-    return [];
   }
 
   getFilmsByShowsId(id: number): Observable<Film[]> {

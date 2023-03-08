@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MyticketslistService } from './my-tickets-service/myticketslist.service';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, tap, of, BehaviorSubject } from 'rxjs';
+import { isThisQuarter } from 'date-fns';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-mytickets',
@@ -9,9 +10,11 @@ import { map, Observable, tap } from 'rxjs';
   styleUrls: ['./my-tickets.component.scss'],
 })
 export class MyticketsComponent implements OnInit {
-  ticketService = inject(MyticketslistService);
-  mytickets$ = this.ticketService.ticket$;
-  orders$!: Observable<(number | Cart)[]>;
+ private http = inject (HttpClient)
+  orders$!: Observable<Cart[]> 
+  orders$$ = new BehaviorSubject<Cart[]>([])
+  ordersId$ !: Observable<number[]>;
+  ordersId$$ = new BehaviorSubject<number[]>([])
   getFullPrice(tickets: Cart[]) {
     let fullPrice = tickets.reduce((total, price) => {
       return (total += +price.seat.price);
@@ -20,11 +23,42 @@ export class MyticketsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orders$ = this.ticketService.getOrders().pipe(
-      map((value) => {
-        return value.map((value) => Object.values(value)).flat();
-      })
-    );
-    this.orders$.subscribe(console.log);
+    this.newOrders$ = this.newGetOrders() 
   }
+
+  test(value:any){
+    console.log()
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+filterForObjects(orderHistory: { value: Cart; }[]){
+  return
+}
+
+
+
+getId(value: any){
+  return Object.values(value).length-1
+}
+
+returnIdByObject(value: any,arrayLength:number){
+  return Object.values(value)[arrayLength]
+}
+
+
+
+newGetOrders(){
+  return this.http.get<{value:Cart,id:number}[]>('http://localhost:3000/orders')
+}
+newOrders$ !: Observable<{value:Cart}[]>
 }
