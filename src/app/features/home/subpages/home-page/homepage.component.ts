@@ -6,7 +6,7 @@ import { OrderManagmentService } from 'src/app/order-managment.service';
 import { DateService } from '../../../../shared/ui-components/date-panel/date.service';
 import { ActivatedRoute } from '@angular/router';
 import { FilmService } from '../movies/film-service/film-service';
-import { Showtest } from '../reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from '../reservation/reservation-grid/reservation-interfaces';
 
 @Component({
   selector: 'app-homepage',

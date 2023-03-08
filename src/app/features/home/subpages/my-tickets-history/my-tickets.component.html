@@ -55,7 +55,6 @@
                 <th >{{order?.value?.seat?.type}}</th>
                 <th >{{order?.value?.seat?.price +'PLN'}}</th> 
             </tr>
-        
         </table>
         <a target="blank" routerLink='/order-generated/{{returnIdByObject(orders,getId(orders))}}'>Tu kliknij aby otworzyć stronę z indywidualnym zamówieniem</a>
          <!-- <div *ngFor="let order of orders | keyvalue">{{order.value.movieTitle}} 

@@ -2,27 +2,18 @@ import { Component, Input, inject, OnInit } from '@angular/core';
 import { FilmService } from 'src/app/features/home/subpages/movies/film-service/film-service';
 import { repertoire, showformInput } from './showform.interface';
 import { HttpClient } from '@angular/common/http';
-import { Data } from '@angular/router';
 import { map, Observable, switchMap } from 'rxjs';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Film } from 'src/app/shared/interfaces/film.interface';
-import { movie } from '../../add-movies-admin/movie.interface';
-import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-interfaces';
 import { Validators } from '@angular/forms';
 
-import { ofType } from '@ngrx/effects';
 import { AdminFilmService } from '../../../services/admin-film.service';
 import { addShowInterface } from '../add-shows-admin';
-import { id } from 'date-fns/locale';
+
 
 const PROTOCOL = 'http';
 const PORT = 3000;
-
-export interface showform {
-  date: any;
-  movieId: any;
-  hour: any;
-}
 
 @Component({
   selector: 'app-showform[data]',
@@ -35,13 +26,11 @@ export class ShowformComponent implements OnInit {
   @Input() data!: showformInput;
   private adminService = inject(AdminFilmService);
 
-  
-
   shows$!: Observable<Showtest[]>;
   films$!: Observable<Film[]>;
   repertoire$!: Observable<repertoire[]>;
   baseUrl!: string;
-  
+
   constructor() {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
@@ -68,7 +57,7 @@ export class ShowformComponent implements OnInit {
   filterShowById(shows: Showtest[], id: number, screen: number) {
     return shows.filter((shows) => shows.id === id && shows.screen == screen);
   }
-  
+
   showForm = this.createForm();
   private createForm() {
     return this.formBuilder.group({
@@ -78,7 +67,7 @@ export class ShowformComponent implements OnInit {
       hour: this.formBuilder.control<string>('', {
         validators: [Validators.required],
       }),
-      date: this.formBuilder.control('decodeURI' , {
+      date: this.formBuilder.control('decodeURI', {
         validators: [],
       }),
       priceList: this.formBuilder.control(
@@ -130,20 +119,17 @@ export class ShowformComponent implements OnInit {
       if (
         !this.compareTime(this.showForm.getRawValue(), repertoire, films, shows)
       ) {
-        alert('nie udalo się');
+        alert('Nie można dodać filmu, gdyż ten termin jest już zajęty!');
         return;
       }
-      this.showForm.value.screen = this.data.sala
+      this.showForm.value.screen = this.data.sala;
       console.log(this.showForm.value),
-        this.addShow().subscribe((value) =>{
-          console.log('a')
-          console.log(value)
-          console.log('b')
-          this.afterReturn(value, repertoire)
-        }
-        
-         
-        );
+        this.addShow().subscribe((value) => {
+          console.log('a');
+          console.log(value);
+          console.log('b');
+          this.afterReturn(value, repertoire);
+        });
     }
   }
 
@@ -185,11 +171,6 @@ export class ShowformComponent implements OnInit {
       )
       .subscribe((value) => console.log(value));
   }
-
-  klik() {
-    console.log(this.newId);
-  }
-
   convertTime(time: string) {
     const splitedTime = time.split(':');
     return parseInt(splitedTime[0]) * 60 + parseInt(splitedTime[1]);
@@ -204,7 +185,6 @@ export class ShowformComponent implements OnInit {
     const film = films.filter((value) => (value.id = form.filmId)).pop();
     const startNewShow = this.convertTime(form.hour);
     const endNewShow = startNewShow + (film ? parseInt(film.length) : 120) + 15;
-    return true
     let exists = false;
     repertoire.shows.forEach((showId) => {
       if (exists) {
@@ -215,7 +195,7 @@ export class ShowformComponent implements OnInit {
       const film = films.filter((element) => element.id == show?.filmId).pop();
       const endShow = startShow + (film ? parseInt(film.length) : 120) + 15;
       if (startNewShow > endShow) {
-        return ;
+        return;
       } else if (endNewShow < startShow) {
         return;
       } else {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
 import { FilmService } from '../../movies/film-service/film-service';
 import { Film } from 'src/app/shared/interfaces/film.interface';
-import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from '../../reservation/reservation-grid/reservation-interfaces';
 
 @Component({
   selector: 'app-order-details',
@@ -12,8 +12,8 @@ import { Showtest } from 'src/app/features/home/subpages/reservation/reservation
   styleUrls: ['./order-details.component.scss'],
 })
 export class OrderDetailsComponent implements OnInit {
-  cartService = inject(CartService);
-  service = inject(FilmService);
+  private cartService = inject(CartService);
+  private service = inject(FilmService);
 
   cart$!: Observable<Cart[]>;
   films$!: Observable<Film[]>;

@@ -249,10 +249,14 @@ button[disabled]{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 80%;
 }
 
 .btn-div{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cont{
+  margin-top: 30px;
 }

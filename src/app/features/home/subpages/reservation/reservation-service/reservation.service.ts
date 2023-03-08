@@ -4,7 +4,7 @@ import { Cart } from 'src/app/shared/interfaces/cart-interface';
 import { __values } from 'tslib';
 import { TemporaryReserved } from '../temporary-reserved.interface';
 import { HttpClient } from '@angular/common/http';
-import { Showtest } from '../reservation-grid/reservation-grid.component';
+import { Showtest } from '../reservation-grid/reservation-interfaces';
  
 
 const PROTOCOL = 'http';
@@ -31,23 +31,6 @@ export class ReservationService {
         seat,
       ]);
     }
-  }
-
-  // afterReturn(show: addShowInterface,repertoire:repertoire){
-  //   const showId = (show.id ? show.id : 0 );
-  //   if(!repertoire.shows.includes(showId)){
-  //     repertoire.shows.push(showId);
-  //     this.http.put<repertoire>(this.baseUrl+'repertoire/'+repertoire.id,repertoire).subscribe(
-  //       value => console.log(value)
-  //     )
-  //   }
-
-  reserveSeat(arr: string,showId:number,show:Showtest) {
-    const actuallyReserved = show.reservedSeats.push(arr)
-    return this.http
-      .put(this.baseUrl+'show/'+showId,{
-        "reservedSeats":arr
-      }).subscribe(value => console.log(value))
   }
 
   removeFromTemporaryReservedSeats(seat: TemporaryReserved) {

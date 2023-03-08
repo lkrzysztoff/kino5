@@ -17,27 +17,30 @@ import { MatSelectModule } from '@angular/material/select';
 import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectLoggedUser } from '../../../../../core/store/user.selectors';
+import { Showtest } from './reservation-interfaces';
+import { Screens } from './reservation-interfaces';
+import { testFilm } from './reservation-interfaces';
 
-export interface testFilm {
-  title: string;
-  id: number;
-  genre: string;
-}
-export interface Screens {
-  id: number;
-  name: string; //"B",
-  rows: number; //5,
-  colu: number; //  specialSeats: string[] //["E4", "D4", "E5", "D5"]
-}
+// export interface testFilm {
+//   title: string;
+//   id: number;
+//   genre: string;
+// }
+// export interface Screens {
+//   id: number;
+//   name: string; //"B",
+//   rows: number; //5,
+//   colu: number; //  specialSeats: string[] //["E4", "D4", "E5", "D5"]
+// }
 
-export interface Showtest {
-  id: number; //0,
-  hour: string; //"12.30",
-  screen: number; //"B",
-  reservedSeats: string[]; //["A3", "C4", "H5"],
-  priceList: priceType[];
-  filmId: number; //0
-}
+// export interface Showtest {
+//   id: number; //0,
+//   hour: string; //"12.30",
+//   screen: number; //"B",
+//   reservedSeats: string[]; //["A3", "C4", "H5"],
+//   priceList: priceType[];
+//   filmId: number; //0
+// }
 
 const numbersArray: number[] = [];
 
@@ -101,7 +104,7 @@ export class TestComponent implements OnInit {
     this.cartService.addToCart$$(ticketDTO);
   }
 
-  checkReserved(seat: string,show:Showtest) {
+  checkReserved(seat: string, show: Showtest) {
     return show.reservedSeats.includes(seat);
   }
 
@@ -127,8 +130,6 @@ export class TestComponent implements OnInit {
       })
       .pop();
   }
-
-  
 
   private properFilms(films: Film[]): testFilm[] {
     return films.map((films) => ({
@@ -163,86 +164,15 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-   
-    // this.films$ = this.service.getFilms().pipe(
-    //   map((films) => this.dataService.properFilms(films))
-
-    // this.temporaryReservedSeats$ = this.reservationService.temporaryReservedSeats$;
     this.show$ = this.service
       .getShowtest()
       .pipe(map((value) => value.filter((value) => value.id == 4)));
     this.films$ = this.service.getFilms();
     this.screen$ = this.service.getScreens();
     this.cart$ = this.cartService.cart$;
-    // .pipe(map((films) => films.filter((films) => (films.id == 4))));
-
-    // this.films$ = this.service.getFilms().pipe(
-    //  (films) => {
-    //   films.map(films => ({
-
-    //   }))
-    //  }
-    // )
   }
-  // filmById(films: Film[]){
-
-  //    return films.map((films => films.filter(films => films.id >4)))
-
-  // }
-
-  // testComponent() {
-  //   this.getFilmsByRepertoires(this.getShowByDate('28/02'));
-  // }
-
- 
-
-  //   )
-  // }
-
-
 
   get vid$() {
     return this.service.getFilms();
   }
 }
-
-// login$ = createEffect(() => {
-//   return this.actions$.pipe(
-//     ofType(AuthActions.login),
-//     switchMap(({ loginData }) => {
-//       const { email, password } = loginData;
-//       return this.authService.login(email, password).pipe(
-//         tap(({ accessToken }) => {
-//           this.cookieService.set('token', accessToken, 1, '/');
-//         }),
-//         map(({ user }) => {
-//           this.router.navigate(['']);
-//           console.log('dupa')
-//           return UserApiActions.getUserSuccess({ user });
-//         }),
-//         catchError(() => {
-//           alert('Zły login lub hasło')
-//           return of(AuthApiActions.loginFailure());
-//         })
-//       );
-//     })
-//   );
-// });
-// }
-
-// this.films$ = this.service.getFilms().pipe(
-//   map((films => films.filter(films => films.id>7)))
-// )
-
-// properFilms(films: Film[]) : testFilm[] {
-//   return films.map((films) => ({
-//     title: films.title,
-//     id: films.id,
-//     genre: films.genre
-//   }))
-//   }
-
-// filmById(films : Film[]){
-// return films.map((films)=>(films.filter(films=>films.id)))
-// }

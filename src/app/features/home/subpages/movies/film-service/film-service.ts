@@ -11,7 +11,7 @@ import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showfor
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { map, pipe } from 'rxjs';
 import { shareReplay } from 'rxjs';
-import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from '../../reservation/reservation-grid/reservation-interfaces';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
 
 const PROTOCOL = 'http';

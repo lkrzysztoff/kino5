@@ -10,17 +10,17 @@
         <input type="time" min="08:00" max="12:00" formControlName="hour">
         <div *ngIf="repertoire$ | async as repertoire">
           <div *ngIf="shows$ | async as shows">
-          <div *ngFor="let oneDayRepertoire of filterRepertoireByDate(repertoire,data.date)">{{oneDayRepertoire.shows}}
+          <div *ngFor="let oneDayRepertoire of filterRepertoireByDate(repertoire,data.date)">
             <!-- <div *ngFor="let showsInChosenScreen of filterShowsByScreen(oneDayRepertoire.shows,data.sala)"></div> -->
 
 
 
-            <button (click)="submit(oneDayRepertoire,films,shows)">Klik</button>
+            <button  mat-button (click)="submit(oneDayRepertoire,films,shows)">Dodaj!</button>
             
             <div *ngFor="let id of oneDayRepertoire.shows">
               
                 
-                <div *ngFor="let show of filterShowById(shows,id,data.sala)">{{show.hour}}
+                <div *ngFor="let show of filterShowById(shows,id,data.sala)">
                 
                 </div>
                 

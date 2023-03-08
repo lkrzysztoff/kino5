@@ -17,6 +17,7 @@
                 [class.error]="paymentControl.touched && paymentControl.errors"
                 class="blik-input"
                 placeholder="Kod Blik"
+                [numberMaxLength]="6"
               />
               <ng-container *ngIf="paymentControl.errors as errors">
                 <ng-container *ngIf="paymentControl.touched">

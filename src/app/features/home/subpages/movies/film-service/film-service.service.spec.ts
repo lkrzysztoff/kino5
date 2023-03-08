@@ -8,7 +8,7 @@ import { Show } from 'src/app/shared/interfaces/show.interface';
 import { Screen } from 'src/app/shared/interfaces/screen.interface';
 import { FilmService } from './film-service';
 import { movie } from 'src/app/features/admin/pages/add-movies-admin/movie.interface';
-import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from '../../reservation/reservation-grid/reservation-interfaces';
 
 
 describe('FilmService', () => {

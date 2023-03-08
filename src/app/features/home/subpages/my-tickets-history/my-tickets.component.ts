@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { Cart } from 'src/app/shared/interfaces/cart-interface';
-import { map, Observable, tap, of, BehaviorSubject } from 'rxjs';
-import { isThisQuarter } from 'date-fns';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,16 +14,6 @@ export class MyticketsComponent implements OnInit {
 
   private http = inject(HttpClient);
   private activeRoute = inject(ActivatedRoute);
-  orders$!: Observable<Cart[]>;
-  orders$$ = new BehaviorSubject<Cart[]>([]);
-  ordersId$!: Observable<number[]>;
-  ordersId$$ = new BehaviorSubject<number[]>([]);
-  getFullPrice(tickets: Cart[]) {
-    let fullPrice = tickets.reduce((total, price) => {
-      return (total += +price.seat.price);
-    }, 0);
-    return fullPrice;
-  }
 
   ngOnInit(): void {
     this.newOrders$ = this.newGetOrders();

@@ -1,167 +1,48 @@
-<!-- <p>test works!</p>
-<button (click)="getvid()" >klik</button> -->
+<div class="title-container">
+  <h1>
+     {{ film.title }} | godzina: {{ show.hour }} | sala:
+    {{ show.screen }}
+  </h1>
+</div>
 
-<!-- 
-<div *ngIf="vid$">
-    <p  >{{(vid$ | async)}}</p>
-</div> -->
-<!-- <ul *ngIf="film$ | async as films">
-    <li *ngFor="let film of films">
-       
-    </li>
-</ul> -->
-
-<!-- <div *ngIf="films$ | async as videos">
-    <div *ngFor="let video of videos">{{video.title}}</div>
-</div>  -->
-
-<!-- <ol *ngIf="films$ | async as films">
-    <li *ngFor="let film of returnFilmsById(films,4)">
-        {{film.title}} {{film.genre}} {{film.id}}
-    </li>
-</ol> -->
-
-<!-- <h1>Films specs</h1>
-<div class="container" *ngIf="show$ | async as shows">
-  <div *ngFor="let show of shows">
-    <div *ngIf="films$ | async as films">
-      <div *ngFor="let film of returnFilmsById(films, 1)">
-        <h1>Films specs {{ film.title }} {{ show.hour }} {{ show.screen }}</h1>
-        <div class="reservation-grid-net" *ngIf="screen$ | async as screens">
-          <div *ngFor="let screen of returnScreenById(screens, show.screen)">
-            <div
-              class="letter"
-              *ngFor="
-                let letter of displayProperAmmountOfLetters(
-                  letters,
-                  screen.rows
-                );
-                let letterIndex = index
-              "
-            >
-              {{ letter }}
-              <button
-                class="number"
-                *ngFor="
-                  let number of createNumbersArray(screen.colu);
-                  let numberIndex = index
-                "
-                (click)="
-                  reservationService.addToTemporaryReservedSeats(
-                    letter + (numberIndex + 1));cartService.removeFromCart(letter + (numberIndex + 1))"
-                    
-                [ngClass]="{
-                  addedToReservation:
-                    reservationService.isSeatInTemporaryReserved(
-                      letter + (numberIndex + 1)
-                    )
-                }"
-              >
-                {{ number }}
-              </button>
-            </div>
-            <div
-              *ngIf="temporaryReservedSeats$ | async as temporaryReservedSeats"
-            >
-              <div *ngFor="let temporaryReservedSeat of temporaryReservedSeats">
-                Wybrane miejsce: {{ temporaryReservedSeat }}
-                <form
-                  [formGroup]="seatForm"
-                  (ngSubmit)="dodajtest(temporaryReservedSeat, show.id)"
-                > 
-                  <select formControlName="ticketType" required>
-                    <option value="" disabled selected>Wybierz typ biletu</option>
-                    <option 
-                        
-                      *ngFor="let price of show.priceList"
-                      [ngValue]="[price.type, price.price]"
-                    >
-                      {{ price.type }} {{ price.price }}
-                    </option>
-                  </select>
-                  <button
-                    (click)="
-                      cartService.addToCart$$({
-                        showId: show.id,
-                        tickets: seatForm.value,
-                        seat: temporaryReservedSeat
-                      })
-                    "
-                    [disabled]="cartService.doesCartHave(temporaryReservedSeat)"
-                      [disabled]="isFormValid()"
-                    type="submit"
-                  >
-                    Zatwierdź
-                  </button>
-                  <button
-                    *ngIf="cart$ | async as cart"
-                    (click)="
-                      cartService.removeFromCart(temporaryReservedSeat);
-                      reservationService.removeFromTemporaryReservedSeats(
-                        temporaryReservedSeat
-                      )
-                    "
-                  >
-                    Usun
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="reservation-grid-net" *ngIf="user$ | async as user">
+  <div *ngIf="screen$ | async as screens">
+    <div
+      class="grid"
+      *ngFor="let screen of returnScreenById(screens, show.screen)"
+    >
+      <div
+        class="letter"
+        *ngFor="
+          let letter of displayProperAmmountOfLetters(letters, screen.rows);
+          let letterIndex = index
+        "
+      >
+        {{ letter }}
+        <button
+          class="reservation__number"
+          *ngFor="
+            let number of createNumbersArray(screen.colu);
+            let numberIndex = index
+          "
+          (click)="
+            addToTicketState(
+              letter + (numberIndex + 1),
+              letter + (numberIndex + 1),
+              user.email
+            )
+          "
+          [ngClass]="{
+            addedToReservation: cartService.doesCartHave(
+              letter + (numberIndex + 1),
+              show.id
+            )
+          }"
+          [disabled]="checkReserved(letter + (numberIndex + 1), show)"
+        >
+          {{ number }}
+        </button>
       </div>
     </div>
   </div>
-</div> -->
-
-
-  <div class="title-container"><h1>Tytuł filmu: {{ film.title }} | godzina: {{ show.hour }} |
-     sala: {{ show.screen }}</h1></div>
-    
-    <div class="reservation-grid-net" *ngIf="user$ | async as user">
-    <div  *ngIf="screen$ | async as screens">
-      <div
-        class="grid"
-        *ngFor="let screen of returnScreenById(screens, show.screen)"
-      >
-        <div
-          class="letter"
-          *ngFor="
-            let letter of displayProperAmmountOfLetters(
-              letters,
-              screen.rows
-            );
-            let letterIndex = index
-          "
-        >
-          {{ letter }}
-          <button 
-            class="reservation__number"
-            *ngFor="
-              let number of createNumbersArray(screen.colu);
-              let numberIndex = index
-            "
-            (click)="
-              addToTicketState(letter + (numberIndex + 1),letter + (numberIndex + 1),user.email);
-            "
-            [ngClass]="{
-              addedToReservation:
-                cartService.doesCartHave(letter + (numberIndex + 1),show.id)
-            }"
-            [disabled]="checkReserved(letter + (numberIndex + 1),show)"
-          > 
-            {{ number }}
-            <!-- <button (click)="reservationService.check({seat:letter + (numberIndex + 1),showId:show.id});reservationService.removeFromTemporaryReservedSeats({seat:letter + (numberIndex + 1),showId:show.id})">test</button> -->
-          </button>
-          
-        </div>
-        
-      </div>
-
-
-        <!-- (click)="
-              reservationService.addToTemporaryReservedSeats({
-                seat: letter + (numberIndex + 1),
-                showId: show.id
-              });
-              addToTicketState(letter + (numberIndex + 1),letter + (numberIndex + 1)); -->
+</div>

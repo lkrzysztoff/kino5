@@ -10,7 +10,7 @@ import { score } from '../scoredialog/score.interface';
 import { ScoreService } from './movie-score-service/score.service';
 import { Observable } from 'rxjs';
 import { FilmService } from '../film-service/film-service';
-import { Showtest } from 'src/app/features/home/subpages/reservation/reservation-grid/reservation-grid.component';
+import { Showtest } from '../../reservation/reservation-grid/reservation-interfaces';
 import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
 
 @Component({

@@ -12,6 +12,7 @@ import { NumberMaxLengthDirective } from '../../../../shared/guards/directives/n
 import { AdminFilmService } from '../../services/admin-film.service';
 import { Store } from '@ngrx/store';
 import { addFilmsActions } from '../../store/admin.actions';
+import { whitespaceValidator } from 'src/app/features/auth/subpages/signin/validators';
 
 @Component({
   selector: 'app-addmoviesadmin',
@@ -28,15 +29,33 @@ export class AddmoviesadminComponent {
 
   private createMovieForm() {
     const form = this.formBuilder.group({
-      img: this.formBuilder.control('', []),
-      title: this.formBuilder.control('', []),
-      description: this.formBuilder.control('', []),
-      genre: this.formBuilder.control('', []),
-      ageRest: this.formBuilder.control('', []),
-      date: this.formBuilder.control('', []),
-      hour: this.formBuilder.control('', []),
-      length: this.formBuilder.control('', []),
-      score: this.formBuilder.control('', []),
+      img: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      title: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      description: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      genre: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      ageRest: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      date: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      hour: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      length: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
+      score: this.formBuilder.control('', [
+        whitespaceValidator
+      ]),
       premier: this.formBuilder.control('', []),
     });
     return form;

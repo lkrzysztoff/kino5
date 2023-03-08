@@ -36,7 +36,7 @@ export class OrderComponent implements OnInit {
 
   constructor(
     public orderService: OrderManagmentService,
-    public router: Router
+    private router: Router
   ) {}
 
   user!: UserResponse;

@@ -20,7 +20,7 @@
     </h5>
 
     <div *ngFor="let scores of score">
-      <p *ngIf="films.id === scores.id">
+      <p class="score-btn-text" *ngIf="films.id === scores.id">
         Twoja ocena to {{ scores.score }}/10
         <button
           class="btn-change"

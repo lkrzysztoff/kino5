@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { Cart } from '../../../../../shared/interfaces/cart-interface';
 import { CartService } from '../../../../../shared/services/cart.service';
-import { Showtest } from '../reservation-grid/reservation-grid.component';
+import { Showtest } from '../reservation-grid/reservation-interfaces';
 import { NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';

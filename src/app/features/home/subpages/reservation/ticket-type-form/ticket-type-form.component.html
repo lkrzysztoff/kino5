@@ -14,7 +14,7 @@
     "
   >
     <option *ngFor="let ticket of show.priceList" [value]="ticket.type">
-      {{ ticket.type }}
+      {{ ticket.type }} {{ticket.price+'PLN'}}
     </option>
   </select>
 </mat-card>

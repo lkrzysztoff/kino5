@@ -2,7 +2,7 @@
   <div class="reservation__display" *ngIf="show$ | async as shows">
     <div  *ngFor="let show of returnShowById(shows, showId)">
       <div *ngIf="films$ | async as films">
-        <div *ngFor="let film of returnFilmsById(films, show.filmId)">
+        <div class="cont" *ngFor="let film of returnFilmsById(films, show.filmId)">
           <app-reservation-grid
             [film]="film"
             [date]="selectedDate"

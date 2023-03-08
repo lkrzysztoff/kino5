@@ -32,28 +32,8 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Ocena</mat-label>
-            <input matInput [numberMaxLength]="10" placeholder="Ocena" type="text" formControlName="score" required />
-            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+            <input matInput [numberMaxLength]="2" placeholder="Ocena" type="text" formControlName="score" required />
           </mat-form-field>
-          <!-- <mat-form-field appearance="fill"> -->
-            <!-- <mat-label>Premiera</mat-label>
-            <select formControlName="premiere">
-              <option [value]="true">Tak</option>
-              <option [value]="false">Nie</option>
-            </select> -->
-            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-          <!-- </mat-form-field> -->
-
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>Data</mat-label>
-            <input matInput placeholder="Data" type="date" formControlName="date" required />
-            <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-          <!-- </mat-form-field> -->
-          <!-- <mat-form-field appearance="fill">
-            <mat-label>Godzina</mat-label>
-            <input matInput placeholder="Godzina" type="time" formControlName="hour" required /> -->
-            <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-          <!-- </mat-form-field> -->
           <button  mat-fab color="primary" aria-label="Example icon button with a delete icon">
             <mat-icon>add</mat-icon>
           </button> 
