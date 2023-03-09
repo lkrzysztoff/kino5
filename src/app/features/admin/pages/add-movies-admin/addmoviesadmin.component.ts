@@ -4,9 +4,6 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { FilmService } from 'src/app/features/home/subpages/movies/film-service/film-service';
-import { HttpClient } from '@angular/common/http';
-import { Film } from '../../../../shared/interfaces/film.interface';
 import { movie } from './movie.interface';
 import { NumberMaxLengthDirective } from '../../../../shared/guards/directives/numbermaxlength.directive';
 import { AdminFilmService } from '../../services/admin-film.service';
@@ -30,31 +27,40 @@ export class AddmoviesadminComponent {
   private createMovieForm() {
     const form = this.formBuilder.group({
       img: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       title: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       description: this.formBuilder.control('', [
-        whitespaceValidator
+        Validators.required
+        ,whitespaceValidator
       ]),
       genre: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       ageRest: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       date: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       hour: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       length: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       score: this.formBuilder.control('', [
-        whitespaceValidator
+        whitespaceValidator,
+        Validators.required
       ]),
       premier: this.formBuilder.control('', []),
     });

@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
-import { FilmService } from '../../home/subpages/movies/film-service/film-service';
 import { AdminFilmService } from '../services/admin-film.service';
 import { addFilmsActions } from './admin.actions';
 
