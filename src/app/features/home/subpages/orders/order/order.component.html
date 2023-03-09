@@ -8,6 +8,9 @@
   <div class=" mt-5">
     <form [formGroup]="reactiveForm" #form="ngForm">
       <div class="">
+        <div *ngIf="reactiveForm.touched&&reactiveForm.errors?.['noMatch']">
+          Te adresy email różnią się
+        </div>
         <div class=" mb-2">
           <label for="name" class="form-label">Imię:</label>
           <input
@@ -35,8 +38,8 @@
             <div *ngIf="name.errors?.['maxlength']">
               To polo może mieć maksymalnie dwadzieścia znaków.
             </div>
-            <div *ngIf="name.errors?.['maxlength']">
-              To polo może mieć maksymalnie dwadzieścia znaków.
+            <div *ngIf="name.errors?.['whitespace']">
+              Białe znaki nie są dozwolone
             </div>
           </div>
         </div>
@@ -70,6 +73,9 @@
             </div>
             <div *ngIf="surname.errors?.['maxlength']">
               To polo może mieć maksymalnie dwadzieścia znaków.
+            </div>
+            <div *ngIf="surname.errors?.['whitespace']">
+              Białe znaki nie są dozwolone
             </div>
           </div>
           <div class="">
@@ -106,6 +112,9 @@
                   *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']"
                 >
                   To nie jest prawidłowy adres email.
+                </div>
+                <div *ngIf="email.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
                 </div>
               </div>
             </div>
@@ -145,21 +154,20 @@
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
                 <div
-                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && !emailConfirm.errors?.['email'] && emailConfirm.errors?.['noMatch']">
+                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && !emailConfirm.errors?.['email']">
                   To nie jest prawidłowy adres email.
                 </div>
                 <div *ngIf="emailConfirm.errors?.['confirm']">
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
-                <div *ngIf="!emailConfirm.errors?.['noMatch']">
+                <div *ngIf="emailConfirm.errors?.['noMatch']">
                 Te adresy nie są takie same
                 </div>
-                
+                <div *ngIf="emailConfirm.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
+                </div>
+               
               </div>
-              <ng-container *ngIf="emailConfirm.invalid &&
-                (emailConfirm.dirty || emailConfirm.touched)">
-                <p *ngIf="!emailConfirm.errors?.['noMatch']">Adresy email się różnią!</p>
-              </ng-container>
             </div>
           </div>
           <div class="">
@@ -196,6 +204,9 @@
                   *ngIf="!phone.errors?.['required'] && !phone.errors?.['minlength'] && !phone.errors?.['maxlength'] && phone.errors?.['pattern']"
                 >
                   To nie jest prawidłowy numer telefonu.
+                </div>
+                <div *ngIf="name.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
                 </div>
               </div>
               <div class="">

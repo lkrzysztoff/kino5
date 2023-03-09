@@ -64,7 +64,7 @@ export class AddmoviesadminComponent {
   addMovieFormSubmit() {
    
     this.store.dispatch(
-      addFilmsActions.addSingleFilm({ films: this.movieForm.getRawValue() })
+      addFilmsActions.addOneMovie({ films: this.movieForm.getRawValue() })
     )
   }
 

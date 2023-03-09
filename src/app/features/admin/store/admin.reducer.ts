@@ -4,12 +4,8 @@ import { addFilmsActions } from './admin.actions';
 
 export const addFilmReducer = createReducer(
     initialFilmState,
-    on(addFilmsActions.addFilm, (state, action) => ({
+    on(addFilmsActions.addMovie, (state, action) => ({
       ...state,
       films: action.films,
     })),
-    on(addFilmsActions.addSingleFilm, (state, action) => ({
-      ...state,
-      films: [...state.films, action.films],
-    }))
 )

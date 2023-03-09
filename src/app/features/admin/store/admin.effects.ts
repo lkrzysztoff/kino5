@@ -11,26 +11,13 @@ export class AdminEffects{
     private adminFilmService = inject(AdminFilmService)
 
 
-    film$ = createEffect(() =>
+  sendMovies$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addFilmsActions.getFilms),
-      switchMap(() => {
-        return this.adminFilmService.getFilms().pipe(
-          map((result) => {
-            return addFilmsActions.addFilm({ films: result });
-          })
-        );
-      })
-    )
-  );
-
-  sendFilms$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(addFilmsActions.addSingleFilm),
+      ofType(addFilmsActions.addOneMovie),
       switchMap((result) => {
         return this.adminFilmService.adminAddMovieFunction(result.films).pipe(
           map((result) => {
-            return addFilmsActions.addFilm({ films: [] });
+            return addFilmsActions.addMovie({ films: [] });
           })
         );
       })

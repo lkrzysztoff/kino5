@@ -245,7 +245,17 @@
         "F1",
         "A4",
         "B5",
-        "B6"
+        "B6",
+        "C7",
+        "D6",
+        "D5",
+        "E6",
+        "E7",
+        "D7",
+        "E8",
+        "E5",
+        "D9",
+        "E9"
       ],
       "priceList": [
         {
@@ -1681,6 +1691,19 @@
       "score": "10",
       "premier": "",
       "id": 15
+    },
+    {
+      "img": "kdwk",
+      "title": "dqwo",
+      "description": "dwqkodqw",
+      "genre": "dwqdqwd",
+      "ageRest": "qd",
+      "date": "",
+      "hour": "",
+      "length": "qd",
+      "score": "2",
+      "premier": "",
+      "id": 16
     }
   ],
   "repertoire": [

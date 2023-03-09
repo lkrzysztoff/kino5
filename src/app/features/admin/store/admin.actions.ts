@@ -5,11 +5,10 @@ import { movie } from '../pages/add-movies-admin/movie.interface';
 export const addFilmsActions = createActionGroup({
   source: 'AdminFilm',
   events: {
-    'get Films': emptyProps(),
-    'Add film': props<{
+    'Add movie': props<{
       films: movie[];
     }>(),
-    'Add single film': props<{
+    'Add one movie': props<{
       films: movie;
     }>(),
   },
