@@ -20,6 +20,7 @@ import { selectLoggedUser } from '../../../../../core/store/user.selectors';
 import { Showtest } from './reservation-interfaces';
 import { Screens } from './reservation-interfaces';
 import { testFilm } from './reservation-interfaces';
+import { HttpClient } from '@angular/common/http';
 
 // export interface testFilm {
 //   title: string;
@@ -56,6 +57,7 @@ export class TestComponent implements OnInit {
   @Input() date!: string;
   @Input() film!: Film;
 
+
   service = inject(FilmService);
   reservationService = inject(ReservationService);
   repertoire!: repertoire[];
@@ -64,6 +66,7 @@ export class TestComponent implements OnInit {
   formBuilder = inject(NonNullableFormBuilder);
   cartService = inject(CartService);
   private store = inject(Store);
+  private http = inject(HttpClient)
 
   user$ = this.store.select(selectLoggedUser);
   //   filmsAll!: Film[];
@@ -108,6 +111,14 @@ export class TestComponent implements OnInit {
     return show.reservedSeats.includes(seat);
   }
 
+  // reservationManagment(seat:string, show: Showtest,cart:Cart[]){
+  //   if(this.checkReserved(seat,show)){
+  //     this.reservationService.cancelReservation(seat,show.id)
+  //     console.log('deleted')
+  //   // } else this.reserveSeats(cart,show)
+  //   } else this.reserveSeats(cart,show)
+  // }
+
   dodajtest(seat: string, showId: number) {
     this.seatForm.markAllAsTouched();
     if (this.seatForm.invalid) {
@@ -129,6 +140,36 @@ export class TestComponent implements OnInit {
         return date == record.date;
       })
       .pop();
+  }
+
+  reserveSeats(cart:Cart[],show: Showtest){
+    const seatArray: string[] = []
+    console.log(show)
+    cart.forEach((element) => {
+      if (show.reservedSeats.indexOf(element.id)<0){
+        show.reservedSeats.push(element.id)
+      } 
+      this.http.put<Showtest>('http://localhost:3000/show/'+this.show.id,show).subscribe(
+        value => console.log(value)
+      )
+      // seatArray.push(element.id)
+    })
+    console.log(seatArray)
+  }
+
+  deleteFromReserved(cart: Cart[],show: Showtest){
+    const seatArray: string[] = []
+    console.log(show)
+    cart.forEach((element) => {
+      if (show.reservedSeats.indexOf(element.id)<0){
+        show.reservedSeats.pop()
+      } 
+      this.http.put<Showtest>('http://localhost:3000/show/'+this.show.id,show).subscribe(
+        value => console.log(value)
+      )
+      // seatArray.push(element.id)
+    })
+    console.log(seatArray)
   }
 
   private properFilms(films: Film[]): testFilm[] {
@@ -162,6 +203,8 @@ export class TestComponent implements OnInit {
   returnScreenById(screen: Screens[], id: number) {
     return screen.filter((screen) => screen.id == id);
   }
+
+ 
 
   ngOnInit(): void {
     this.show$ = this.service

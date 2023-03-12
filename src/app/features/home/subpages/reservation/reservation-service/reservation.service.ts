@@ -5,6 +5,7 @@ import { __values } from 'tslib';
 import { TemporaryReserved } from '../temporary-reserved.interface';
 import { HttpClient } from '@angular/common/http';
 import { Showtest } from '../reservation-grid/reservation-interfaces';
+import { map } from 'rxjs';
  
 
 const PROTOCOL = 'http';
@@ -62,5 +63,25 @@ export class ReservationService {
   baseUrl!: string
   constructor() {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+  }
+
+  getCurrentReservedSeats(showId:number){
+    return this.http.get<Showtest>(this.baseUrl+'show/'+showId)
+  }
+
+  cancelReservation(seat: string, showId: number) {
+    this.getCurrentReservedSeats(showId)
+      .pipe(
+        map(({ reservedSeats }) => {
+          return reservedSeats.filter((seatPos) => seatPos !== seat);
+        })
+      )
+      .subscribe((reservedSeats) => {
+        this.http
+          .patch(this.baseUrl + `show/${showId}`, {
+            reservedSeats: reservedSeats,
+          })
+          .subscribe();
+      });
   }
 }

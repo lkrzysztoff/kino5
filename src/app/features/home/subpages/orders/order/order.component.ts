@@ -5,7 +5,7 @@ import {
   ElementRef,
   inject,
 } from '@angular/core';
-import { Validators, FormControl, FormGroup } from '@angular/forms';
+import { Validators, FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { OrderManagmentService } from '../../../../../order-managment.service';
 import { Router } from '@angular/router';
 import { selectLoggedUser } from 'src/app/core/store/user.selectors';
@@ -17,6 +17,7 @@ import {
   emailMatchValidate,
 } from 'src/app/features/auth/subpages/signin/validators';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { DiscountService } from 'src/app/shared/services/discount.service';
 
 submitted: false;
 
@@ -28,6 +29,8 @@ submitted: false;
 export class OrderComponent implements OnInit {
   private store = inject(Store);
   private cartService = inject(CartService)
+  private formBuilder = inject(NonNullableFormBuilder)
+  private discountService = inject(DiscountService)
 
   @ViewChild('titleInput')
   titleInputReference!: ElementRef;
@@ -79,7 +82,7 @@ export class OrderComponent implements OnInit {
           Validators.minLength(9),
           Validators.maxLength(9),
         ]),
-        discount: new FormControl(this.orderService.userdata.phone, []),
+        discount: new FormControl(this.orderService.userdata.discount, []),
         payment: new FormControl(this.orderService.userdata.payment, [
           Validators.required,
         ]),
@@ -113,17 +116,57 @@ export class OrderComponent implements OnInit {
     return this.reactiveForm.get('payment')!;
   }
 
+  get discount() {
+    return this.reactiveForm.get('discount')?.value!;
+  }
+
   public validate() {
     this.reactiveForm.markAllAsTouched();
     if (this.reactiveForm.valid) {
       this.router.navigate(['/order-completed']);
+      return this.discountService.getDiscountCode(this.discountValue.discount).subscribe(
+        value => {
+         return this.discountService.deleteDiscountCodeFromDB(value[0].id).subscribe()
+        } 
+     )
+      
     } else if (this.reactiveForm.invalid) {
       for (const control of Object.keys(this.reactiveForm.controls)) {
         this.reactiveForm.controls[control].markAsTouched();
+        
       }
       return;
     }
 
-    this.orderService.userdata = this.reactiveForm.value;
+    return this.orderService.userdata = this.reactiveForm.value;
   }
-}
+
+    discountForm = this.createDiscountForm()
+
+    createDiscountForm(){
+      const form = this.formBuilder.group({
+        discount: this.formBuilder.control('', [
+          Validators.required,
+          whitespaceValidator,
+          Validators.minLength(10),
+        ]),
+    })
+    return form;
+    }
+discountValue !: {discount:string}
+discountId!: number
+    onDiscountFormSubmit(){
+        this.discountForm.markAllAsTouched()
+        if(this.discountService.checkIfDiscountCodeExist(this.discountForm.getRawValue())){
+          console.log(this.discountForm.getRawValue())
+        this.discountValue = this.discountForm.getRawValue()
+        return this.discountService.getDiscountCode(this.discountValue.discount)
+        }
+        else return;
+        //  return this.discountValue = this.discountForm.getRawValue()
+        
+      }
+
+
+    }
+  

@@ -151,7 +151,8 @@
         scoreService.addScore({
           id: data.title,
           score: data.importedDialogData
-        })
+        });sendRating({filmId:data.title, myRating:data.importedDialogData})
+       
       "
       mat-button
     >

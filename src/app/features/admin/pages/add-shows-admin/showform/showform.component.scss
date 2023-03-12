@@ -1,7 +1,69 @@
 form{
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
+// button{
+//     background-color: aquamarine;
+// }
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+
+  
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #dddddd;
+  }
+//   *{
+//     font-size: 20px;
+//   }
+  th{
+    border: 1px solid white;
+  }
+
+//   .bg-grn{
+//     background-color: green;
+//     color: white;
+//   }
+//   .bg-grn1{
+//     background-color: yellowgreen;
+//   }
+
+
+ .border{
+    border: 2x solid black;
+    margin-bottom: 30px;
+ }
+
+ .special{
+    background-color: black;
+    color: white;
+ }
+table{
+    width: 100%;
+}
+.text{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
 button{
-    background-color: aquamarine;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

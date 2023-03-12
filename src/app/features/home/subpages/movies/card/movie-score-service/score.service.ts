@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable,inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { score } from '../../scoredialog/score.interface';
-
+import { MyRating } from '../../scoredialog/score.interface';
 @Injectable({
   providedIn: 'root',
 })
 export class ScoreService {
   private score$$ = new BehaviorSubject<score[]>([]);
+  private http = inject(HttpClient)
+  private apiUrl = 'http://localhost:3000/';
 
   get score$() {
     return this.score$$.asObservable();
@@ -22,5 +25,13 @@ export class ScoreService {
 
   hasScore(scoreId: number): boolean {
     return this.score$$.value.some(({ id }) => id === scoreId);
+  }
+
+  sendRatingToDB(ratingDTO : MyRating){
+    return this.http.post<MyRating>(this.apiUrl+'rating',ratingDTO)
+  }
+
+  getRating(filmId:number){
+    return this.http.get<MyRating[]>(this.apiUrl+'rating?showId='+filmId)
   }
 }

@@ -4,8 +4,8 @@ export interface movie {
     genre: string,
     length: string,
     ageRest: string,
-    premier: string,
-    score:string,
+    premier: boolean,
+    score:  string,
     description: string
 
 }

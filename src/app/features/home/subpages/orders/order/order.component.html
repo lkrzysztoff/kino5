@@ -1,11 +1,36 @@
 <div class="order-body">
 <div class="order-details">
-<app-order-details></app-order-details>
+<app-order-details [discount]="discountValue"></app-order-details>
 </div>
+
 
 <div class="container-box">
 <div class=" justify-content-center ">
   <div class=" mt-5">
+
+    <div class="discount-form mb-5">
+      <form [formGroup]="discountForm" (ngSubmit)="onDiscountFormSubmit()">
+        <div class=" mb-2">
+          <label for="name" class="form-label">Kod promocyjny:</label>
+          <input
+            type="text"
+            id="name"
+            name="discount"
+            formControlName="discount"
+            placeholder="Kod promocyjny"
+            required
+            minlength="2"
+            maxlength="30"
+            class="form-control form-control-sm"
+            [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+          />
+          </div>
+          <button color="primary" mat-raised-button>Sprawdź kod</button>
+      </form>
+    </div>
+    
+
+
     <form [formGroup]="reactiveForm" #form="ngForm">
       <div class="">
         <div *ngIf="reactiveForm.touched&&reactiveForm.errors?.['noMatch']">
@@ -109,7 +134,7 @@
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
                 <div
-                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']"
+                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']&&email.errors?.['noMatch']"
                 >
                   To nie jest prawidłowy adres email.
                 </div>
@@ -160,7 +185,7 @@
                 <div *ngIf="emailConfirm.errors?.['confirm']">
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
-                <div *ngIf="emailConfirm.errors?.['noMatch']">
+                <div *ngIf="!emailConfirm.errors?.['noMatch']">
                 Te adresy nie są takie same
                 </div>
                 <div *ngIf="emailConfirm.errors?.['whitespace']">

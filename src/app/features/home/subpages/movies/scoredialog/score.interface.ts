@@ -10,3 +10,8 @@ export interface DialogData {
     id:number,
     score:number
   }
+
+  export interface MyRating {
+    filmId:number,
+    myRating:number
+  }

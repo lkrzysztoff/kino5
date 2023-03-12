@@ -1,35 +1,130 @@
+<form [formGroup]="showForm" *ngIf="data && films$ | async as films">
+  <p class="text">Data {{ data.date }} Sala {{ data.screen }}</p>
 
-<form [formGroup]="showForm" *ngIf="data&&films$ | async as films">
-  <h1 >Data {{data.date}} Sala {{data.sala}}</h1>
-      
-        <label>Film</label>
-        <select formControlName="filmId">
-          <option [ngValue]="film.id"  *ngFor="let film of films">{{film.title}}</option>
-        </select>
-        <label>Godzina</label>
-        <input type="time" min="08:00" max="12:00" formControlName="hour">
-        <div *ngIf="repertoire$ | async as repertoire">
-          <div *ngIf="shows$ | async as shows">
-          <div *ngFor="let oneDayRepertoire of filterRepertoireByDate(repertoire,data.date)">
-            <!-- <div *ngFor="let showsInChosenScreen of filterShowsByScreen(oneDayRepertoire.shows,data.sala)"></div> -->
+  <!-- <label>Film</label>
+  <select formControlName="filmId">
+    <option [ngValue]="film.id" *ngFor="let film of films">
+      {{ film.title }}
+    </option>
+  </select> -->
+
+  <ng-container *ngIf="showForm.controls.filmId as control">
+    <mat-form-field appearance="fill">
+      <mat-label>Tytuł filmu</mat-label>
+      <mat-select
+        matInput
+        placeholder="Premiera"
+        formControlName="filmId"
+        required
+        type="number"
+      >
+        <mat-option [disabled]="true">Tytuł filmu</mat-option>
+        <mat-option [value]="film.id" *ngFor="let film of films">{{
+          film.title
+        }}</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="control.errors?.['required']">
+        <p class="error-style">To pole jest obowiązkowe</p>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="showForm.controls.hour as control">
+    <mat-form-field appearance="fill">
+      <mat-label>Godzina</mat-label>
+      <input
+        matInput
+        placeholder="Ocena"
+        type="time"
+        formControlName="hour"
+        required
+      />
+      <mat-error *ngIf="control.errors?.['required']">
+        <p class="error-style">To pole jest obowiązkowe</p>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
 
 
+  <!-- 
+  <mat-label>Godzina</mat-label>
+  <input matInput type="time" min="08:00" max="12:00" formControlName="hour" /> -->
+  <div *ngIf="repertoire$ | async as repertoire">
+    <div *ngIf="shows$ | async as shows">
+      <div
+        *ngFor="
+          let oneDayRepertoire of filterRepertoireByDate(repertoire, data.date)
+        "
+      >
+        <!-- {{ oneDayRepertoire.shows }} -->
+        <!-- <div  *ngFor="let show of filterShowsByScreen(shows,data.screen)"></div> -->
+        <!-- <div *ngFor="let showsInChosenScreen of filterShowsByScreen(oneDayRepertoire.shows,data.sala)">
+              {{showsInChosenScreen}}
+            </div> -->
+        <div class="center">
+          <button
+            color="primary"
+            mat-raised-button
+            (click)="submit(oneDayRepertoire, films, shows)"
+          >
+            Dodaj!
+          </button>
+        </div>
 
-            <button  mat-button (click)="submit(oneDayRepertoire,films,shows)">Dodaj!</button>
-            
-            <div *ngFor="let id of oneDayRepertoire.shows">
-              
-                
-                <div *ngFor="let show of filterShowById(shows,id,data.sala)">
-                
-                </div>
-                
-              </div>
-             
+        <div>
+          <div class="cont">
+            <p class="text">Godziny rozpoczęcia seansów</p>
+            <div class="border">
+              <table>
+                <tr>
+                  <th class="special">
+                    Sala {{ data.screen }} dnia {{ data.date }}
+                  </th>
+                </tr>
+                <tr *ngFor="let id of oneDayRepertoire.shows">
+                  <th
+                    *ngFor="let show of filterShowById(shows, id, data.screen)"
+                  >
+                    Godzina: {{ show.hour }}
+                  </th>
+                </tr>
+              </table>
             </div>
+
           </div>
         </div>
-        
-        
-<!-- <button (click)="klik()">KLIK</button> -->
+      </div>
+    </div>
+  </div>
+</form>
 
+
+
+<!-- <h2>Books</h2>
+
+
+<div *ngIf="showState$ | async as showsState">
+<div
+  class="book-item"
+  *ngFor="let showItem of showsState"
+>
+  <p></p><span> by {{showItem.id}}</span>
+  <button
+
+  >Add to Collection</button>
+</div>
+</div>
+
+
+<div *ngIf="books$ | async as books">
+<div 
+  class="book-item"
+  *ngFor="let book of books"
+>
+  <p>{{book.id}}</p><span> by {{book.reservedSeats}}</span>
+  <button
+    
+  >Remove from Collection</button>
+</div>
+</div> -->

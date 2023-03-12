@@ -17,9 +17,30 @@
       <th>{{ cartItem.screen }}</th>
       <th>{{ cartItem.seat.price }}</th>
     </tr>
-
     <tr *ngIf="cart$ | async as cart" class="sum">
       <th>Łączna wartość zamówienia {{ getFullPrice(cart) + "PLN" }}</th>
     </tr>
+
+     <th class="tricky" *ngIf="discount$ | async as discount">
+      <p class="promo" *ngFor="let discountCode of discount ">Łączna wartość zamówienia po promocji to
+        {{ getFullPrice(cart) * discountCode.value + "PLN" }}</p>
+      </table>
+
+    <!-- <th class="tricky" *ngIf="discount$ | async as discount"> -->
+      <!-- <p *ngFor="let discountCode of discount">{{discountCode.code}}</p> -->
+      <!-- <div *ngFor="let discountCode of discount">
+        Łączna wartość zamówienia po promocji to
+        {{ getFullPrice(cart,discountCode.value) * discountCode.value + "PLN" }}
+        <ng-template *ngIf="discountCode.value; else noCode">
+          Łączna wartość zamówienia po promocji to
+          {{ getFullPrice(cart,discountCode.value) * discountCode.value + "PLN" }}
+        </ng-template>
+      </div>
+    </th>
+    <ng-template #noCode>
+      <p>Łączna wartość zamówienia {{ getFullPrice(cart,discountCode.value) + "PLN" }}</p>
+    </ng-template>
   </table>
-</div>
+</div> -->
+
+<!-- <div>{{discountUnpresent(discount)}}</div> -->

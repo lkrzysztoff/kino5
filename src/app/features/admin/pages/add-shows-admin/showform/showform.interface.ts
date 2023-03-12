@@ -1,5 +1,5 @@
 export interface showformInput{
-sala:number,
+screen:number,
 date:string,
 }
 

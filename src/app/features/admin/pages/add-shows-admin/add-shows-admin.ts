@@ -7,16 +7,7 @@ import { AdminFilmService } from '../../services/admin-film.service';
 import { eachDayOfInterval } from 'date-fns';
 import { startOfISOWeek } from 'date-fns';
 import { endOfMonth } from 'date-fns';
-import startOfDay from 'date-fns/startOfDay';
-
-export interface addShowInterface {
-  hour: string;
-  screen: number;
-  reservedSeats: string[];
-  priceList: { type: string; price: number }[];
-  filmId: number;
-  id?:number
-}
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-addshowsadmin',
@@ -27,16 +18,11 @@ export class AddshowsadminComponent implements OnInit {
   formBuilder = inject(NonNullableFormBuilder);
   service = inject(FilmService);
   adminService = inject(AdminFilmService);
-
+ 
   dates = eachDayOfInterval({
-    start: startOfISOWeek(new Date()),
+    start: new Date(),
     end: endOfMonth(new Date()),
   }).map((day) => format(day, 'dd/MM'));
-
-  test(){
-    console.log(this.dates)
-    console.log(this.showForm.getRawValue())
-  }
 
   screen$ = this.service.getScreens();
   today!: Date;
@@ -44,10 +30,12 @@ export class AddshowsadminComponent implements OnInit {
   dateArray!: (number | Date)[];
   showForm = this.createShowForm();
   data!: showformInput;
+  todayString !: string
+  
   private createShowForm() {
     const form = this.formBuilder.group({
-      date: this.formBuilder.control('', []),
-      sala: this.formBuilder.control<number>(NaN, []),
+      date: this.formBuilder.control<string>(this.todayString, []),
+      screen: this.formBuilder.control<number>(NaN, []),
 
       // ]),
       // godzina: this.formBuilder.control('',[
@@ -92,12 +80,12 @@ export class AddshowsadminComponent implements OnInit {
     if (this.showForm.invalid) {
       return;
     }
-    this.data = this.showForm.getRawValue()
+    this.data = this.showForm.getRawValue();
     console.log(this.data);
   }
   ngOnInit(): void {
     // this.today = new Date().dateArray.push()toDateString().map((today: number | Date) => format(today, 'yyyy-MM-dd'));
-
+    this.todayString = format(new Date(),'MM/dd')
     this.minimumDay = this.dateCreator();
   }
 }

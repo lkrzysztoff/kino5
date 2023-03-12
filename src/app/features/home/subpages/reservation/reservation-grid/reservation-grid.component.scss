@@ -193,7 +193,6 @@
     background-color: #cccccc !important;
     color: #666666 !important;
     border-radius: 10px;
-    cursor: not-allowed;
   }
   
   @media screen and (max-width:650px){
@@ -236,7 +235,7 @@
   }
   
   .addedToReservation{
-    background-color: orange;
+    background-color: orange !important;
     color: black;
     border: 2px solid yellow;
     border-radius: 10px;
@@ -268,4 +267,10 @@
     border-bottom: 4px solid gray;
     margin-bottom: 20px;
    
+  }
+
+
+  .disabled{
+    background-color: gainsboro;
+    color: black;
   }

@@ -7,4 +7,6 @@ import { FilmService } from 'src/app/features/home/subpages/movies/film-service/
 })
 export class AdminMovieService {
   public service = inject(FilmService);
+
+array !: Array<string>
 }
