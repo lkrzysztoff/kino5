@@ -1,10 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Film } from '../../../../model/film.model';
+import { Film } from '../../../../shared/interfaces/film.interface';
 import { Observable } from 'rxjs';
-import { MainDataSource } from 'src/app/model/main.datasource.service';
 import { repertoire } from 'src/app/features/admin/pages/add-shows-admin/showform/showform.interface';
 import { OrderManagmentService } from 'src/app/order-managment.service';
 import { DateService } from '../../../../shared/ui-components/date-panel/date.service';
+import { ActivatedRoute } from '@angular/router';
+import { FilmService } from '../movies/film-service/film-service';
+import { Showtest } from '../reservation/reservation-grid/reservation-interfaces';
 
 @Component({
   selector: 'app-homepage',
@@ -12,14 +14,15 @@ import { DateService } from '../../../../shared/ui-components/date-panel/date.se
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  filmService = inject(MainDataSource);
-  orderManagmentService = inject(OrderManagmentService);
-  dateService = inject(DateService);
+  private filmService = inject(FilmService);
+  private orderManagmentService = inject(OrderManagmentService);
+  private dateService = inject(DateService);
+  private activeRoute = inject(ActivatedRoute);
 
   selectedDate!: string;
   repertoire$!: Observable<repertoire[]>;
   films$!: Observable<Film[]>;
-
+  show$!: Observable<Showtest[]>;
   dateImport(newDate: Date) {
     this.selectedDate = this.dateService.convertDateToString(newDate);
   }
@@ -28,12 +31,25 @@ export class HomePageComponent implements OnInit {
     return repertoire.filter((repertoire) => repertoire.date === date);
   }
 
-  returnFilmsById(films: Film[], id: number) {
-    return films.filter((films) => films.id === id);
+  returnFilmsById(films: Film[], id: number[], shows: Showtest[]) {
+    let filmsArray: number[] = [];
+    shows.forEach((value) => {
+      if(id.includes(value.id)) filmsArray.push( value.filmId)
+    })
+    return films.filter((film) => filmsArray.includes(film.id));
   }
 
   ngOnInit(): void {
     this.repertoire$ = this.filmService.getRepertoire();
     this.films$ = this.filmService.getFilms();
+    this.selectedDate = this.activeRoute.snapshot.params['selectedDate'];
+    this.show$ = this.filmService.getShowtest();
+  }
+
+  modifiedDate !: string;
+  checkDate(selectedDate:string){
+    let formated
+    formated = selectedDate.split('/').join('-');
+    return formated;
   }
 }

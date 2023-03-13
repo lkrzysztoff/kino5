@@ -1,19 +1,15 @@
 import { Component, OnInit, Input, inject } from '@angular/core';
 import { OrderManagmentService } from '../../../../../order-managment.service';
-import { User } from '../order/user';
-import { OrderDetailsComponent } from '../order-details/order-details.component';
+import { User } from '../order/user-interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BlikCode } from './blik.interface';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { map, tap } from 'rxjs';
-import { Route, Router } from '@angular/router';
-import { Cart } from 'src/app/model/cart.model';
-import {
-  MyticketslistService,
-  orderHistory,
-} from 'src/app/features/home/subpages/watchlist/myticketslist.service';
+import { Router } from '@angular/router';
+import { Cart } from 'src/app/shared/interfaces/cart-interface';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { FilmService } from '../../movies/film-service/film-service';
+import { NumberMaxLengthDirective } from 'src/app/shared/guards/directives/numbermaxlength.directive';
 
 const PROTOCOL = 'http';
 const PORT = 3000;
@@ -25,52 +21,24 @@ const PORT = 3000;
 })
 export class OrderCompletedComponent implements OnInit {
   baseUrl!: string;
-  blikCode!: BlikCode[];
-  
 
-  ticketService = inject(MyticketslistService);
+  private filmService = inject(FilmService);
+  private cartService = inject(CartService);
+  private service = inject(OrderManagmentService);
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
-  cart = inject(Cart);
-
-  // fn()  {
-
-  //   return this.http.post<[orderHistory]>(this.baseUrl+"tickets",{"ticket":[JSON.stringify(this.obiekcik)]}).subscribe(
-  //     value => {console.log(value)}
-  //   );
-
-  // }
-
-  // get blik$() {
-  //   return this.http.get<BlikCode[]>(this.baseUrl+"blik");
-  // }
-
-  // .subscribe(data => {
-  //   this.blikValue = data.blikCode;
-  // }
-
-  // )
-
-  obiekcik!: orderHistory;
-  userito: User;
-  constructor(
-    public service: OrderManagmentService,
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.userito = this.service.userdata;
-
+  cartDTO!: Cart[];
+  user: User;
+  cart$!: Observable<Cart[]>;
+  constructor() {
+    this.user = this.service.userdata;
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
 
-  dupa() {}
   ngOnInit(): void {
-    this.http.get<BlikCode[]>(this.baseUrl + 'blik').subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-    });
-
-    this.obiekcik = Object.assign({}, this.cart);
+    this.cart$ = this.cartService.cart$;
+    this.cartDTO = Object.assign({}, this.cartService.cart$$.value);
   }
 
   paymentControl = new FormControl('', {
@@ -82,34 +50,20 @@ export class OrderCompletedComponent implements OnInit {
     ],
   });
 
-  submit() {
+  submit(order: Cart[]) {
     this.paymentControl.markAllAsTouched();
     if (this.paymentControl.touched && this.paymentControl.valid) {
-      this.router.navigate(['/qrcode']);
+      this.sendOrderToBase(order).subscribe((value) =>
+        this.afterSentToBase(value.id)
+      );
+      this.cartService.clearCart();
     } else return;
-    // this.paymentControl.markAllAsTouched();
-    // if (this.paymentControl.valid){
-    //   } this.router.navigate(['/order-completed']);
-    // }
-    // if (this.paymentControl.invalid) {
-    // return;
-    // } this.router.navigate(['/order-completed']);
-    // if (this.paymentControl.value === this.blikValueArray[0]){
-    //   console.log("Płatność zakończona")
-    // } else console.log( "chujowy kod blik")
-    // console.log(Object.values(this.blikCode))
-    // console.log(this.blikValueArray[0]);
-    // console.log(this.blikValueArray[0] == this.paymentControl.value)
-
-    // this.paymentControl.markAllAsTouched();
-    // if (this.paymentControl.invalid) {
-    //   return;
-    // }
-    // return JSON.stringify(this.blikValue);
+  }
+  afterSentToBase(value: number) {
+    this.router.navigate(['/qrcode/' + value]);
   }
 
-  // isBlikProper(){
-  //   this.blikValueArray = (Object.values(this.blikCode));
-  //   return this.blikValueArray[0] == this.paymentControl.value;
-  // }
+  sendOrderToBase(order: Cart[]) {
+    return this.cartService.addOrderToBase(order);
+  }
 }

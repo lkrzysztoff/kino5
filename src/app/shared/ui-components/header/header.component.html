@@ -10,18 +10,18 @@
     </div> -->
 <header>
   <div class="header__container">
-    <fa-icon class="header__icon" [icon]="faVideo"></fa-icon>
+    <fa-icon class="header__icon" routerLink="/" [icon]="faVideo"></fa-icon>
     <h1 class="header__title"  routerLink="/">Ale Kino!</h1>
   
     <div class="header__buttons-container" *ngIf="user$ | async as user">
-      <button *ngIf="user.role === 'user'" class="header__cart-button" routerLink="/order"><fa-icon [icon]="faShoppingCart"></fa-icon> ({{ cart.lines.length}}) </button>
+      <button *ngIf="user.role === 'user'" class="header__cart-button" routerLink="/order"><fa-icon [icon]="faShoppingCart"></fa-icon><p class="length" *ngIf="cart$ | async as cart">({{cart.length}})</p></button>
       <button *ngIf="!user.id else zalogowany" class="header__login-button" routerLink="/auth/signin">Zaloguj się</button>
       <ng-template #zalogowany>
-        <button class="header__login-button" (click)="log()" [matMenuTriggerFor]="menu">Cześć {{user.firstName }}</button>
+        <button class="header__login-button"  [matMenuTriggerFor]="menu">Cześć {{user.firstName }}</button>
         <mat-menu #menu="matMenu">
-          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/mytickets'">Moje zamówienia</button>
-          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/favlist'">Chcę obejrzeć</button>
-          <button mat-menu-item (click)="wyloguj()">Wyloguj</button>
+          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/tickets'">Moje zamówienia</button>
+          <button *ngIf="user.role === 'user'" mat-menu-item [routerLink]="'/watchlist'">Chcę obejrzeć</button>
+          <button mat-menu-item (click)="logout()">Wyloguj</button>
         </mat-menu>
       </ng-template>
   </div>

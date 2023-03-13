@@ -1,16 +1,10 @@
-// import { createSelector } from "@ngrx/store";
+import { createSelector } from '@ngrx/store';
 
-// import { AppState } from "src/app/app.module";
-
-// const selectedUser = (state: AppState) => state.user;
-
-// export const selectLoggedUser = createSelector(selectedUser, state => state?.user);
-
-
-import { createSelector } from "@ngrx/store";
-
-import { AppState } from "src/app/app.module";
+import { AppState } from 'src/app/app.module';
 
 const selectedUser = (state: AppState) => state.user;
 
-export const selectLoggedUser = createSelector(selectedUser, state => state?.user);
+export const selectLoggedUser = createSelector(
+  selectedUser,
+  (state) => state?.user
+);

@@ -1,0 +1,63 @@
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 14px;
+
+  
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  *{
+    font-size: 20px;
+  }
+  th{
+    border: 1px solid white;
+  }
+
+  .bg-grn{
+    background-color: green;
+    color: white;
+  }
+  .bg-grn1{
+    background-color: yellowgreen;
+  }
+  
+
+  .mytickets{
+display: flex;
+justify-content: center;
+
+    
+  }
+
+  .mt{
+    min-width: 220px;
+  }
+
+  .disabled{
+    display: none;
+  }
+
+  .container{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin-top: 30px;
+gap:30px;
+
+  }
+
+  .body{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column
+    ;
+    border-top: 3px solid green;
+  }

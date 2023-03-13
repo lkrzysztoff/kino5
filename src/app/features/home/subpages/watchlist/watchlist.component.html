@@ -1,0 +1,14 @@
+<div class="watchlist__body" *ngIf="count$ | async as count">
+    <h1>Do obejrzenia ({{count.length}})</h1>
+    <div class="watchlist__container" >
+        <mat-card class="watchlist__card" *ngFor="let movie of count">
+            <div class="text">
+            <p class="title">{{movie.title }}</p>
+            <p>{{ movie.genre }} | {{movie.length}} | {{movie.ageRest}}</p>
+            </div>
+            <div class="img-container">
+            <img class="img" [src]="movie.img">
+            </div>
+            <button class="btn" (click)="service.removeMovie(movie.id)">🗑</button>
+        </mat-card>
+    </div>

@@ -1,13 +1,41 @@
 <div class="order-body">
 <div class="order-details">
-<app-order-details [data]="cart"></app-order-details>
+<app-order-details [discount]="discountValue"></app-order-details>
 </div>
+
 
 <div class="container-box">
 <div class=" justify-content-center ">
   <div class=" mt-5">
+
+    <div class="discount-form mb-5">
+      <form [formGroup]="discountForm" (ngSubmit)="onDiscountFormSubmit()">
+        <div class=" mb-2">
+          <label for="name" class="form-label">Kod promocyjny:</label>
+          <input
+            type="text"
+            id="name"
+            name="discount"
+            formControlName="discount"
+            placeholder="Kod promocyjny"
+            required
+            minlength="2"
+            maxlength="30"
+            class="form-control form-control-sm"
+            [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+          />
+          </div>
+          <button color="primary" mat-raised-button>Sprawdź kod</button>
+      </form>
+    </div>
+    
+
+
     <form [formGroup]="reactiveForm" #form="ngForm">
       <div class="">
+        <div *ngIf="reactiveForm.touched&&reactiveForm.errors?.['noMatch']">
+          Te adresy email różnią się
+        </div>
         <div class=" mb-2">
           <label for="name" class="form-label">Imię:</label>
           <input
@@ -35,8 +63,8 @@
             <div *ngIf="name.errors?.['maxlength']">
               To polo może mieć maksymalnie dwadzieścia znaków.
             </div>
-            <div *ngIf="name.errors?.['maxlength']">
-              To polo może mieć maksymalnie dwadzieścia znaków.
+            <div *ngIf="name.errors?.['whitespace']">
+              Białe znaki nie są dozwolone
             </div>
           </div>
         </div>
@@ -71,6 +99,9 @@
             <div *ngIf="surname.errors?.['maxlength']">
               To polo może mieć maksymalnie dwadzieścia znaków.
             </div>
+            <div *ngIf="surname.errors?.['whitespace']">
+              Białe znaki nie są dozwolone
+            </div>
           </div>
           <div class="">
             <div class=" mb-2 mt-2">
@@ -103,9 +134,12 @@
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
                 <div
-                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']"
+                  *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['email']&&email.errors?.['noMatch']"
                 >
                   To nie jest prawidłowy adres email.
+                </div>
+                <div *ngIf="email.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
                 </div>
               </div>
             </div>
@@ -135,7 +169,7 @@
                 "
                 class="invalid-feedback"
               >
-                <div *ngIf="emailConfirm.errors?.['required']">
+                <div *ngIf="!emailConfirm.errors?.['required']">
                   To pole jest obowiązkowe.
                 </div>
                 <div *ngIf="emailConfirm.errors?.['minlength']">
@@ -145,13 +179,19 @@
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
                 <div
-                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && emailConfirm.errors?.['email']"
-                >
+                  *ngIf="!emailConfirm.errors?.['required'] && !emailConfirm.errors?.['minlength'] && !emailConfirm.errors?.['maxlength'] && !emailConfirm.errors?.['email']">
                   To nie jest prawidłowy adres email.
                 </div>
                 <div *ngIf="emailConfirm.errors?.['confirm']">
                   To pole może mieć maksymalnie 50 znaków.
                 </div>
+                <div *ngIf="!emailConfirm.errors?.['noMatch']">
+                Te adresy nie są takie same
+                </div>
+                <div *ngIf="emailConfirm.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
+                </div>
+               
               </div>
             </div>
           </div>
@@ -190,20 +230,12 @@
                 >
                   To nie jest prawidłowy numer telefonu.
                 </div>
+                <div *ngIf="name.errors?.['whitespace']">
+                  Białe znaki nie są dozwolone
+                </div>
               </div>
               <div class="">
-                <div class=" mb-2 mt-2">
-                  <label for="discount" class="form-label">Kod zniżkowy</label>
-                  <input
-                    type="text"
-                    id="discount"
-                    name="discount"
-                    formControlName="discount"
-                    placeholder="Kod zniżkowy"
-                    maxlength="9"
-                    class="form-control form-control-sm"
-                  />
-                </div>
+                
                 <div>
                
              

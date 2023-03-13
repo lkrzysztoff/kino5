@@ -200,105 +200,6 @@
     justify-content: center;
     align-items: center;
 }
-
-    /* }
-    .movie-card{
-        width: 70vw;
-        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        position: relative;
-
-    }
-    .text-container{
-        display: flex;
-        flex-direction: column;
-        padding-left: 15px;
-        }
-        .description-container{
-           position: relative;
-            display: flex;
-            padding-left: 15px;
-            bottom: 15px;
-        }
-        .movie-score{
-            position: absolute;
-            right: 20px;
-            top: 40px;
-        }
-        .movie-card__hours{
-                width: 10vw;
-                height: 30px;
-                background-color: gainsboro;
-                color: black;
-                font: 20px;
-                border: none;
-        }
-        .movie-card__hours:hover{
-            width: 10vw;
-            height: 30px;
-            background-color: black;
-            color: white;
-            font: 20px;
-            border: none;
-    }
-    .btn-container{
-        position: absolute;
-        right: 0;
-        bottom: 20px;
-    }
-    .movie-card__showMore{
-        text-decoration: none;
-        color: black;
-        position: absolute;
-        left: 10px;
-        border: 1px solid black;
-        padding: 3px;
-    }
-    .movie-card__showMore:hover{
-        text-decoration: none;
-        color: white;
-        position: absolute;
-        left: 10px;
-        padding: 3px;
-        background-color: black;
-        cursor: pointer;
-    }
-        .tekst{
-            margin-top: 30px;
-        }
-    .img{
-        height: 200px;
-        float: left;
-    
-    /* }
-    .tekst{
-       */
-        
-    /* }    
-    .limitTextHeight {
-        height: 20px;
-        overflow: hidden;
-    } */ 
-
-    
-/* .wrapper{
-
-}
-.img{
-    height: 200px;
-    float: left;
-
-}
-.tekst{
-  
-    justify-content: center;
-    background-color: lightgray;
-    
-    
-}
-.limitTextHeight {
-    height: 20px;
-    overflow: hidden;
-} */
     }
 
     button:disabled,
@@ -322,4 +223,8 @@ button[disabled]{
         color: red;
         margin-left: 5px;
     }
+}
+
+.score-btn-text{
+    margin-left: 15px;
 }

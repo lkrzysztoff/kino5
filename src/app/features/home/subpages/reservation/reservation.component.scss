@@ -62,9 +62,8 @@ color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
   width: 50%;
-  border-bottom: 4px solid #007FFF;;
+ margin-bottom: 20px;
 }
 
 .ng {
@@ -222,4 +221,47 @@ button[disabled]{
   border-radius: 10px;
   cursor:default;
   }
+}
+
+.reservation-grid-net{
+  display: flex;
+  flex-direction: column;
+}
+
+.grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.order-nav{
+  margin: auto;
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width: 120px;
+  height: 40px;
+}
+
+.window{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80%;
+  
+}
+
+.btn-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont{
+  margin-top: 30px;
+}
+
+.abs{
+  min-height: 80%;
 }

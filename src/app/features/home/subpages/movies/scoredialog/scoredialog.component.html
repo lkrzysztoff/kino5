@@ -1,235 +1,162 @@
-<!-- <div class="container">
-    <div class="dialog">
-        <h1 class="title">Oceń film</h1>
-        <form class="rating">
-           <label>
-              <input  [(ngModel)]="data.score" type="radio" name="stars" value="1" />
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.score" type="radio" name="stars" value="2" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.score" type="radio" name="stars" value="3" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>   
-            </label>
-            <label>
-              <input  [(ngModel)]="data.score" type="radio" name="stars" value="4" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.score" type="radio" name="stars" value="5" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-                <input   [(ngModel)]="data.score" type="radio" name="stars" value="6" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input  [(ngModel)]="score" type="radio" name="stars" value="7" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input   [(ngModel)]="score" type="radio" name="stars" value="8" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input   [(ngModel)]="score" type="radio" name="stars" value="9" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input type="radio" name="stars" value="10" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-          </form> 
-          
-    </div>
-    <div class="btn-container">
-    <button [mat-dialog-close]="data.score" (click)="closeDialog()" class="btn" type="submit">Oceń!</button>
-    </div>
-</div> -->
-
-<!-- <div class="input-dialog">
-  <div class="input-dialog__close-btn-container">
-    <button (click)="closeDialog()" class="input-dialog__close-btn">
-      <mat-icon class="input-dialog__icon">close</mat-icon>
-    </button>
-  </div>
-  <div class="input-dialog__title-container">
-    <p class="input-dialog__title">{{ data.title }}</p>
-  </div>
-
-  <div class="input-dialog__input-container">
-    <form class="example-form">
-      <input
-        [formControl]="text"
-        [(ngModel)]="data.importedDialogData"
-        class="input-dialog__input"
-        [placeholder]="data.inputLabelText"
-        name="dialogData"
-        maxlength="50" />
-      <p class="input-dialog__maxlength" *ngIf="text.value?.length === 50">Maksymalna liczba znaków to 50</p>
+<div class="container">
+  <div class="dialog">
+    <h1 class="title">Oceń film</h1>
+    <ng-container *ngIf="data.importedDialogData">
+      <p>Wybrana ocena to  {{data.importedDialogData}}/10</p>
+    </ng-container>
+    <form class="rating">
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="1"
+        />
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="2"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="3"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="4"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="5"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="6"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="7"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="8"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="9"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input
+          [(ngModel)]="data.importedDialogData"
+          type="radio"
+          name="stars"
+          value="10"
+        />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
     </form>
-  </div> -->
-  <!-- <div mat-dialog-actions class="input-dialog__btn-container">
+  </div>
+  <div class="btn-container">
     <button
       [mat-dialog-close]="data.importedDialogData"
       type="submit"
-      class="input-dialog__btn success mediumButton"
-      mat-button>
-      {{ data.buttonText }}
+      class="btn"
+      (click)="
+        scoreService.addScore({
+          id: data.title,
+          score: data.importedDialogData
+        });sendRating({filmId:data.title, myRating:data.importedDialogData})
+       
+      "
+      mat-button
+    >
+   Oceń!
     </button>
-  </div> -->
-
-  <div class="container">
-    <div class="dialog">
-        <h1 class="title">Oceń film</h1>
-        <form class="rating">
-           <label>
-              <input  [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="1" />
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="2" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="3" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>   
-            </label>
-            <label>
-              <input  [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="4" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-              <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="5" />
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-            </label>
-            <label>
-                <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="6" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input  [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="7" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="8" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input   [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="9" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-              <label>
-                <input [(ngModel)]="data.importedDialogData" type="radio" name="stars" value="10" />
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-                <span class="icon">★</span>
-              </label>
-          </form> 
-          
-    </div>
-    <div class="btn-container">
-        <button
-        [mat-dialog-close]="data.importedDialogData"
-        type="submit"
-        class="btn"
-        (click)="scoreService.addScore({id: data.title, score:data.importedDialogData})"
-        mat-button>
-        {{ data.buttonText }}
-        
-      </button>
-    </div>
+  </div>
 </div>
-
-<!-- </div> -->

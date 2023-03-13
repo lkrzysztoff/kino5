@@ -1,14 +1,15 @@
-<!-- <app-date-panel (dateExport)="dateImport($event)"></app-date-panel> -->
-<!-- <app-date-panel (dateExport)="dateImport($event)"></app-date-panel> -->
 <div class="wrapper" *ngIf="user$ | async as user">
   <div class="img-container">
-    <!-- <img class="img" src="../../assets/images/{{ films.img }}" /> -->
-    <img [ngClass]="{premiere : films.premier}"  class="img" alt="Zdjęcie plakatu" [src]="films.img" >
+    <img
+      [ngClass]="{ premiere: films.premier }"
+      class="img"
+      alt="Zdjęcie plakatu"
+      [src]="films.img"
+    />
   </div>
-  <div class="movie-card" *ngIf="score$ | async as score" >
+  <div class="movie-card" *ngIf="score$ | async as score">
     <p *ngIf="films.premier" class="premiere-txt">PREMIERA</p>
     <div class="text-container">
-      <!-- <button  (click)="check()">spieprzaj diabelski cookie tokenie </button> -->
       <h3 class="movie-title">{{ films.title }}</h3>
       <h4 class="movie-facts">
         {{ films.genre }} | {{ films.length }} min | PG - {{ films.ageRest }}
@@ -17,33 +18,37 @@
     <h5 *ngIf="!user.id; else zalogowany" class="movie-score">
       {{ films.score }}/10
     </h5>
-    
-      
-    
-      <div *ngFor="let scores of score">
-        <p  *ngIf="films.id === scores.id">
-          Twoja ocena to {{ scores.score }}/10 <button class="btn-change" (click)="scoreService.removeScore(films.id);openScoreDialog()">Zmień</button>
-        </p>
-      </div>
-    
+
+    <div *ngFor="let scores of score">
+      <p class="score-btn-text" *ngIf="films.id === scores.id">
+        Twoja ocena to {{ scores.score }}/10
+        <button
+          class="btn-change"
+          (click)="scoreService.removeScore(films.id); openScoreDialog()"
+        >
+          Zmień
+        </button>
+      </p>
+    </div>
+
     <ng-template class="ngt" #zalogowany>
       <div class="ngt">
-      <button 
-        class="score-btn"
-        [disabled]="scoreService.hasScore(films.id)"
-        (click)="openScoreDialog()"
-      >Oceń film
-       
-      </button>
-      
-      <button
-        class="addtofav-btn"
-        [disabled]="service.hasMovie(films.id)"
-        (click)="service.addMovie(films)"
-      >
-        Chcę obejrzeć
-      </button>
-    </div>
+        <button
+          class="score-btn"
+          [disabled]="scoreService.hasScore(films.id)"
+          (click)="openScoreDialog()"
+        >
+          Oceń film
+        </button>
+
+        <button
+          class="addtofav-btn"
+          [disabled]="service.hasMovie(films.id)"
+          (click)="service.addMovie(films)"
+        >
+          Chcę obejrzeć
+        </button>
+      </div>
     </ng-template>
     <div class="description-container">
       <p class="tekst" [ngClass]="{ limitTextHeight: isReadMore }">
@@ -53,19 +58,24 @@
     <a class="movie-card__showMore" (click)="showText()">{{
       isReadMore ? "Więcej" : "Schowaj"
     }}</a>
-    <div class="btn-container">
+    <div class="btn-container" *ngIf="shows$ | async as shows">
       <button
         #hourSelector
         class="movie-card__hours"
-        *ngFor="let show of getShows(films.id); let hourIndex = index"
-        routerLink="/reservation/{{selectedDate | date:'MM-dd'}}/{{show.id}}"
+        *ngFor="
+          let show of returnShowById(shows, films.id, selectedDate);
+          let hourIndex = index
+        "
+        routerLink="/reservation/{{ selectedDate}}/{{
+          show.id
+        }}"
       >
         {{ show.hour }}
       </button>
+      <div *ngIf="usersRating$ | async as usersRating">
+        <div *ngFor="let rating of filterRatingById(usersRating,films.id)">{{displayRating(rating.myRating)}}</div>
+      </div>
+      
     </div>
   </div>
 </div>
-<!-- <div > AAAAAAAAAAAAAAAAAA
-  <img [src]="currVerifiedLoanOfficerPhoto"  alt="duoa">
-</div> -->
-

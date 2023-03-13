@@ -1,18 +1,24 @@
-<app-date-panel (dateExport)="dateImport($event)"></app-date-panel>
-<div *ngIf="repertoire$ | async as repertoire">
-  <div
-    *ngFor="
-      let oneDayRepertoire of getRepertoireByDate(repertoire, selectedDate)
-    "
-  >
-    <div *ngIf="films$ | async as films">
-      <div *ngFor="let show of oneDayRepertoire.shows">
-        <app-card
-          *ngFor="let video of returnFilmsById(films, show)"
-          [films]="video"
-          [selectedDate]="selectedDate"
-        ></app-card>
+<div class="bodyContainer">
+  <app-date-panel (dateExport)="dateImport($event)"></app-date-panel>
+  <div *ngIf="show$ | async as shows">
+    <div *ngIf="repertoire$ | async as repertoire">
+      <div
+        *ngFor="
+          let oneDayRepertoire of getRepertoireByDate(repertoire, selectedDate)
+        "
+      >
+        <div *ngIf="films$ | async as films">
+          <app-card
+            *ngFor="
+              let film of returnFilmsById(films, oneDayRepertoire.shows, shows)
+            "
+            [films]="film"
+            [selectedDate]="checkDate(selectedDate)"
+            [oneDayRepertoireShows]="oneDayRepertoire.shows"
+          ></app-card>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

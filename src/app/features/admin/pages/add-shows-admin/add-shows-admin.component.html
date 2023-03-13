@@ -2,22 +2,74 @@
   <div class="addshow__container">
     <div class="addshow__form">
       <form [formGroup]="showForm" (ngSubmit)="submit()">
-        <mat-form-field appearance="outline">
-          <mat-label>Link do plakatu</mat-label>
-          <input
-            matInput
-            placeholder="img"
-            type="date"
-            formControlName="date"
-            required
-          />
-          <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
-        </mat-form-field>
-        <select *ngIf="screen$ | async as screens" formControlName="sala">
-            <option  *ngFor="let screen of screens" [ngValue]="screen.id+screen.name">Sala nr {{screen.id}} nazwa {{screen.name}}</option>
+        <!-- <mat-form-field appearance="outline"> -->
+          <!-- <mat-label>Link do plakatu</mat-label> -->
+          <!-- <select
+          placeholder="img"
+          type="date"
+          formControlName="date"
+          min=date
+          required>
+            <option [disabled]="true" selected>Data</option>
+            <option *ngFor="let day of dates" [value]="day">{{day}}</option>
+          </select> -->
 
-        </select>
-        <button mat-button >Dalej</button>
+          <ng-container *ngIf="showForm.controls.date as control">
+            <mat-form-field
+              appearance="fill"
+            >
+              <mat-label>Data</mat-label>
+              <mat-select
+                matInput
+                placeholder="Data"
+                formControlName="date"
+                required
+              > <mat-option [disabled]="true">Data</mat-option>
+                <mat-option *ngFor="let day of dates" [value]="day">{{day}}</mat-option>
+              </mat-select>
+        
+              <mat-error *ngIf="control.errors?.['required']">
+                <p class="error-style">To pole jest obowiązkowe</p>
+              </mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngIf="showForm.controls.screen as control">
+            <mat-form-field
+              appearance="fill"
+            >
+              <mat-label>Sala</mat-label>
+              <mat-select
+                matInput
+                placeholder="Sala"
+                formControlName="screen"
+                required
+                (ngModelChange)="submit()"
+              > <mat-option [disabled]="true">Sala</mat-option>
+                <mat-option   [value]="0">Sala nr 0</mat-option>
+                <mat-option   [value]="1">Sala nr 1</mat-option>
+                <mat-option   [value]="2">Sala nr 2</mat-option>
+              </mat-select>
+        
+              <mat-error *ngIf="control.errors?.['required']">
+                <p class="error-style">To pole jest obowiązkowe</p>
+              </mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          
+
+
+
+          <!-- <mat-error *ngIf="getErrorMessage('email')">{{ getErrorMessage('email') }}</mat-error> -->
+        <!-- </mat-form-field> -->
+        <!-- <select *ngIf="screen$ | async as screens" formControlName="sala">
+            <option   [value]="0">Sala nr 0</option>
+            <option   [value]="1">Sala nr 1</option>
+            <option   [value]="2">Sala nr 2</option>
+
+        </select> -->
+        <!-- <button color='primary' mat-raised-button >Dalej</button> -->
       </form>
     </div>
   </div>

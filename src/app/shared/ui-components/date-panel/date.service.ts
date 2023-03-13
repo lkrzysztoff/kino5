@@ -3,6 +3,7 @@ import {
   eachDayOfInterval,
   endOfISOWeek,
   startOfISOWeek,
+  format
 } from 'date-fns';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class DateService {
   dates = eachDayOfInterval({
     start: startOfISOWeek(new Date()),
     end: endOfISOWeek(new Date()),
-  });
+  })
 
   pastDates = eachDayOfInterval({
     start: startOfISOWeek(new Date()),
@@ -32,6 +33,12 @@ export class DateService {
     return formattedToday;
   }
   constructor() {}
+
+  get datesOfWeek (){
+    return this.dates
+  }
 }
+
+
 
 // .map((day) => format(day, 'yyyy-MM-dd'));

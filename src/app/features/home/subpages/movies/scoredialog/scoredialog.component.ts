@@ -4,23 +4,12 @@ import {
   inject,
   Inject,
 } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import {
-  MatDialog,
-  MatDialogModule,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ScoreService } from '../card/score.service';
-
-import { DialogData } from './score.interface';
+import { ScoreService } from '../card/movie-score-service/score.service';
+import { DialogData, MyRating } from './score.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-category-dialog',
@@ -29,6 +18,7 @@ import { DialogData } from './score.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScoredialogComponent {
+  scoreService = inject(ScoreService);
   text = new FormControl('', [Validators.maxLength(50)]);
   private dialog = inject(MatDialog);
 
@@ -38,5 +28,10 @@ export class ScoredialogComponent {
     this.dialog.closeAll();
   }
 
-  scoreService = inject(ScoreService);
+  sendRating(ratingDTO:MyRating){
+    return this.scoreService.sendRatingToDB(ratingDTO).subscribe(
+      
+    )
+  }
+ 
 }

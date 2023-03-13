@@ -1,0 +1,43 @@
+.watchlist{
+    &__body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80%;
+        flex-direction: column;
+    }
+    &__container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 20px;
+    }
+    &__card{
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 200px;
+        margin: 20px;
+        height: 400px;
+    }
+}
+
+.img{
+    height: 250px;
+    &-container{
+        position: absolute;
+        bottom: 0px;
+        height: 70%;
+  
+    }}
+    .text{
+        height: 30%;
+    }
+    .title{
+        height: 40px;
+    }
+    .btn{
+        position: absolute;
+        right: -5px;
+        font-size: 25px;
+    }

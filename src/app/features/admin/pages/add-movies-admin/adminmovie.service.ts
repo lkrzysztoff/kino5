@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MainDataSource } from '../../../../model/main.datasource.service';
+import { FilmService } from 'src/app/features/home/subpages/movies/film-service/film-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminMovieService {
-  public service = inject(MainDataSource);
+  public service = inject(FilmService);
+
+array !: Array<string>
 }

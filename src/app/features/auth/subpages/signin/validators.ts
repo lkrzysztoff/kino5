@@ -11,8 +11,11 @@ export function emailValidator(control: AbstractControl) {
   const isValid = emailRegex.test(control.value);
   return isValid ? null : { email: true };
 }
-  export function emailMatchValidate(form:FormGroup)  {
-    const email = form.get('mail')?.value;
-    const confirm = form.get('emailConfirm')?.value;
-    return email === confirm ? null : {confirm:true}
+  export function emailMatchValidate(control:AbstractControl)  {
+    const email = control.getRawValue().email;
+    const emailConfirm = control.getRawValue().emailConfirm;
+    if(!email || !emailConfirm){
+      return null;
+    }
+    return email === emailConfirm ? null : { noMatch:true }
   }

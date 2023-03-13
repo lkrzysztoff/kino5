@@ -1,0 +1,49 @@
+<div class="title-container">
+  <h1>
+    {{ film.title }} | godzina: {{ show.hour }} | sala:
+    {{ show.screen }}
+  </h1>
+</div>
+<div *ngIf="cart$ | async as cart">
+  <div class="reservation-grid-net" *ngIf="user$ | async as user">
+    <div *ngIf="screen$ | async as screens">
+      <div
+        class="grid"
+        *ngFor="let screen of returnScreenById(screens, show.screen)"
+      >
+        <div
+          class="letter"
+          *ngFor="
+            let letter of displayProperAmmountOfLetters(letters, screen.rows);
+            let letterIndex = index
+          "
+        >
+          {{ letter }}
+          <button
+            class="reservation__number"
+            *ngFor="
+              let number of createNumbersArray(screen.colu);
+              let numberIndex = index
+            "
+            (click)="
+              addToTicketState(
+                letter + (numberIndex + 1),
+                letter + (numberIndex + 1),
+                user.email
+              );
+             
+
+              
+             
+            "
+            [ngClass]="{'addedToReservation' : cartService.doesCartHave(letter + (numberIndex + 1),show.id)}"
+            [disabled]="checkReserved(letter + (numberIndex + 1), show)"
+          >
+            {{ number }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- reservationManagment(letter + (numberIndex + 1), show,cart); -->

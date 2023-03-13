@@ -1,23 +1,5 @@
-<!-- <div class="data-container" *ngFor="let line of uniqueFilms">
-    <div class="title">
-      <p>Tytuł filmu: {{filmRepository.getFilmByShow( line.seat.show_id ).title}}, {{line.seat.show_id}} godz. {{filmRepository.getShow( line.seat.show_id ).hour}}</p><br>
-        <div class="order" *ngFor="let sLine of getSeats(line.seat.show_id ,line.seat.date )">
-  
-          <p>Miejsce: {{sLine.seat.name}} Typ biletu: {{sLine.seat.price.type}} Cena: {{sLine.seat.price.price}} Sala: {{filmRepository.getShow( sLine.seat.show_id ).screen}} </p>
-        </div>
-    </div>
-  </div>
-  <div class="sum-container"  *ngIf="cart.itemCount">
-      <div>
-          <p>Razem biletów : {{cart.itemCount}}</p>
-          <p class="sum">Łączna wartość zamówienia: {{cart.cartPrice}}</p>
-      </div>
-  </div> -->
-
-
-<div class="table-container">
-  <table  *ngFor="let line of uniqueFilms">
-   
+<div class="table-container" *ngIf="cart$ | async as cart">
+  <table>
     <tr>
       <th class="thTitle">Tytuł filmu</th>
       <th class="properClr">Godz</th>
@@ -26,24 +8,39 @@
       <th class="properClr">Sala</th>
       <th class="properClr">Cena</th>
     </tr>
-    
-    <tr *ngFor="let sLine of getSeats(line.seat.show_id ,line.seat.date ) ">
-      <th >{{filmRepository.getFilmByShow( line.seat.show_id )?.title}}</th>
-      <th>{{filmRepository.getShow( line.seat.show_id ).hour}}</th>
-      <th>{{sLine.seat.name}}</th>
-      <th>{{sLine.seat.price.type}}</th>
-      <th>{{filmRepository.getShow( sLine.seat.show_id ).screen}}</th>
-      <th>{{sLine.seat.price.price}}</th>
+
+    <tr *ngFor="let cartItem of cart">
+      <th>{{ cartItem.movieTitle }}</th>
+      <th>{{ cartItem.hour }}</th>
+      <th>{{ cartItem.id }}</th>
+      <th>{{ cartItem.seat.type }}</th>
+      <th>{{ cartItem.screen }}</th>
+      <th>{{ cartItem.seat.price }}</th>
     </tr>
-    
-    
+    <tr *ngIf="cart$ | async as cart" class="sum">
+      <th>Łączna wartość zamówienia {{ getFullPrice(cart) + "PLN" }}</th>
+    </tr>
+
+     <th class="tricky" *ngIf="discount$ | async as discount">
+      <p class="promo" *ngFor="let discountCode of discount ">Łączna wartość zamówienia po promocji to
+        {{ getFullPrice(cart) * discountCode.value + "PLN" }}</p>
+      </table>
+
+    <!-- <th class="tricky" *ngIf="discount$ | async as discount"> -->
+      <!-- <p *ngFor="let discountCode of discount">{{discountCode.code}}</p> -->
+      <!-- <div *ngFor="let discountCode of discount">
+        Łączna wartość zamówienia po promocji to
+        {{ getFullPrice(cart,discountCode.value) * discountCode.value + "PLN" }}
+        <ng-template *ngIf="discountCode.value; else noCode">
+          Łączna wartość zamówienia po promocji to
+          {{ getFullPrice(cart,discountCode.value) * discountCode.value + "PLN" }}
+        </ng-template>
+      </div>
+    </th>
+    <ng-template #noCode>
+      <p>Łączna wartość zamówienia {{ getFullPrice(cart,discountCode.value) + "PLN" }}</p>
+    </ng-template>
   </table>
+</div> -->
 
-  <tr  *ngIf="data.lines" class="sum">
-    <th>Razem biletów  {{data.cartPrice}}</th>
-    <th>Łączna wartość zamówienia: {{data.itemCount}}</th>
-  </tr>
-
-
-
-</div>
+<!-- <div>{{discountUnpresent(discount)}}</div> -->

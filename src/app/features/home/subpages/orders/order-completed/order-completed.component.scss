@@ -1,90 +1,66 @@
-// .order-completed-container{
-//     height: 80vh;
-//     /* width: 60vw; */
-//     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//     margin: auto;
-//     display: flex;
-//     justify-content: center;
-// }
-// .details-container{
-//     margin-top: 40px;
-// }
+.payment {
+  &__body-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 81%;
+  }
 
-.payment{
-    &__body-container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 81%;
-        
-       
-        
+  &__container {
+    margin: 15px;
+    height: 250px;
+    width: 400px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+
+    &-placement {
+      margin-top: 30px;
     }
 
-    &__container{
-        margin:15px;
+    &-title {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-size: 26px;
+  }
+
+  &__blik-logo {
+    display: flex;
+    justify-content: center;
+    &-img {
+      width: 100x;
+      height: 50px;
+    }
+  }
+  &__input-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+  @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 568px) {
+      &__container {
+        margin: 15px;
         height: 250px;
-        width: 400px;
+        width: 300px;
         border: 1px solid black;
-        display: flex;
-        flex-direction: column;
-
-        &-placement{
-           margin-top: 30px;
+        &-title {
+          display: flex;
+          justify-content: center;
         }
-  
-        &-title{
-            display: flex;
-            justify-content: center;
-        
-        }
+      }
     }
-
-    &__title{
-        font-size: 26px;
-    }
-
-    &__blik-logo
-    {
-        display: flex;
-        justify-content: center;
-        &-img{
-        width: 100x;
-        height: 50px;
-        }
-    }
-    &__input-container{
-        display: flex;
-        justify-content: center;
-        
-       
-    
-    }
-    &__form{
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-        
-    }
-    @media screen and (max-width:1280px) {
-      
-
-        @media screen and (max-width:568px) {
-            &__container{
-                margin:15px;
-                height: 250px;
-                width: 300px;
-                border: 1px solid black;
-                &-title{
-                    display: flex;
-                    justify-content: center;
-                }
-            }
-           
-        }
-    }
+  }
 }
-input{
-    padding: 3px;
-    margin: 3px;
+input {
+  padding: 3px;
+  margin: 3px;
 }

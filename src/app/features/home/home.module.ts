@@ -1,23 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { OrderComponent } from './subpages/orders/order/order.component';
-import { SigninComponent } from 'src/app/features/auth/subpages/signin/signin.component';
-import { AppComponent } from 'src/app/app.component';
 import { ReservationComponent } from './subpages/reservation/reservation.component';
-import { CardComponent } from './subpages/movies/card/card.component';
-import { ModelResolver } from 'src/app/model/model.resolver';
 import { OrderCompletedComponent } from './subpages/orders/order-completed/order-completed.component';
 import { QrCodePageComponent } from './subpages/orders/qr-code-page/qr-code-page.component';
 import { HomeComponent } from './home.component';
-import { DatePanelComponent } from '../../shared/ui-components/date-panel/date-panel.component';
-import { MyticketsComponent } from './subpages/watchlist/mytickets.component';
-import { Order } from 'src/app/model/order.model';
+import { MyticketsComponent } from './subpages/my-tickets-history/my-tickets.component';
 import { OrderGeneratedComponent } from './subpages/orders/order-generated/order-generated.component';
 import { HomePageComponent } from './subpages/home-page/homepage.component';
-import { FavlistComponent } from './subpages/favlist/favlist.component';
+import { WatchlistComponent } from './subpages/watchlist/watchlist.component';
 import { UnloggedGuard } from '../../shared/guards/unloggedGuard';
-import { RoleUserGuard } from '../../shared/guards/roleUser.guard';
-import { FormsModule } from '@angular/forms';
+import { OrderGuard } from 'src/app/shared/guards/order-guard';
 
 @NgModule({
   imports: [
@@ -29,44 +22,43 @@ import { FormsModule } from '@angular/forms';
           {
             path: '',
             component: HomePageComponent,
-            pathMatch: 'full',
+            children:[
+              {
+                path: 'home/:selectedDate',
+                component: HomePageComponent,
+               
+              },
+            ]
+           
           },
           {
-            path: 'favlist',
+            path: 'watchlist',
             canActivate: [UnloggedGuard],
-            component: FavlistComponent,
+            component: WatchlistComponent,
           },
           {
             path: 'tickets',
-
+            canActivate: [UnloggedGuard],
             component: MyticketsComponent,
           },
         ],
       },
-      // path: 'reservation/:selectedDate/:showId',
       {
+        // path: 'reservation/:selectedDate/:showId',
         path: 'reservation/:selectedDate/:showId',
-        // path: 'reservation/:selectedDate',
-        component: ReservationComponent,
-        resolve: { model: ModelResolver },
+        // path: 'reservation',
+        component: ReservationComponent
       },
-      { path: 'order', component: OrderComponent },
+      { path: 'order', canActivate: [OrderGuard], component: OrderComponent },
       {
         path: 'order-completed',
+        canActivate: [OrderGuard],
         component: OrderCompletedComponent,
       },
-      { path: 'qrcode', component: QrCodePageComponent },
+      { path: 'qrcode/:orderId', component: QrCodePageComponent },
       {
-        path: 'orderg',
+        path: 'order-generated/:orderId',
         component: OrderGeneratedComponent,
-      },
-      {
-        path: 'favlist',
-        component: FavlistComponent,
-      },
-      {
-        path: 'mytickets',
-        component: MyticketsComponent,
       },
     ]),
   ],

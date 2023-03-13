@@ -1,6 +1,11 @@
 form{
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    gap: 20px;
+}
+.ctr{
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }

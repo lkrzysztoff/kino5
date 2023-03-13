@@ -1,57 +1,94 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   NonNullableFormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
-import { MainDataSource } from '../../../../model/main.datasource.service';
-import { HttpClient } from '@angular/common/http';
-import { Film } from '../../../../model/film.model';
 import { movie } from './movie.interface';
 import { NumberMaxLengthDirective } from '../../../../shared/guards/directives/numbermaxlength.directive';
+import { AdminFilmService } from '../../services/admin-film.service';
+import { Store } from '@ngrx/store';
+import { addFilmsActions } from '../../store/admin.actions';
+import { whitespaceValidator } from 'src/app/features/auth/subpages/signin/validators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-addmoviesadmin',
   templateUrl: './addmoviesadmin.component.html',
   styleUrls: ['./addmoviesadmin.component.scss'],
 })
-export class AddmoviesadminComponent {
+export class AddmoviesadminComponent implements OnInit{
   private formBuilder = inject(NonNullableFormBuilder);
-  public service = inject(MainDataSource);
+  public service = inject(AdminFilmService);
   movieFormValue!: movie;
-
+  private store = inject (Store)
   movieForm = this.createMovieForm();
+  admin$ = this.store.select('AdminFilm')
+
+  categories$ !: Observable<string[]>
+  ageCategories$ !: Observable<number[]>
 
   private createMovieForm() {
     const form = this.formBuilder.group({
-      img: this.formBuilder.control('', []),
-      title: this.formBuilder.control('', []),
-      description: this.formBuilder.control('', []),
-      genre: this.formBuilder.control('', []),
-      ageRest: this.formBuilder.control('', []),
-      date: this.formBuilder.control('', []),
-      hour: this.formBuilder.control('', []),
-      length: this.formBuilder.control('', []),
-      score: this.formBuilder.control('', []),
-      premier: this.formBuilder.control('', []),
+      img: this.formBuilder.control('', [
+        whitespaceValidator,
+        Validators.required
+      ]),
+      title: this.formBuilder.control('', [
+        whitespaceValidator,
+        Validators.required
+      ]),
+      description: this.formBuilder.control('', [
+        Validators.required
+        ,whitespaceValidator
+      ]),
+      genre: this.formBuilder.control('', [
+        whitespaceValidator,
+        Validators.required
+      ]),
+      ageRest: this.formBuilder.control('', [
+        whitespaceValidator,
+        Validators.required,
+      ]),
+      // date: this.formBuilder.control('12;03', [
+      //   whitespaceValidator,
+      //   Validators.required
+      // ]),
+      // hour: this.formBuilder.control('', [
+      //   whitespaceValidator,
+      //   Validators.required
+      // ]),
+      length: this.formBuilder.control<string>('', [
+        whitespaceValidator,
+        Validators.required
+      ]),
+      score: this.formBuilder.control<string>('', [
+        whitespaceValidator,
+        Validators.required
+      ]),
+      premier: this.formBuilder.control(true, []),
     });
     return form;
   }
 
+
+  
   addMovieFormSubmit() {
-    this.movieForm.markAllAsTouched();
-    if (this.movieForm.invalid) {
-      return;
-    }
-    this.service
-      .adminAddMovie(this.movieForm.getRawValue())
-      .subscribe((value) => {
-        alert('Dodano film pod tytułem ' + value.title);
-      });
-    // alert("Dodano film do bazy")
-    // this.movieForm.markAsUntouched(),
-    // this.movieForm.reset()
+   
+   if(this.movieForm.invalid){
+    console.log(this.movieForm.getRawValue())
+    return;
+   } else 
+   console.log('dziaa')
+   console.log(this.movieForm.getRawValue())
+   alert('Gratulacje dodałeś nowy film')
+    this.store.dispatch(
+      addFilmsActions.addOneMovie({ films: this.movieForm.getRawValue() })
+    )
   }
 
-  shows$ = this.service.getShows();
+ ngOnInit(): void {
+   this.categories$ = this.service.getCategories()
+   this.ageCategories$ = this.service.getAgeCategories()
+ }
 }
