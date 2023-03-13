@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { AdminFilmService } from '../services/admin-film.service';
-import { addFilmsActions, } from './admin.actions';
+import { addFilmsActions, addShowsActions, } from './admin.actions';
 
 @Injectable()
 export class AdminEffects{
@@ -22,20 +22,19 @@ export class AdminEffects{
       })
     )
   );
-    }
-
-//   sendShows$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(addShowsActions.addOneShow),
-//       switchMap((result) => {
-//         return this.adminFilmService.adminAddShow(result.shows).pipe(
-//           map((result) => {
-
-//             return addShowsActions.addShow({ shows: [] })
-//           })
+    
+  sendShows$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addShowsActions.addOneShow),
+      switchMap((result) => {
+        return this.adminFilmService.adminAddShow(result.shows).pipe(
+          map((show) => {
+           this.adminFilmService.afterReturn(show,result.repertoire)
+            return addShowsActions.addShow({ shows: [] })
+          })
           
-//         );
-//       })
-//     )
-//   );
-// }
+        );
+      })
+    )
+  );
+    }

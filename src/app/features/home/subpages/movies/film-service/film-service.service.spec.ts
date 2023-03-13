@@ -137,7 +137,7 @@ describe('FilmService', () => {
       genre: 'Comedy',
       length: '90 min',
       ageRest: 'PG-13',
-      premier: 'boolean',
+      premier: true,
       score: '7.5',
       description: 'A funny movie for testing purposes',
     };

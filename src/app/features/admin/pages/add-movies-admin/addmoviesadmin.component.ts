@@ -77,9 +77,11 @@ export class AddmoviesadminComponent implements OnInit{
    
    if(this.movieForm.invalid){
     console.log(this.movieForm.getRawValue())
+    return;
    } else 
    console.log('dziaa')
    console.log(this.movieForm.getRawValue())
+   alert('Gratulacje dodałeś nowy film')
     this.store.dispatch(
       addFilmsActions.addOneMovie({ films: this.movieForm.getRawValue() })
     )

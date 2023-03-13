@@ -142,6 +142,10 @@ export class TestComponent implements OnInit {
       .pop();
   }
 
+seatsReload(){
+ 
+}
+
   reserveSeats(cart:Cart[],show: Showtest){
     const seatArray: string[] = []
     console.log(show)

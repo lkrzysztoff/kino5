@@ -30,7 +30,7 @@ export class ScoredialogComponent {
 
   sendRating(ratingDTO:MyRating){
     return this.scoreService.sendRatingToDB(ratingDTO).subscribe(
-      value => console.log(value)
+      
     )
   }
  

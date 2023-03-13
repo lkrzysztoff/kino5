@@ -31,7 +31,7 @@ export class ScoreService {
     return this.http.post<MyRating>(this.apiUrl+'rating',ratingDTO)
   }
 
-  getRating(filmId:number){
-    return this.http.get<MyRating[]>(this.apiUrl+'rating?showId='+filmId)
+  getRating(){
+    return this.http.get<MyRating[]>(this.apiUrl+'rating')
   }
 }

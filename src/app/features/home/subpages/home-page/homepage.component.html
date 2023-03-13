@@ -13,7 +13,7 @@
               let film of returnFilmsById(films, oneDayRepertoire.shows, shows)
             "
             [films]="film"
-            [selectedDate]="selectedDate"
+            [selectedDate]="checkDate(selectedDate)"
             [oneDayRepertoireShows]="oneDayRepertoire.shows"
           ></app-card>
         </div>
@@ -21,3 +21,4 @@
     </div>
   </div>
 </div>
+

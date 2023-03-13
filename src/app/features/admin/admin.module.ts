@@ -8,8 +8,6 @@ import { NumberMaxLengthDirective } from 'src/app/shared/guards/directives/numbe
 import { AdminEffects } from './store/admin.effects';
 import { addFilmReducer } from './store/admin.reducer';
 import { Store, StoreModule } from '@ngrx/store';
-import { collectionReducer } from './store/collection.reducer';
-import { showsReducer } from './store/shows.reducer';
 
 @NgModule({
   imports: [

@@ -36,14 +36,22 @@ export class AdminFilmService {
     return this.http.get<repertoire>(`http://localhost:3000/repertoire?date=`+date)
   }
 
+
+
   afterReturn(show: addShowInterface, repertoire: repertoire) {
     const showId = show.id ? show.id : 1;
-    if (!repertoire.shows.includes(showId)) {
-      repertoire.shows.push(showId);
+    const copiedRepertoire : repertoire= {
+      date:repertoire.date,
+      id:repertoire.id,
+      shows: []
+    }
+    repertoire.shows.forEach((showId) => copiedRepertoire.shows.push(showId))
+    if (!copiedRepertoire.shows.includes(showId)) {
+      copiedRepertoire.shows.push(showId);
       this.http
         .put<repertoire>(
           `http://localhost:3000/repertoire/`+ repertoire.id,
-          repertoire
+          copiedRepertoire
         )
         .subscribe((value) => {
           console.log(value)

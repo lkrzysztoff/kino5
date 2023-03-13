@@ -44,8 +44,9 @@ import { OrderGuard } from 'src/app/shared/guards/order-guard';
         ],
       },
       {
+        // path: 'reservation/:selectedDate/:showId',
         path: 'reservation/:selectedDate/:showId',
-        // path: 'reservation/:selectedDate',
+        // path: 'reservation',
         component: ReservationComponent
       },
       { path: 'order', canActivate: [OrderGuard], component: OrderComponent },

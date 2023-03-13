@@ -5,6 +5,6 @@ export const initialFilmState: AdminFilmState = {
     films: []
 };
 
-// export const initialShowState: AdminShowState = {
-//     shows: []
-// };
+export const initialShowState: AdminShowState = {
+    shows: []
+};

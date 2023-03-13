@@ -31,12 +31,13 @@
                 letter + (numberIndex + 1),
                 user.email
               );
+             
 
               
              
             "
-            [ngClass]="{'disabled': checkReserved(letter + (numberIndex + 1), show),'addedToReservation' : cartService.doesCartHave(letter + (numberIndex + 1),show.id)}"
-            
+            [ngClass]="{'addedToReservation' : cartService.doesCartHave(letter + (numberIndex + 1),show.id)}"
+            [disabled]="checkReserved(letter + (numberIndex + 1), show)"
           >
             {{ number }}
           </button>

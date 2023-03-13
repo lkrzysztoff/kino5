@@ -3,6 +3,7 @@ import { Film } from 'src/app/shared/interfaces/film.interface';
 import { Showtest } from '../../home/subpages/reservation/reservation-grid/reservation-interfaces';
 import { movie } from '../pages/add-movies-admin/movie.interface';
 import { addShowInterface } from './admin.interfaces';
+import { repertoire } from '../pages/add-shows-admin/showform/showform.interface';
 
 export const addFilmsActions = createActionGroup({
   source: 'AdminFilm',
@@ -16,15 +17,16 @@ export const addFilmsActions = createActionGroup({
   },
 });
 
-// export const addShowsActions = createActionGroup({
-//   source: 'AdminShows',
-//   events:{
-//     'Add show': props<{
-//       shows: addShowInterface[]
-//     }>(),
-//     'Add one show': props<{
-//       shows: addShowInterface
-//     }>()
-//   }
-// })
+export const addShowsActions = createActionGroup({
+  source: 'AdminShows',
+  events:{
+    'Add show': props<{
+      shows: addShowInterface[]
+    }>(),
+    'Add one show': props<{
+      shows: addShowInterface,
+      repertoire: repertoire
+    }>()
+  }
+})
 

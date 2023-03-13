@@ -46,7 +46,6 @@ export class OrderComponent implements OnInit {
 
   user$ = this.store.select(selectLoggedUser).subscribe((value) => {
     this.user = value;
-    console.log(value);
   });
 
   ngOnInit(): void {

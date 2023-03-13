@@ -4,16 +4,6 @@
       "id": 0,
       "showId": 0,
       "rating": 7
-    },
-    {
-      "showId": 2,
-      "myRating": 6,
-      "id": 1
-    },
-    {
-      "showId": 0,
-      "myRating": "7",
-      "id": 2
     }
   ],
   "tickets": [
@@ -266,9 +256,9 @@
       "id": 5
     },
     {
-      "filmId": 13,
-      "hour": "10:39",
-      "date": "decodeURI",
+      "filmId": 4,
+      "hour": "08:20",
+      "date": "",
       "priceList": [
         {
           "type": "Normalny",
@@ -284,15 +274,17 @@
         }
       ],
       "reservedSeats": [
-        "A10"
+        "",
+        "D6",
+        "C6"
       ],
-      "screen": "1",
+      "screen": 0,
       "id": 6
     },
     {
-      "filmId": 13,
-      "hour": "10:39",
-      "date": "decodeURI",
+      "filmId": 3,
+      "hour": "10:24",
+      "date": "",
       "priceList": [
         {
           "type": "Normalny",
@@ -308,20 +300,38 @@
         }
       ],
       "reservedSeats": [
-        "A10"
+        ""
       ],
-      "screen": "1",
+      "screen": 1,
       "id": 7
     },
     {
-      "reservedSeats": [
-        "A10"
+      "filmId": 10,
+      "hour": "10:36",
+      "date": "",
+      "priceList": [
+        {
+          "type": "Normalny",
+          "price": 30
+        },
+        {
+          "type": "Ulgowy",
+          "price": 15
+        },
+        {
+          "type": "Voucher",
+          "price": 20
+        }
       ],
+      "reservedSeats": [
+        ""
+      ],
+      "screen": 1,
       "id": 8
     },
     {
-      "filmId": 1,
-      "hour": "22:11",
+      "filmId": 9,
+      "hour": "13:39",
       "date": "",
       "priceList": [
         {
@@ -338,958 +348,14 @@
         }
       ],
       "reservedSeats": [
-        ""
+        "",
+        "C4",
+        "C5",
+        "E7",
+        "D7"
       ],
       "screen": 1,
       "id": 9
-    },
-    {
-      "reservedSeats": [
-        "",
-        "B7",
-        "C7",
-        "B4",
-        "B5",
-        "C5",
-        "C6",
-        "C8",
-        "B3"
-      ],
-      "id": 10
-    },
-    {
-      "filmId": 8,
-      "hour": "08:30",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        "",
-        "E8"
-      ],
-      "screen": 0,
-      "id": 11
-    },
-    {
-      "filmId": 2,
-      "hour": "11:45",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        "",
-        "F3",
-        "F4",
-        "F6",
-        "F5",
-        "F7",
-        "E7",
-        "E8",
-        "F9",
-        "F11",
-        "F10",
-        "E10",
-        "F8",
-        "D7",
-        "F12",
-        "E9",
-        "E6",
-        "D9",
-        "D8",
-        "D5",
-        "D6",
-        "D10",
-        "D4",
-        "D3",
-        "C6",
-        "C4",
-        "C7"
-      ],
-      "screen": 0,
-      "id": 12
-    },
-    {
-      "filmId": 0,
-      "hour": "08:30",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 13
-    },
-    {
-      "filmId": 1,
-      "hour": "13:34",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 14
-    },
-    {
-      "filmId": 2,
-      "hour": "17:28",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 15
-    },
-    {
-      "filmId": 1,
-      "hour": "22:41",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 16
-    },
-    {
-      "filmId": 1,
-      "hour": "22:41",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 17
-    },
-    {
-      "filmId": 1,
-      "hour": "22:41",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 18
-    },
-    {
-      "filmId": 2,
-      "hour": "03:50",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 1,
-      "id": 19
-    },
-    {
-      "filmId": 2,
-      "hour": "20:18",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 2,
-      "id": 20
-    },
-    {
-      "filmId": 0,
-      "hour": "21:40",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 21
-    },
-    {
-      "filmId": 0,
-      "hour": "06:43",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 2,
-      "id": 22
-    },
-    {
-      "filmId": 1,
-      "hour": "23:46",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 2,
-      "id": 23
-    },
-    {
-      "filmId": 1,
-      "hour": "08:30",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        "",
-        "D6",
-        "D7",
-        "F6"
-      ],
-      "screen": 0,
-      "id": 24
-    },
-    {
-      "filmId": 1,
-      "hour": "12:45",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        "",
-        "D9",
-        "F6",
-        "F7",
-        "F5",
-        "D5"
-      ],
-      "screen": 0,
-      "id": 25
-    },
-    {
-      "filmId": 1,
-      "hour": "15:11",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 26
-    },
-    {
-      "filmId": 2,
-      "hour": "15:11",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 27
-    },
-    {
-      "filmId": 2,
-      "hour": "15:11",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 28
-    },
-    {
-      "filmId": 2,
-      "hour": "15:11",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 29
-    },
-    {
-      "filmId": 1,
-      "hour": "15:13",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 30
-    },
-    {
-      "filmId": 0,
-      "hour": "15:14",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 31
-    },
-    {
-      "filmId": 0,
-      "hour": "15:20",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 32
-    },
-    {
-      "filmId": 0,
-      "hour": "15:20",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 33
-    },
-    {
-      "filmId": 1,
-      "hour": "15:16",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 34
-    },
-    {
-      "filmId": 1,
-      "hour": "17:35",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 35
-    },
-    {
-      "filmId": 1,
-      "hour": "16:30",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 36
-    },
-    {
-      "filmId": 1,
-      "hour": "16:30",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 37
-    },
-    {
-      "filmId": 0,
-      "hour": "21:36",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 38
-    },
-    {
-      "filmId": 0,
-      "hour": "21:36",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 39
-    },
-    {
-      "filmId": 1,
-      "hour": "22:44",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 40
-    },
-    {
-      "filmId": 1,
-      "hour": "22:44",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 41
-    },
-    {
-      "filmId": 1,
-      "hour": "22:44",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 42
-    },
-    {
-      "filmId": 0,
-      "hour": "19:42",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 43
-    },
-    {
-      "filmId": 0,
-      "hour": "19:56",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 44
-    },
-    {
-      "filmId": 0,
-      "hour": "19:56",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 45
-    },
-    {
-      "filmId": 0,
-      "hour": "19:00",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        ""
-      ],
-      "screen": 0,
-      "id": 46
-    },
-    {
-      "filmId": 0,
-      "hour": "18:47",
-      "date": "",
-      "priceList": [
-        {
-          "type": "Normalny",
-          "price": 30
-        },
-        {
-          "type": "Ulgowy",
-          "price": 15
-        },
-        {
-          "type": "Voucher",
-          "price": 20
-        }
-      ],
-      "reservedSeats": [
-        "",
-        "F7",
-        "F8",
-        "F9",
-        "E8",
-        "F10",
-        "F11",
-        "E9",
-        "D8",
-        "E10",
-        "D9",
-        "F3"
-      ],
-      "screen": 0,
-      "id": 47
     }
   ],
   "films": [
@@ -1531,59 +597,15 @@
       "id": 16
     },
     {
-      "img": "",
-      "title": "",
-      "description": "",
-      "genre": "",
-      "ageRest": "",
-      "length": "",
-      "score": "",
+      "img": "qwdqdwdw",
+      "title": "Niezławixa",
+      "description": "ksifikowswf",
+      "genre": "dreszczowiec",
+      "ageRest": 10,
+      "length": 232,
+      "score": 32,
       "premier": true,
       "id": 17
-    },
-    {
-      "img": "",
-      "title": "",
-      "description": "",
-      "genre": "",
-      "ageRest": "",
-      "length": "",
-      "score": "",
-      "premier": true,
-      "id": 18
-    },
-    {
-      "img": "",
-      "title": "",
-      "description": "",
-      "genre": "",
-      "ageRest": "",
-      "length": "",
-      "score": "",
-      "premier": true,
-      "id": 19
-    },
-    {
-      "img": "terg",
-      "title": "grewegr",
-      "description": "gererg",
-      "genre": "dreszczowiec",
-      "ageRest": 18,
-      "length": null,
-      "score": 11,
-      "premier": true,
-      "id": 20
-    },
-    {
-      "img": "",
-      "title": "",
-      "description": "",
-      "genre": "",
-      "ageRest": "",
-      "length": "",
-      "score": "",
-      "premier": true,
-      "id": 21
     }
   ],
   "repertoire": [
@@ -1704,25 +726,42 @@
     },
     {
       "date": "12/03",
+      "id": 12,
       "shows": [
         24,
         25,
         0,
         37,
         1,
-        47
-      ],
-      "id": 12
+        47,
+        64,
+        66,
+        68,
+        70,
+        71,
+        72
+      ]
     },
     {
       "date": "13/03",
-      "shows": [],
-      "id": 13
+      "id": 13,
+      "shows": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        6,
+        8,
+        9
+      ]
     },
     {
       "date": "14/03",
-      "shows": [],
-      "id": 14
+      "id": 14,
+      "shows": [
+        7
+      ]
     },
     {
       "date": "15/03",
@@ -1738,6 +777,21 @@
       "date": "17/03",
       "shows": [],
       "id": 17
+    },
+    {
+      "date": "18/03",
+      "shows": [],
+      "id": 18
+    },
+    {
+      "date": "19/03",
+      "shows": [],
+      "id": 19
+    },
+    {
+      "date": "20/03",
+      "shows": [],
+      "id": 20
     }
   ],
   "orders": [
@@ -2687,6 +1741,37 @@
         }
       },
       "id": 31
+    },
+    {
+      "0": {
+        "id": "D6",
+        "email": "",
+        "showId": 6,
+        "date": "13-03",
+        "hour": "08:20",
+        "movieTitle": "Top Gun: Maverick",
+        "screen": 0,
+        "seat": {
+          "position": "D6",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "1": {
+        "id": "C6",
+        "email": "",
+        "showId": 6,
+        "date": "13-03",
+        "hour": "08:20",
+        "movieTitle": "Top Gun: Maverick",
+        "screen": 0,
+        "seat": {
+          "position": "C6",
+          "price": 30,
+          "type": "Normalny"
+        }
+      },
+      "id": 32
     }
   ]
 }

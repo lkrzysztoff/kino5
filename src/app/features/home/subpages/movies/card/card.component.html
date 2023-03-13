@@ -66,12 +66,16 @@
           let show of returnShowById(shows, films.id, selectedDate);
           let hourIndex = index
         "
-        routerLink="/reservation/{{ selectedDate | date : 'MM-dd' }}/{{
+        routerLink="/reservation/{{ selectedDate}}/{{
           show.id
         }}"
       >
         {{ show.hour }}
       </button>
+      <div *ngIf="usersRating$ | async as usersRating">
+        <div *ngFor="let rating of filterRatingById(usersRating,films.id)">{{displayRating(rating.myRating)}}</div>
+      </div>
+      
     </div>
   </div>
 </div>

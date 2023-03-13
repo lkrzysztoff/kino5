@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { initialFilmState } from './admin.state';
-import { addFilmsActions } from './admin.actions';
+import { initialFilmState, initialShowState } from './admin.state';
+import { addFilmsActions, addShowsActions } from './admin.actions';
 import { addShowInterface } from './admin.interfaces';
 
 export const addFilmReducer = createReducer(
@@ -11,11 +11,11 @@ export const addFilmReducer = createReducer(
     })),
 )
 
-// export const addShowReducer = createReducer(
-//   initialShowState,
-//   on(addShowsActions.addShow, (state,action) => ({
-//     ...state,
-//     shows: action.shows
-//   }))
-// )
+export const addShowReducer = createReducer(
+  initialShowState,
+  on(addShowsActions.addShow, (state,action) => ({
+    ...state,
+    shows: action.shows
+  }))
+)
 

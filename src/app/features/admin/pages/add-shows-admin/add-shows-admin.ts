@@ -36,35 +36,6 @@ export class AddshowsadminComponent implements OnInit {
     const form = this.formBuilder.group({
       date: this.formBuilder.control<string>(this.todayString, []),
       screen: this.formBuilder.control<number>(NaN, []),
-
-      // ]),
-      // godzina: this.formBuilder.control('',[
-
-      // ]),
-      // description: this.formBuilder.control('',[
-
-      // ]),
-      // genre: this.formBuilder.control('',[
-
-      // ]),
-      // ageRest: this.formBuilder.control('',[
-
-      // ]),
-      // date: this.formBuilder.control('',[
-
-      // ]),
-      // hour: this.formBuilder.control('',[
-
-      // ]),
-      // length: this.formBuilder.control('',[
-
-      // ]),
-      // score: this.formBuilder.control('',[
-
-      // ]),
-      // premier: this.formBuilder.control('',[
-
-      // ])
     });
     return form;
   }

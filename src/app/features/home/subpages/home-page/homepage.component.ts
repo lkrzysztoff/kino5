@@ -45,4 +45,11 @@ export class HomePageComponent implements OnInit {
     this.selectedDate = this.activeRoute.snapshot.params['selectedDate'];
     this.show$ = this.filmService.getShowtest();
   }
+
+  modifiedDate !: string;
+  checkDate(selectedDate:string){
+    let formated
+    formated = selectedDate.split('/').join('-');
+    return formated;
+  }
 }

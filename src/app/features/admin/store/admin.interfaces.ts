@@ -6,10 +6,6 @@ export interface AdminFilmState {
   films: movie[];
 }
 
-export interface AdminScreeningState {
-//   screenings: Screening[];
-}
-
 export interface AdminShowState {
   shows: addShowInterface[]
 }
